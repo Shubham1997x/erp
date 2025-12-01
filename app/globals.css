@@ -2,49 +2,58 @@
 
 @layer base {
   :root {
-    /* BuddyX Theme - Orange/Warm Primary, Yellow/Gold Secondary */
+    /* 60-30-10 Rule: 60% White/Light (Primary), 30% Gray (Secondary), 10% Blue (Accent) */
+    /* 60% - Primary: White/Light backgrounds */
     --background: 0 0% 100%;
     --foreground: 0 0% 10%;
     --card: 0 0% 100%;
     --card-foreground: 0 0% 10%;
     --popover: 0 0% 100%;
     --popover-foreground: 0 0% 10%;
-    --primary: 24 95% 53%;
+    /* 10% - Accent: Professional Blue for CTAs and highlights */
+    --primary: 217 91% 60%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 45 93% 47%;
+    --accent: 217 91% 60%;
+    --accent-foreground: 0 0% 100%;
+    --ring: 217 91% 60%;
+    /* 30% - Secondary: Gray/Neutral for supporting elements */
+    --secondary: 0 0% 50%;
     --secondary-foreground: 0 0% 100%;
     --muted: 0 0% 96%;
     --muted-foreground: 0 0% 40%;
-    --accent: 24 95% 95%;
-    --accent-foreground: 24 95% 53%;
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 100%;
     --border: 0 0% 90%;
     --input: 0 0% 90%;
-    --ring: 24 95% 53%;
+    /* Status colors */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
     --radius: 0;
   }
 
   .dark {
+    /* 60-30-10 Rule for Dark Mode */
+    /* 60% - Primary: Dark backgrounds */
     --background: 0 0% 10%;
     --foreground: 0 0% 98%;
     --card: 0 0% 10%;
     --card-foreground: 0 0% 98%;
     --popover: 0 0% 10%;
     --popover-foreground: 0 0% 98%;
-    --primary: 24 95% 53%;
+    /* 10% - Accent: Professional Blue for CTAs */
+    --primary: 217 91% 60%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 45 93% 47%;
-    --secondary-foreground: 0 0% 100%;
+    --accent: 217 91% 60%;
+    --accent-foreground: 0 0% 100%;
+    --ring: 217 91% 60%;
+    /* 30% - Secondary: Gray/Neutral */
+    --secondary: 0 0% 50%;
+    --secondary-foreground: 0 0% 98%;
     --muted: 0 0% 20%;
     --muted-foreground: 0 0% 65%;
-    --accent: 0 0% 20%;
-    --accent-foreground: 0 0% 98%;
-    --destructive: 0 62% 30%;
-    --destructive-foreground: 0 0% 98%;
     --border: 0 0% 25%;
     --input: 0 0% 25%;
-    --ring: 24 95% 53%;
+    /* Status colors */
+    --destructive: 0 62% 50%;
+    --destructive-foreground: 0 0% 98%;
   }
 }
 
@@ -217,9 +226,9 @@ html {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
-/* Active state - light orange background */
+/* Active state - light blue background */
 .active-state {
-  background-color: hsl(24 95% 95%);
+  background-color: hsl(217 91% 97%);
 }
 
 /* Hero Section Background Animations */
@@ -258,7 +267,7 @@ html {
   letter-spacing: 0.05rem;
   border: 1px solid hsl(var(--primary) / 0.3) !important;
   background-color: hsl(var(--primary)) !important;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 531.28 200'%3E%3Cdefs%3E%3Cstyle%3E .shape %7B fill: hsl(24 95% 65%) %7D %3C/style%3E%3C/defs%3E%3Cg id='Layer_2' data-name='Layer 2'%3E%3Cg id='Layer_1-2' data-name='Layer 1'%3E%3Cpolygon class='shape' points='415.81 200 0 200 115.47 0 531.28 0 415.81 200' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E%0A");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 531.28 200'%3E%3Cdefs%3E%3Cstyle%3E .shape %7B fill: hsl(217 91% 70%) %7D %3C/style%3E%3C/defs%3E%3Cg id='Layer_2' data-name='Layer 2'%3E%3Cg id='Layer_1-2' data-name='Layer 1'%3E%3Cpolygon class='shape' points='415.81 200 0 200 115.47 0 531.28 0 415.81 200' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E%0A");
   background-size: 200%;
   background-position: 200%;
   background-repeat: no-repeat;
