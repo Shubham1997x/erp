@@ -80,43 +80,8 @@ export function RawMaterials() {
           transition={{ duration: 0.6 }}
           className="mb-16"
         >
-          <h3 className="text-xl sm:text-2xl font-bold text-center mb-6 sm:mb-8">
-            Procurement Workflow
-          </h3>
-          {/* Mobile: Vertical layout */}
-          <div className="flex flex-col items-center gap-4 md:hidden">
-            {workflowSteps.map((step, index) => {
-              const Icon = step.icon;
-              return (
-                <div key={index} className="flex flex-col items-center w-full">
-                  <motion.div
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.4, delay: index * 0.1 }}
-                    className="flex flex-col items-center w-full max-w-[280px] px-4 py-3"
-                  >
-                    <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-xl bg-primary/10 flex items-center justify-center mb-3">
-                      <Icon className="h-7 w-7 sm:h-8 sm:w-8 text-primary" />
-                    </div>
-                    <h4 className="font-semibold text-base sm:text-sm mb-2 text-center">
-                      {step.title}
-                    </h4>
-                    <p className="text-sm sm:text-xs text-muted-foreground text-center leading-relaxed">
-                      {step.description}
-                    </p>
-                  </motion.div>
-                  {index < workflowSteps.length - 1 && (
-                    <div className="my-2">
-                      <ArrowRight className="h-5 w-5 text-muted-foreground rotate-90" />
-                    </div>
-                  )}
-                </div>
-              );
-            })}
-          </div>
-          {/* Desktop: Horizontal layout */}
-          <div className="hidden md:flex md:flex-wrap md:justify-center md:gap-4 lg:gap-6">
+          <h3 className="text-2xl font-bold text-center mb-8">Procurement Workflow</h3>
+          <div className="flex flex-wrap justify-center gap-4 lg:gap-6">
             {workflowSteps.map((step, index) => {
               const Icon = step.icon;
               return (
@@ -146,7 +111,7 @@ export function RawMaterials() {
         </motion.div>
 
         {/* Features Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {features.map((feature, index) => {
             const Icon = feature.icon;
             return (
@@ -156,15 +121,13 @@ export function RawMaterials() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="p-5 sm:p-6 rounded-xl border-2 border-border hover:border-primary/30 transition-colors"
+                className="p-6 rounded-xl border-2 border-border hover:border-primary/30 transition-colors"
               >
                 <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
                   <Icon className="h-6 w-6 text-primary" />
                 </div>
-                <h3 className="text-lg sm:text-xl font-semibold mb-2">{feature.title}</h3>
-                <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
-                  {feature.description}
-                </p>
+                <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
+                <p className="text-muted-foreground">{feature.description}</p>
               </motion.div>
             );
           })}

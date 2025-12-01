@@ -74,7 +74,7 @@ export function Navbar() {
                 R
               </span>
             </div>
-            <span className="font-bold text-xl">Rajdhani ERP</span>
+            <span className="font-bold text-xl">Rajdhani</span>
           </Link>
 
           {/* Desktop Navigation */}
