@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
@@ -8,43 +8,118 @@ import { motion, AnimatePresence } from "framer-motion";
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("");
 
   const navLinks = [
-    { name: "Features", href: "#features" },
-    { name: "Modules", href: "#modules" },
-    { name: "Workflow", href: "#workflow" },
-    { name: "Pricing", href: "#pricing" },
-    { name: "Contact", href: "#contact" },
+    { name: "Dashboard", href: "#dashboard", id: "dashboard" },
+    { name: "Products", href: "#product-recipe", id: "product-recipe" },
+    { name: "Raw Materials", href: "#raw-materials", id: "raw-materials" },
+    { name: "Orders", href: "#order-management", id: "order-management" },
+    { name: "Production", href: "#production", id: "production" },
+    { name: "Customers", href: "#customers-suppliers", id: "customers-suppliers" },
+    { name: "Stock", href: "#stock-management", id: "stock-management" },
+    { name: "Analytics", href: "#analytics", id: "analytics" },
+    { name: "Calculator", href: "#recipe-calculator", id: "recipe-calculator" },
+    { name: "Contact", href: "#contact", id: "contact" },
   ];
 
+  useEffect(() => {
+    const observerOptions = {
+      root: null,
+      rootMargin: "-20% 0px -70% 0px",
+      threshold: 0,
+    };
+
+    const observerCallback = (entries: IntersectionObserverEntry[]) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setActiveSection(entry.target.id);
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+    // Observe all sections
+    navLinks.forEach((link) => {
+      const element = document.getElementById(link.id);
+      if (element) {
+        observer.observe(element);
+      }
+    });
+
+    // Also check on scroll for hero section
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+      if (scrollPosition < 100) {
+        setActiveSection("");
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
-    <nav className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <nav className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/60">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           <Link href="/" className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center">
-              <span className="text-primary-foreground font-bold text-lg">R</span>
+            <div className="w-8 h-8 bg-primary flex items-center justify-center">
+              <span className="text-primary-foreground font-bold text-lg">
+                R
+              </span>
             </div>
             <span className="font-bold text-xl">Rajdhani ERP</span>
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-6">
-            {navLinks.map((link) => (
-              <Link
-                key={link.name}
-                href={link.href}
-                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
-              >
-                {link.name}
-              </Link>
-            ))}
+          <div className="hidden lg:flex items-center gap-4">
+            {navLinks.map((link) => {
+              const isActive = activeSection === link.id;
+              return (
+                <motion.div
+                  key={link.name}
+                  className="relative"
+                  whileHover="hover"
+                  initial="initial"
+                >
+                  <Link
+                    href={link.href}
+                    className="relative block text-sm font-medium transition-all duration-300 group py-2"
+                  >
+                    <span
+                      className={`relative z-10 transition-colors duration-300 ${
+                        isActive
+                          ? "text-primary"
+                          : "text-muted-foreground group-hover:text-foreground"
+                      }`}
+                    >
+                      {link.name}
+                    </span>
+                    {/* Animated underline on hover and active */}
+                    <motion.span
+                      className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary origin-left"
+                      variants={{
+                        initial: { scaleX: isActive ? 1 : 0 },
+                        hover: { scaleX: 1 },
+                      }}
+                      transition={{ duration: 0.3, ease: "easeInOut" }}
+                    />
+                  </Link>
+                </motion.div>
+              );
+            })}
             <Button>Request Demo</Button>
           </div>
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden p-2"
+            className="lg:hidden p-2"
             onClick={() => setIsOpen(!isOpen)}
             aria-label="Toggle menu"
           >
@@ -60,19 +135,50 @@ export function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden border-t bg-background"
+            className="lg:hidden border-t bg-background"
           >
             <div className="container mx-auto px-4 py-4 space-y-4">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.name}
-                  href={link.href}
-                  className="block text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
-                  onClick={() => setIsOpen(false)}
-                >
-                  {link.name}
-                </Link>
-              ))}
+              {navLinks.map((link) => {
+                const isActive = activeSection === link.id;
+                return (
+                  <Link
+                    key={link.name}
+                    href={link.href}
+                    className="relative block text-sm font-medium transition-all duration-300 group py-2"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    <span
+                      className={`relative z-10 transition-colors duration-300 ${
+                        isActive
+                          ? "text-primary"
+                          : "text-muted-foreground group-hover:text-foreground"
+                      }`}
+                    >
+                      {link.name}
+                    </span>
+                    {/* Animated left border on hover and active */}
+                    <motion.span
+                      className="absolute left-0 top-0 bottom-0 w-1 bg-primary"
+                      initial={{ scaleY: 0 }}
+                      animate={{
+                        scaleY: isActive ? 1 : 0,
+                      }}
+                      whileHover={{ scaleY: 1 }}
+                      transition={{ duration: 0.3, ease: "easeInOut" }}
+                    />
+                    {/* Animated underline on hover and active */}
+                    <motion.span
+                      className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary"
+                      initial={{ scaleX: 0 }}
+                      animate={{
+                        scaleX: isActive ? 1 : 0,
+                      }}
+                      whileHover={{ scaleX: 1 }}
+                      transition={{ duration: 0.3, ease: "easeInOut" }}
+                    />
+                  </Link>
+                );
+              })}
               <Button className="w-full">Request Demo</Button>
             </div>
           </motion.div>
@@ -81,4 +187,3 @@ export function Navbar() {
     </nav>
   );
 }
-

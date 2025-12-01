@@ -42,11 +42,12 @@ export function Screenshots() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl sm:text-5xl font-bold mb-4">
+          <h2 className="text-3xl sm:text-4xl font-bold mb-4">
             See It In Action
           </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Explore the intuitive interface and powerful features of Rajdhani ERP.
+          <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto">
+            Explore the intuitive interface and powerful features of Rajdhani
+            ERP.
           </p>
         </motion.div>
 
@@ -61,27 +62,29 @@ export function Screenshots() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
-                <Card className="overflow-hidden border-2 hover:border-primary/30 transition-all group">
-                  <div className="relative bg-gradient-to-br from-muted to-muted/50 p-8 aspect-video flex items-center justify-center">
-                    <div className="text-center">
-                      <DeviceIcon className="h-16 w-16 mx-auto mb-4 text-primary/30 group-hover:text-primary/50 transition-colors" />
-                      <p className="text-sm text-muted-foreground mb-2">
+                <div className="image-container-borders">
+                  <Card className="feature-image-container overflow-hidden border-2 border-primary/30 hover:border-primary/50 transition-all group">
+                    <div className="relative bg-linear-to-br from-muted to-muted/50 p-8 aspect-video flex items-center justify-center">
+                      <div className="text-center">
+                        <DeviceIcon className="h-16 w-16 mx-auto mb-4 text-primary/30 group-hover:text-primary/50 transition-colors" />
+                        <p className="text-sm text-muted-foreground mb-2">
+                          {screenshot.title}
+                        </p>
+                        <p className="text-xs text-muted-foreground/70">
+                          Placeholder: {screenshot.image}
+                        </p>
+                      </div>
+                    </div>
+                    <div className="p-6">
+                      <h3 className="font-semibold text-lg mb-2">
                         {screenshot.title}
-                      </p>
-                      <p className="text-xs text-muted-foreground/70">
-                        Placeholder: {screenshot.image}
+                      </h3>
+                      <p className="text-muted-foreground text-sm">
+                        {screenshot.description}
                       </p>
                     </div>
-                  </div>
-                  <div className="p-6">
-                    <h3 className="font-semibold text-lg mb-2">
-                      {screenshot.title}
-                    </h3>
-                    <p className="text-muted-foreground text-sm">
-                      {screenshot.description}
-                    </p>
-                  </div>
-                </Card>
+                  </Card>
+                </div>
               </motion.div>
             );
           })}
@@ -95,13 +98,12 @@ export function Screenshots() {
           className="text-center mt-12"
         >
           <p className="text-muted-foreground text-sm">
-            <strong>Note:</strong> Replace placeholder images with actual screenshots
-            or GIFs of your ERP system. Consider adding interactive demos or video
-            walkthroughs.
+            <strong>Note:</strong> Replace placeholder images with actual
+            screenshots or GIFs of your ERP system. Consider adding interactive
+            demos or video walkthroughs.
           </p>
         </motion.div>
       </div>
     </section>
   );
 }
-

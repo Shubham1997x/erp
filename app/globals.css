@@ -2,49 +2,49 @@
 
 @layer base {
   :root {
-    /* Premium Color Palette - Inspired by Rife Theme */
+    /* BuddyX Theme - Orange/Warm Primary, Yellow/Gold Secondary */
     --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --foreground: 0 0% 10%;
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 0 0% 10%;
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-    --primary: 221.2 83.2% 53.3%;
-    --primary-foreground: 210 40% 98%;
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 221.2 83.2% 53.3%;
-    --radius: 0.5rem;
+    --popover-foreground: 0 0% 10%;
+    --primary: 24 95% 53%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 45 93% 47%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 40%;
+    --accent: 24 95% 95%;
+    --accent-foreground: 24 95% 53%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
+    --ring: 24 95% 53%;
+    --radius: 0;
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-    --primary: 217.2 91.2% 59.8%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 224.3 76.3% 48%;
+    --background: 0 0% 10%;
+    --foreground: 0 0% 98%;
+    --card: 0 0% 10%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 10%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 24 95% 53%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 45 93% 47%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 0 0% 20%;
+    --muted-foreground: 0 0% 65%;
+    --accent: 0 0% 20%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62% 30%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 25%;
+    --input: 0 0% 25%;
+    --ring: 24 95% 53%;
   }
 }
 
@@ -68,7 +68,8 @@
   --color-border: hsl(var(--border));
   --color-input: hsl(var(--input));
   --color-ring: hsl(var(--ring));
-  --font-sans: var(--font-inter), var(--font-poppins), system-ui, sans-serif;
+  --font-sans: var(--font-grotesk), system-ui, sans-serif;
+  --font-serif: var(--font-serif), Georgia, serif;
   --font-mono: monospace;
 }
 
@@ -79,12 +80,30 @@
 body {
   background-color: hsl(var(--background));
   color: hsl(var(--foreground));
-  font-family: var(--font-inter), system-ui, sans-serif;
+  font-family: var(--font-grotesk), system-ui, sans-serif;
 }
 
+/* Remove all rounded corners globally */
+* {
+  border-radius: 0 !important;
+}
+
+/* Allow specific exceptions if needed (none for now) */
+
 h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-poppins), system-ui, sans-serif;
+  font-family: var(--font-serif), Georgia, serif;
   font-weight: 600;
+}
+
+/* Rajdhani ERP Theme Styles */
+.section-padding {
+  padding: 80px 0;
+}
+
+@media (max-width: 768px) {
+  .section-padding {
+    padding: 60px 0;
+  }
 }
 
 /* Smooth scrolling */
@@ -92,15 +111,237 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Custom gradient backgrounds */
-.gradient-primary {
-  background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(221.2 83.2% 45%) 100%);
+/* Section backgrounds */
+.section-light {
+  background: hsl(var(--background));
 }
 
-.gradient-mesh {
-  background: 
-    radial-gradient(at 0% 0%, hsl(var(--primary) / 0.1) 0px, transparent 50%),
-    radial-gradient(at 100% 0%, hsl(var(--primary) / 0.1) 0px, transparent 50%),
-    radial-gradient(at 100% 100%, hsl(var(--primary) / 0.05) 0px, transparent 50%),
-    radial-gradient(at 0% 100%, hsl(var(--primary) / 0.05) 0px, transparent 50%);
+.section-gray {
+  background: hsl(var(--muted) / 0.5);
+}
+
+.section-dark {
+  background: hsl(0 0% 10%) !important;
+  color: hsl(0 0% 98%);
+  position: relative;
+  background-image: none !important;
+  background-repeat: no-repeat !important;
+  background-size: auto !important;
+  background-position: 0 0 !important;
+  isolation: isolate;
+}
+
+.section-dark * {
+  background-image: none !important;
+}
+
+.section-dark::before,
+.section-dark::after {
+  display: none !important;
+  background-image: none !important;
+  content: none !important;
+}
+
+/* Remove any potential grid/pattern backgrounds */
+.section-dark,
+.section-dark > * {
+  background-image: none !important;
+  background: hsl(0 0% 10%) !important;
+}
+
+.section-dark h2,
+.section-dark h3,
+.section-dark h4 {
+  color: hsl(0 0% 98%);
+}
+
+.section-dark p {
+  color: hsl(0 0% 80%);
+}
+
+.section-dark .text-muted-foreground {
+  color: hsl(0 0% 65%) !important;
+}
+
+/* Feature showcase styles */
+.feature-image-container {
+  position: relative;
+  overflow: hidden;
+  background: hsl(var(--muted));
+}
+
+/* Image container with button-style borders */
+.image-container-borders {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.image-container-borders:before {
+  content: "";
+  position: absolute;
+  width: calc(100% + 0.5em);
+  height: 50%;
+  left: -0.3em;
+  top: -0.3em;
+  border: 1px solid hsl(var(--primary) / 0.3);
+  border-bottom: 0px;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.image-container-borders:after {
+  content: "";
+  position: absolute;
+  width: calc(100% + 0.5em);
+  height: 50%;
+  left: -0.3em;
+  bottom: -0.3em;
+  border: 1px solid hsl(var(--primary) / 0.3);
+  border-top: 0px;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.feature-image-container img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Card styles matching ERP application */
+.erp-card {
+  background: hsl(var(--card));
+  border: 1px solid hsl(var(--border));
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+/* Active state - light orange background */
+.active-state {
+  background-color: hsl(24 95% 95%);
+}
+
+/* Hero Section Background Animations */
+@keyframes blob {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  33% {
+    transform: translate(30px, -50px) scale(1.1);
+  }
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+  100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+}
+
+.animate-blob {
+  animation: blob 7s infinite;
+}
+
+.animation-delay-2000 {
+  animation-delay: 2s;
+}
+
+.animation-delay-4000 {
+  animation-delay: 4s;
+}
+
+/* Animated Diagonal Button Style */
+.btn-primary-animated {
+  color: white !important;
+  cursor: pointer;
+  font-weight: bold;
+  letter-spacing: 0.05rem;
+  border: 1px solid hsl(var(--primary) / 0.3) !important;
+  background-color: hsl(var(--primary)) !important;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 531.28 200'%3E%3Cdefs%3E%3Cstyle%3E .shape %7B fill: hsl(24 95% 65%) %7D %3C/style%3E%3C/defs%3E%3Cg id='Layer_2' data-name='Layer 2'%3E%3Cg id='Layer_1-2' data-name='Layer 1'%3E%3Cpolygon class='shape' points='415.81 200 0 200 115.47 0 531.28 0 415.81 200' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E%0A");
+  background-size: 200%;
+  background-position: 200%;
+  background-repeat: no-repeat;
+  transition: 0.3s ease-in-out;
+  transition-property: background-position, border, color;
+  position: relative;
+  z-index: 1;
+  outline: none;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 100%;
+  height: 100%;
+  border-radius: 0 !important;
+}
+
+.btn-primary-animated * {
+  color: white !important;
+  z-index: 2;
+  position: relative;
+}
+
+.btn-primary-animated:hover {
+  border: 1px solid hsl(var(--primary)) !important;
+  color: white !important;
+  background-position: 40%;
+}
+
+.btn-primary-animated:before {
+  content: "";
+  position: absolute;
+  background-color: hsl(var(--primary) / 0.3);
+  width: 0.2rem;
+  height: 0.2rem;
+  top: -1px;
+  left: -1px;
+  transition: background-color 0.15s ease-in-out;
+}
+
+.btn-primary-animated:hover:before {
+  background-color: white;
+}
+
+.btn-primary-animated:hover:after {
+  background-color: white;
+}
+
+.btn-primary-animated:after {
+  content: "";
+  position: absolute;
+  background-color: hsl(var(--primary));
+  width: 0.3rem;
+  height: 0.3rem;
+  bottom: -1px;
+  right: -1px;
+  transition: background-color 0.15s ease-in-out;
+}
+
+.button-borders {
+  position: relative;
+  width: fit-content;
+  height: fit-content;
+}
+
+.button-borders:before {
+  content: "";
+  position: absolute;
+  width: calc(100% + 0.5em);
+  height: 50%;
+  left: -0.3em;
+  top: -0.3em;
+  border: 1px solid hsl(var(--primary) / 0.3);
+  border-bottom: 0px;
+}
+
+.button-borders:after {
+  content: "";
+  position: absolute;
+  width: calc(100% + 0.5em);
+  height: 50%;
+  left: -0.3em;
+  bottom: -0.3em;
+  border: 1px solid hsl(var(--primary) / 0.3);
+  border-top: 0px;
+  z-index: 0;
 }

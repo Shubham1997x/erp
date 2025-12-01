@@ -1,7 +1,13 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import {
   Package2,
   Cog,
@@ -139,12 +145,12 @@ export function Modules() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl sm:text-5xl font-bold mb-4">
+          <h2 className="text-3xl sm:text-4xl font-bold mb-4">
             Integrated ERP Modules
           </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Powerful modules that work together seamlessly to manage every aspect
-            of your carpet manufacturing business.
+          <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto">
+            Powerful modules that work together seamlessly to manage every
+            aspect of your carpet manufacturing business.
           </p>
         </motion.div>
 
@@ -162,11 +168,13 @@ export function Modules() {
                 <Card className="h-full hover:shadow-xl transition-all duration-300 border-2 hover:border-primary/30 group">
                   <CardHeader>
                     <div
-                      className={`w-14 h-14 rounded-xl bg-gradient-to-br ${module.color} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}
+                      className={`w-14 h-14 rounded-xl bg-linear-to-br ${module.color} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}
                     >
                       <Icon className="h-7 w-7 text-white" />
                     </div>
-                    <CardTitle className="text-xl mb-2">{module.title}</CardTitle>
+                    <CardTitle className="text-xl mb-2">
+                      {module.title}
+                    </CardTitle>
                     <CardDescription className="text-sm">
                       {module.description}
                     </CardDescription>
@@ -174,9 +182,14 @@ export function Modules() {
                   <CardContent>
                     <ul className="space-y-2">
                       {module.features.map((feature, idx) => (
-                        <li key={idx} className="flex items-start gap-2 text-sm">
+                        <li
+                          key={idx}
+                          className="flex items-start gap-2 text-sm"
+                        >
                           <span className="text-primary mt-1">•</span>
-                          <span className="text-muted-foreground">{feature}</span>
+                          <span className="text-muted-foreground">
+                            {feature}
+                          </span>
                         </li>
                       ))}
                     </ul>
@@ -190,4 +203,3 @@ export function Modules() {
     </section>
   );
 }
-

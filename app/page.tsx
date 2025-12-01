@@ -1,12 +1,17 @@
 import { Navbar } from "@/components/navigation/navbar";
 import { Hero } from "@/components/sections/hero";
-import { Features } from "@/components/sections/features";
-import { Modules } from "@/components/sections/modules";
-import { Workflow } from "@/components/sections/workflow";
-import { Screenshots } from "@/components/sections/screenshots";
-import { Benefits } from "@/components/sections/benefits";
-import { Pricing } from "@/components/sections/pricing";
-import { Testimonials } from "@/components/sections/testimonials";
+import { Dashboard } from "@/components/sections/dashboard";
+import { ProductRecipe } from "@/components/sections/product-recipe";
+import { RawMaterials } from "@/components/sections/raw-materials";
+import { OrderManagement } from "@/components/sections/order-management";
+import { Production } from "@/components/sections/production";
+import { CustomersSuppliers } from "@/components/sections/customers-suppliers";
+import { StockManagement } from "@/components/sections/stock-management";
+import { Analytics } from "@/components/sections/analytics";
+import { RecipeCalculator } from "@/components/sections/recipe-calculator";
+import { DropdownMaster } from "@/components/sections/dropdown-master";
+import { SystemCapabilities } from "@/components/sections/system-capabilities";
+import { IntegratedSystem } from "@/components/sections/integrated-system";
 import { Contact } from "@/components/sections/contact";
 import { Footer } from "@/components/sections/footer";
 
@@ -15,21 +20,18 @@ export default function Home() {
     <main className="min-h-screen">
       <Navbar />
       <Hero />
-      <section id="features">
-        <Features />
-      </section>
-      <section id="modules">
-        <Modules />
-      </section>
-      <section id="workflow">
-        <Workflow />
-      </section>
-      <Screenshots />
-      <Benefits />
-      <section id="pricing">
-        <Pricing />
-      </section>
-      <Testimonials />
+      <Dashboard />
+      <ProductRecipe />
+      <RawMaterials />
+      <OrderManagement />
+      <Production />
+      <CustomersSuppliers />
+      <StockManagement />
+      <Analytics />
+      <RecipeCalculator />
+      <DropdownMaster />
+      <SystemCapabilities />
+      <IntegratedSystem />
       <section id="contact">
         <Contact />
       </section>
