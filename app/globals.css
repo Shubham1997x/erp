@@ -354,3 +354,33 @@ html {
   border-top: 0px;
   z-index: 0;
 }
+
+/* Loader Animations */
+@keyframes truckBounce {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(3px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes roadMove {
+  0% {
+    transform: translateX(0px);
+  }
+  100% {
+    transform: translateX(-350px);
+  }
+}
+
+.animate-truck-bounce {
+  animation: truckBounce 1s linear infinite;
+}
+
+.animate-road-move {
+  animation: roadMove 1.4s linear infinite;
+}
