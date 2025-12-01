@@ -21,7 +21,7 @@ export function StockManagement() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl sm:text-4xl font-bold mb-4">
+          <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-primary">
             Stock Management
           </h2>
           <p className="text-base sm:text-lg text-muted-foreground max-w-3xl mx-auto">

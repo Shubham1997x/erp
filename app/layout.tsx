@@ -31,6 +31,11 @@ export const metadata: Metadata = {
     "Business Management",
   ],
   authors: [{ name: "Rajdhani ERP" }],
+  icons: {
+    icon: "/logo.png",
+    shortcut: "/logo.png",
+    apple: "/logo.png",
+  },
   openGraph: {
     title: "Rajdhani ERP - Weaving Operational Excellence",
     description:

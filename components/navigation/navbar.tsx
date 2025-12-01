@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -16,7 +17,11 @@ export function Navbar() {
     { name: "Raw Materials", href: "#raw-materials", id: "raw-materials" },
     { name: "Orders", href: "#order-management", id: "order-management" },
     { name: "Production", href: "#production", id: "production" },
-    { name: "Customers", href: "#customers-suppliers", id: "customers-suppliers" },
+    {
+      name: "Customers",
+      href: "#customers-suppliers",
+      id: "customers-suppliers",
+    },
     { name: "Stock", href: "#stock-management", id: "stock-management" },
     { name: "Analytics", href: "#analytics", id: "analytics" },
     { name: "Calculator", href: "#recipe-calculator", id: "recipe-calculator" },
@@ -38,7 +43,10 @@ export function Navbar() {
       });
     };
 
-    const observer = new IntersectionObserver(observerCallback, observerOptions);
+    const observer = new IntersectionObserver(
+      observerCallback,
+      observerOptions
+    );
 
     // Observe all sections
     navLinks.forEach((link) => {
@@ -68,12 +76,15 @@ export function Navbar() {
     <nav className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/60">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
-          <Link href="/" className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-primary flex items-center justify-center">
-              <span className="text-primary-foreground font-bold text-lg">
-                R
-              </span>
-            </div>
+          <Link href="/" className="flex items-center gap-3">
+            <Image
+              src="/logo.png"
+              alt="Rajdhani ERP Logo"
+              width={56}
+              height={56}
+              className="h-12 w-auto"
+              priority
+            />
             <span className="font-bold text-xl">Rajdhani</span>
           </Link>
 
