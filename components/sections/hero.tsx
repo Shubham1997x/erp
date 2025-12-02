@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import {
   ArrowRight,
@@ -11,9 +10,6 @@ import {
   TrendingUp,
   Users,
 } from "lucide-react";
-
-// Cache busting version - increment this when images are updated
-const IMAGE_VERSION = "v2";
 
 export function Hero() {
   return (
@@ -26,7 +22,7 @@ export function Hero() {
       <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-linear-to-tr from-blue-50 to-transparent opacity-40 blur-3xl"></div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-20">
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-7xl mx-auto">
           {/* Badge - Centered */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -34,7 +30,7 @@ export function Hero() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="flex justify-center mb-12"
           >
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-50 border border-blue-100">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-50 border-2 border-primary/20 shadow-sm">
               <Shield className="h-4 w-4 text-primary" />
               <span className="text-sm font-medium text-primary">
                 Trusted by 500+ Manufacturing Companies
@@ -42,7 +38,7 @@ export function Hero() {
             </div>
           </motion.div>
 
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
             {/* Left Column - Content */}
             <motion.div
               initial={{ opacity: 0, x: -30 }}
@@ -50,13 +46,12 @@ export function Hero() {
               transition={{ duration: 0.8 }}
               className="space-y-8"
             >
-
               {/* Main Heading */}
               <motion.h1
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
-                className="text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight leading-tight"
+                className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-tight"
               >
                 <span className="text-foreground">Complete ERP Solution</span>
                 <br />
@@ -68,7 +63,7 @@ export function Hero() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.3 }}
-                className="text-lg sm:text-lg text-muted-foreground leading-relaxed max-w-xl"
+                className="text-base sm:text-lg text-muted-foreground leading-relaxed max-w-2xl"
               >
                 Streamline your entire manufacturing workflow—from raw materials
                 to finished products—with real-time insights, automated
@@ -80,7 +75,7 @@ export function Hero() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.4 }}
-                className="space-y-3"
+                className="space-y-4"
               >
                 {[
                   "Real-time inventory & stock management",
@@ -93,7 +88,7 @@ export function Hero() {
                     transition={{ duration: 0.6, delay: 0.5 + index * 0.1 }}
                     className="flex items-center gap-3"
                   >
-                    <CheckCircle2 className="h-5 w-5 text-primary shrink-0" />
+                    <CheckCircle2 className="h-6 w-6 text-primary shrink-0" />
                     <span className="text-base text-foreground">{feature}</span>
                   </motion.div>
                 ))}
@@ -120,26 +115,26 @@ export function Hero() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.7 }}
-                className="pt-6 border-t border-border"
+                className="pt-6 border-t-2 border-primary/10"
               >
-                <div className="flex flex-wrap items-center gap-6 text-sm text-muted-foreground">
+                <div className="flex flex-wrap items-center gap-8 text-sm text-muted-foreground">
                   <div className="flex items-center gap-2">
-                    <Shield className="h-4 w-4 text-primary" />
-                    <span>99.9% Uptime</span>
+                    <Shield className="h-5 w-5 text-primary" />
+                    <span className="font-medium">99.9% Uptime</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <Users className="h-4 w-4 text-primary" />
-                    <span>500+ Active Users</span>
+                    <Users className="h-5 w-5 text-primary" />
+                    <span className="font-medium">500+ Active Users</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <TrendingUp className="h-4 w-4 text-primary" />
-                    <span>40% Efficiency Gain</span>
+                    <TrendingUp className="h-5 w-5 text-primary" />
+                    <span className="font-medium">40% Efficiency Gain</span>
                   </div>
                 </div>
               </motion.div>
             </motion.div>
 
-            {/* Right Column - Two Images with Animations */}
+            {/* Right Column - Dashboard Image with Animations */}
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
@@ -147,37 +142,34 @@ export function Hero() {
               className="relative hidden lg:block"
             >
               <div className="relative flex items-center justify-center w-full">
-                {/* First Image - Dashboard Overview */}
+                {/* Dashboard Image - SaaS Style */}
                 <motion.div
                   initial={{ opacity: 0, scale: 0.9, y: 50 }}
                   animate={{ opacity: 1, scale: 1, y: 0 }}
-                  transition={{ 
-                    duration: 1, 
+                  transition={{
+                    duration: 1,
                     delay: 0.5,
-                    ease: [0.16, 1, 0.3, 1]
+                    ease: [0.16, 1, 0.3, 1],
                   }}
-                  whileHover={{ 
-                    scale: 1.03,
+                  whileHover={{
+                    scale: 1.02,
                     y: -8,
                     transition: {
                       duration: 0.4,
-                      ease: [0.25, 0.46, 0.45, 0.94]
-                    }
+                      ease: [0.25, 0.46, 0.45, 0.94],
+                    },
                   }}
-                  className="relative w-full max-w-[900px] z-10"
+                  className="relative w-full max-w-[1000px] z-10"
                 >
-                  <div className="relative bg-white border-2 border-blue-100 shadow-2xl overflow-hidden">
-                    <div className="absolute inset-0 bg-linear-to-br from-blue-50/50 to-transparent z-10 pointer-events-none"></div>
-                    <Image
-                      src={`/images/dashboard-overview.png?v=${IMAGE_VERSION}`}
-                      alt="ERP Dashboard Overview"
-                      width={1200}
-                      height={900}
-                      className="w-full h-auto object-contain"
-                      priority
-                      unoptimized
-                      quality={100}
-                    />
+                  <div className="relative bg-white border-2 border-primary/20 shadow-2xl overflow-hidden">
+                    <div className="absolute inset-0 bg-linear-to-br from-primary/5 to-transparent z-10 pointer-events-none"></div>
+                    <div className="relative w-full flex items-center justify-center p-2">
+                      <img
+                        src="/images/dashboard.png"
+                        alt="ERP Dashboard Overview"
+                        className="w-auto h-auto max-w-full block"
+                      />
+                    </div>
                     {/* Shine effect overlay */}
                     <motion.div
                       className="absolute inset-0 bg-linear-to-r from-transparent via-white/20 to-transparent -skew-x-12 z-20 pointer-events-none"
@@ -187,23 +179,29 @@ export function Hero() {
                         duration: 3,
                         repeat: Infinity,
                         repeatDelay: 2,
-                        ease: "easeInOut"
+                        ease: "easeInOut",
                       }}
                     />
                   </div>
-                  
+
                   {/* Floating badge */}
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 1 }}
-                    className="absolute -top-4 -right-4 bg-primary text-white px-4 py-2 shadow-lg z-20"
+                    className="absolute -top-4 -right-4 bg-primary text-white px-5 py-2.5 shadow-xl z-20 border-2 border-primary/30"
                   >
                     <div className="flex items-center gap-2">
                       <TrendingUp className="h-4 w-4" />
-                      <span className="text-sm font-medium">Live Dashboard</span>
+                      <span className="text-sm font-semibold">
+                        Live Dashboard
+                      </span>
                     </div>
                   </motion.div>
+
+                  {/* Decorative corner accents */}
+                  <div className="absolute -top-2 -right-2 w-24 h-24 bg-primary/10 border-2 border-primary/20 -z-10"></div>
+                  <div className="absolute -bottom-2 -left-2 w-16 h-16 bg-primary/5 border-2 border-primary/20 -z-10"></div>
                 </motion.div>
 
                 {/* Decorative floating elements */}
@@ -216,7 +214,7 @@ export function Hero() {
                   transition={{
                     duration: 4,
                     repeat: Infinity,
-                    ease: "easeInOut"
+                    ease: "easeInOut",
                   }}
                 />
                 <motion.div
@@ -229,7 +227,7 @@ export function Hero() {
                     duration: 5,
                     repeat: Infinity,
                     ease: "easeInOut",
-                    delay: 1
+                    delay: 1,
                   }}
                 />
               </div>

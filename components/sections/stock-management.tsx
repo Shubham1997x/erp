@@ -12,7 +12,7 @@ import {
 export function StockManagement() {
   return (
     <section id="stock-management" className="section-padding section-light">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -20,30 +20,30 @@ export function StockManagement() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-2xl sm:text-3xl font-semibold mb-4 text-primary">
+          <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-primary">
             Stock Management
           </h2>
-          <p className="text-sm sm:text-base text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-base text-muted-foreground max-w-3xl mx-auto">
             Real-time inventory control with automated alerts and stock history tracking.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           {/* Features */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="space-y-6"
+            className="space-y-8"
           >
-            <div className="space-y-4">
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 rounded-lg bg-primary/20 flex items-center justify-center shrink-0 border border-primary/30">
-                  <Warehouse className="h-6 w-6 text-primary" />
+            <div className="space-y-6">
+              <div className="flex items-start gap-5">
+                <div className="w-14 h-14 rounded-lg bg-primary/10 flex items-center justify-center shrink-0 border-2 border-primary/20">
+                  <Warehouse className="h-7 w-7 text-primary" />
                 </div>
                 <div>
-                  <h3 className="font-medium text-base mb-2 text-foreground">
+                  <h3 className="font-semibold text-base mb-2 text-foreground">
                     Real-time Stock Levels
                   </h3>
                   <p className="text-sm text-muted-foreground">
@@ -52,12 +52,12 @@ export function StockManagement() {
                 </div>
               </div>
 
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 rounded-lg bg-primary/20 flex items-center justify-center shrink-0 border border-primary/30">
-                  <AlertTriangle className="h-6 w-6 text-primary" />
+              <div className="flex items-start gap-5">
+                <div className="w-14 h-14 rounded-lg bg-primary/10 flex items-center justify-center shrink-0 border-2 border-primary/20">
+                  <AlertTriangle className="h-7 w-7 text-primary" />
                 </div>
                 <div>
-                  <h3 className="font-medium text-base mb-2 text-foreground">
+                  <h3 className="font-semibold text-base mb-2 text-foreground">
                     Low Stock Alerts
                   </h3>
                   <p className="text-sm text-muted-foreground">
@@ -66,24 +66,24 @@ export function StockManagement() {
                 </div>
               </div>
 
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 rounded-lg bg-primary/20 flex items-center justify-center shrink-0 border border-primary/30">
-                  <TrendingDown className="h-6 w-6 text-primary" />
+              <div className="flex items-start gap-5">
+                <div className="w-14 h-14 rounded-lg bg-primary/10 flex items-center justify-center shrink-0 border-2 border-primary/20">
+                  <TrendingDown className="h-7 w-7 text-primary" />
                 </div>
                 <div>
-                  <h3 className="font-medium text-base mb-2 text-foreground">Stock History</h3>
+                  <h3 className="font-semibold text-base mb-2 text-foreground">Stock History</h3>
                   <p className="text-sm text-muted-foreground">
                     Complete audit trail of all stock movements and adjustments.
                   </p>
                 </div>
               </div>
 
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 rounded-lg bg-primary/20 flex items-center justify-center shrink-0 border border-primary/30">
-                  <BarChart3 className="h-6 w-6 text-primary" />
+              <div className="flex items-start gap-5">
+                <div className="w-14 h-14 rounded-lg bg-primary/10 flex items-center justify-center shrink-0 border-2 border-primary/20">
+                  <BarChart3 className="h-7 w-7 text-primary" />
                 </div>
                 <div>
-                  <h3 className="font-medium text-base mb-2 text-foreground">
+                  <h3 className="font-semibold text-base mb-2 text-foreground">
                     Stock Valuation
                   </h3>
                   <p className="text-sm text-muted-foreground">
@@ -94,29 +94,27 @@ export function StockManagement() {
             </div>
           </motion.div>
 
-          {/* Stock Management Image */}
+          {/* Stock Management Image - SaaS Style */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="image-container-borders"
+            className="relative"
           >
-            <div className="feature-image-container relative">
-              <img 
-                src="/images/stock-management.png" 
-                alt="Stock Management" 
-                className="w-full h-auto object-contain"
-              />
-              <div className="bg-white p-4 text-center">
-                <h3 className="text-xl font-semibold mb-2 text-foreground">
-                  Stock Management
-                </h3>
-                <p className="text-sm text-muted-foreground">
-                  Stock levels, Alerts, History, Valuation
-                </p>
+            <div className="relative bg-white border-2 border-primary/20 shadow-2xl overflow-hidden">
+              <div className="absolute inset-0 bg-linear-to-br from-primary/5 to-transparent z-10 pointer-events-none"></div>
+              <div className="relative w-full flex items-center justify-center p-1">
+                <img
+                  src="/images/stock.png"
+                  alt="Stock Management"
+                  className="w-auto h-auto max-w-full block"
+                />
               </div>
             </div>
+            {/* Decorative accents */}
+            <div className="absolute -top-2 -right-2 w-24 h-24 bg-primary/10 border-2 border-primary/20 -z-10"></div>
+            <div className="absolute -bottom-2 -left-2 w-16 h-16 bg-primary/5 border-2 border-primary/20 -z-10"></div>
           </motion.div>
         </div>
       </div>

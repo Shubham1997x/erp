@@ -101,10 +101,10 @@ export function RawMaterials() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-2xl sm:text-3xl font-semibold mb-4 text-foreground">
+          <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-primary">
             Raw Materials Management
           </h2>
-          <p className="text-sm sm:text-base text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-base text-muted-foreground max-w-3xl mx-auto">
             Complete lifecycle management from sourcing to inventory with
             seamless production integration.
           </p>

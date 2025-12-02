@@ -33,7 +33,7 @@ const features = [
 export function Production() {
   return (
     <section id="production" className="section-padding section-light">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -41,16 +41,16 @@ export function Production() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-2xl sm:text-3xl font-semibold mb-4 text-primary">
+          <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-primary">
             Production Management
           </h2>
-          <p className="text-sm sm:text-base text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-base text-muted-foreground max-w-2xl mx-auto">
             Track production batches with multi-step workflow and machine assignments.
           </p>
         </motion.div>
 
         {/* Features Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
           {features.map((feature, index) => {
             const Icon = feature.icon;
             return (
@@ -60,13 +60,13 @@ export function Production() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="p-6 border-2 border-primary/20 hover:border-primary/40 transition-colors bg-white"
+                className="p-6 border-2 border-primary/20 hover:border-primary/40 transition-all bg-white shadow-md hover:shadow-lg"
               >
-                <div className="w-12 h-12 rounded-lg bg-primary/20 flex items-center justify-center mb-4 border border-primary/30">
-                  <Icon className="h-6 w-6 text-primary" />
+                <div className="w-14 h-14 rounded-lg bg-primary/10 flex items-center justify-center mb-4 border-2 border-primary/20">
+                  <Icon className="h-7 w-7 text-primary" />
                 </div>
-                <h3 className="text-base font-medium mb-2 text-foreground">{feature.title}</h3>
-                <p className="text-xs text-muted-foreground">
+                <h3 className="text-base font-semibold mb-2 text-foreground">{feature.title}</h3>
+                <p className="text-sm text-muted-foreground">
                   {feature.description}
                 </p>
               </motion.div>
@@ -74,20 +74,19 @@ export function Production() {
           })}
         </div>
 
-        {/* Production Workflow - 3 Step Visualization */}
+        {/* Production Workflow - SaaS Style Grid */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mb-12"
         >
-          <h3 className="text-xl font-semibold text-center mb-8 text-foreground">Production Workflow Steps</h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <h3 className="text-2xl font-bold text-center mb-12 text-foreground">Production Workflow Steps</h3>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {[
-              { step: 1, title: "Create Batch", desc: "Define production batch with target quantity", image: "/images/s1.png" },
-              { step: 2, title: "Track Progress", desc: "Monitor batch through each production stage", image: "/images/s2.png" },
-              { step: 3, title: "Complete & Quality", desc: "Finish production and quality checks", image: "/images/s3.png" },
+              { step: 1, title: "Create Batch", desc: "Define production batch with target quantity", image: "/images/product-1.png" },
+              { step: 2, title: "Track Progress", desc: "Monitor batch through each production stage", image: "/images/product-2.png" },
+              { step: 3, title: "Complete & Quality", desc: "Finish production and quality checks", image: "/images/product-3.png" },
             ].map((item, index) => (
               <motion.div
                 key={index}
@@ -95,22 +94,26 @@ export function Production() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="image-container-borders flex flex-col h-full"
+                className="bg-white border-2 border-primary/20 shadow-lg hover:shadow-xl transition-all group flex flex-col h-full"
               >
-                <div className="feature-image-container relative flex-1 flex flex-col">
-                  <div className="absolute top-4 left-4 bg-primary text-primary-foreground px-3 py-1 font-bold text-sm z-10">
-                    Step {item.step}
+                <div className="p-4 border-b-2 border-primary/10">
+                  <div className="flex items-center gap-3">
+                    <div className="bg-primary text-primary-foreground px-2.5 py-1 font-bold text-sm shrink-0">
+                      {item.step}
+                    </div>
+                    <div className="flex-1">
+                      <h4 className="font-semibold text-sm text-foreground">{item.title}</h4>
+                      <p className="text-xs text-muted-foreground mt-0.5">{item.desc}</p>
+                    </div>
                   </div>
-                  <div className="flex-1 flex items-center justify-center">
-                    <img 
-                      src={item.image} 
-                      alt={item.title} 
-                      className="w-full h-full object-contain"
+                </div>
+                <div className="relative bg-linear-to-br from-muted/50 to-white overflow-hidden">
+                  <div className="relative w-full flex items-center justify-center p-1">
+                    <img
+                      src={item.image}
+                      alt={item.title}
+                      className="w-auto h-auto max-w-full block"
                     />
-                  </div>
-                  <div className="bg-white p-4 text-center">
-                    <h4 className="font-bold text-lg mb-1 text-foreground">{item.title}</h4>
-                    <p className="text-sm text-muted-foreground">{item.desc}</p>
                   </div>
                 </div>
               </motion.div>

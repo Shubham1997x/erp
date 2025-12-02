@@ -6,67 +6,54 @@ import { Users, Building2, CreditCard, History, FileText } from "lucide-react";
 export function CustomersSuppliers() {
   return (
     <section id="customers-suppliers" className="section-padding section-gray">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-10"
         >
-          <h2 className="text-2xl sm:text-3xl font-semibold mb-4 text-primary">
+          <h2 className="text-3xl sm:text-4xl font-bold mb-3 text-primary">
             Customer & Supplier Management
           </h2>
-          <p className="text-sm sm:text-base text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-base text-muted-foreground max-w-3xl mx-auto">
             Manage customers and suppliers with relationship tracking and credit management.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 mb-10">
           {/* Customer Management */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="space-y-6"
+            className="bg-white border-2 border-primary/20 rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow"
           >
-            <div className="w-16 h-16 rounded-xl bg-primary/20 flex items-center justify-center mb-6 border border-primary/30">
-              <Users className="h-8 w-8 text-primary" />
+            <div className="flex items-center gap-4 mb-4">
+              <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center shrink-0 border-2 border-primary/20">
+                <Users className="h-6 w-6 text-primary" />
+              </div>
+              <h3 className="text-xl font-semibold text-foreground">Customer Management</h3>
             </div>
-            <h3 className="text-xl font-semibold mb-4 text-foreground">Customer Management</h3>
             <div className="space-y-4">
-              <div className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded-lg bg-primary/20 flex items-center justify-center shrink-0 border border-primary/30">
-                  <Users className="h-5 w-5 text-primary" />
-                </div>
-                <div>
-                  <h4 className="font-medium mb-1 text-foreground">Customer Database</h4>
-                  <p className="text-muted-foreground text-sm">
-                    Complete customer profiles with contact information and preferences
-                  </p>
+              <div className="flex items-start gap-3">
+                <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0"></div>
+                <div className="text-sm">
+                  <strong className="text-foreground">Customer Database:</strong> Complete customer profiles with contact information and preferences
                 </div>
               </div>
-              <div className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded-lg bg-primary/20 flex items-center justify-center shrink-0 border border-primary/30">
-                  <CreditCard className="h-5 w-5 text-primary" />
-                </div>
-                <div>
-                  <h4 className="font-medium mb-1 text-foreground">Credit Limits</h4>
-                  <p className="text-muted-foreground text-sm">
-                    Set and monitor credit limits with automatic alerts
-                  </p>
+              <div className="flex items-start gap-3">
+                <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0"></div>
+                <div className="text-sm">
+                  <strong className="text-foreground">Credit Limits:</strong> Set and monitor credit limits with automatic alerts
                 </div>
               </div>
-              <div className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded-lg bg-primary/20 flex items-center justify-center shrink-0 border border-primary/30">
-                  <History className="h-5 w-5 text-primary" />
-                </div>
-                <div>
-                  <h4 className="font-medium mb-1 text-foreground">Order History</h4>
-                  <p className="text-muted-foreground text-sm">
-                    Complete transaction history with order and payment tracking
-                  </p>
+              <div className="flex items-start gap-3">
+                <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0"></div>
+                <div className="text-sm">
+                  <strong className="text-foreground">Order History:</strong> Complete transaction history with order and payment tracking
                 </div>
               </div>
             </div>
@@ -78,75 +65,61 @@ export function CustomersSuppliers() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="space-y-6"
+            className="bg-white border-2 border-primary/20 rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow"
           >
-            <div className="w-16 h-16 rounded-xl bg-primary/20 flex items-center justify-center mb-6 border border-primary/30">
-              <Building2 className="h-8 w-8 text-primary" />
+            <div className="flex items-center gap-4 mb-4">
+              <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center shrink-0 border-2 border-primary/20">
+                <Building2 className="h-6 w-6 text-primary" />
+              </div>
+              <h3 className="text-xl font-semibold text-foreground">Supplier Management</h3>
             </div>
-            <h3 className="text-xl font-semibold mb-4 text-foreground">Supplier Management</h3>
             <div className="space-y-4">
-              <div className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded-lg bg-primary/20 flex items-center justify-center shrink-0 border border-primary/30">
-                  <Building2 className="h-5 w-5 text-primary" />
-                </div>
-                <div>
-                  <h4 className="font-medium mb-1 text-foreground">Supplier Database</h4>
-                  <p className="text-muted-foreground text-sm">
-                    Complete supplier information with contact details and certifications
-                  </p>
+              <div className="flex items-start gap-3">
+                <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0"></div>
+                <div className="text-sm">
+                  <strong className="text-foreground">Supplier Database:</strong> Complete supplier information with contact details and certifications
                 </div>
               </div>
-              <div className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded-lg bg-primary/20 flex items-center justify-center shrink-0 border border-primary/30">
-                  <FileText className="h-5 w-5 text-primary" />
-                </div>
-                <div>
-                  <h4 className="font-medium mb-1 text-foreground">Purchase History</h4>
-                  <p className="text-muted-foreground text-sm">
-                    Track purchase orders, delivery performance, and payment terms
-                  </p>
+              <div className="flex items-start gap-3">
+                <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0"></div>
+                <div className="text-sm">
+                  <strong className="text-foreground">Purchase History:</strong> Track purchase orders, delivery performance, and payment terms
                 </div>
               </div>
-              <div className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded-lg bg-primary/20 flex items-center justify-center shrink-0 border border-primary/30">
-                  <History className="h-5 w-5 text-primary" />
-                </div>
-                <div>
-                  <h4 className="font-medium mb-1 text-foreground">Performance Tracking</h4>
-                  <p className="text-muted-foreground text-sm">
-                    Monitor supplier performance including delivery times and quality ratings
-                  </p>
+              <div className="flex items-start gap-3">
+                <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0"></div>
+                <div className="text-sm">
+                  <strong className="text-foreground">Performance Tracking:</strong> Monitor supplier performance including delivery times and quality ratings
                 </div>
               </div>
             </div>
           </motion.div>
         </div>
 
-        {/* Image Placeholder */}
+        {/* Image Display - SaaS Style */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="image-container-borders mt-12"
+          className="relative"
         >
-          <div className="feature-image-container relative">
-            <img 
-              src="/images/customers-suppliers.png" 
-              alt="Customers & Suppliers Management" 
-              className="w-full h-auto object-contain"
-            />
-            <div className="bg-white p-4 text-center">
-              <h3 className="text-xl font-semibold mb-2 text-foreground">
-                Customers & Suppliers Management
-              </h3>
-              <p className="text-sm text-muted-foreground">
-                Customer database, Supplier management, Credit limits, Order history
-              </p>
+          <div className="relative bg-white border-2 border-primary/20 shadow-2xl overflow-hidden">
+            <div className="absolute inset-0 bg-linear-to-br from-primary/5 to-transparent z-10 pointer-events-none"></div>
+            <div className="relative w-full flex items-center justify-center p-1">
+              <img
+                src="/images/customer.png"
+                alt="Customers & Suppliers Management"
+                className="w-auto h-auto max-w-full block"
+              />
             </div>
           </div>
+          {/* Decorative accents */}
+          <div className="absolute -top-2 -right-2 w-24 h-24 bg-primary/10 border-2 border-primary/20 -z-10"></div>
+          <div className="absolute -bottom-2 -left-2 w-16 h-16 bg-primary/5 border-2 border-primary/20 -z-10"></div>
         </motion.div>
       </div>
     </section>
   );
 }
+

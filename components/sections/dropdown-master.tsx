@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion";
 import { Settings, Tag, Palette, Grid, Layers } from "lucide-react";
-import Image from "next/image";
 
 const dropdownTypes = [
   {
@@ -29,24 +28,24 @@ const dropdownTypes = [
 
 export function DropdownMaster() {
   return (
-    <section id="dropdown-master" className="section-padding section-gray">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="dropdown-master" className="section-padding section-light">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-10"
         >
-          <h2 className="text-2xl sm:text-3xl font-semibold mb-4 text-primary">
+          <h2 className="text-3xl sm:text-4xl font-bold mb-3 text-primary">
             Dropdown Master
           </h2>
-          <p className="text-sm sm:text-base text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-base text-muted-foreground max-w-3xl mx-auto">
             Centrally manage all dropdown values, categories, colors, and patterns. One place to control all master data.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
           {dropdownTypes.map((type, index) => {
             const Icon = type.icon;
             return (
@@ -56,13 +55,13 @@ export function DropdownMaster() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="p-6 border-2 border-primary/20 hover:border-primary/40 transition-colors text-center bg-white"
+                className="p-6 border-2 border-primary/20 hover:border-primary/40 transition-all text-center bg-white shadow-md hover:shadow-lg"
               >
-                <div className="w-16 h-16 rounded-xl bg-primary/20 flex items-center justify-center mx-auto mb-4 border border-primary/30">
+                <div className="w-16 h-16 rounded-lg bg-primary/10 flex items-center justify-center mx-auto mb-4 border-2 border-primary/20">
                   <Icon className="h-8 w-8 text-primary" />
                 </div>
-                <h3 className="text-base font-medium mb-2 text-foreground">{type.title}</h3>
-                <p className="text-xs text-muted-foreground">
+                <h3 className="text-base font-semibold mb-2 text-foreground">{type.title}</h3>
+                <p className="text-sm text-muted-foreground">
                   {type.description}
                 </p>
               </motion.div>
@@ -70,31 +69,27 @@ export function DropdownMaster() {
           })}
         </div>
 
-        {/* Dropdown Master UI Image */}
+        {/* Dropdown Master UI Image - SaaS Style */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="image-container-borders"
+          className="relative max-w-5xl mx-auto"
         >
-          <div className="feature-image-container relative">
-            <Image
-              src="/images/dropdown-master.png"
-              alt="Dropdown Master Interface"
-              width={1200}
-              height={800}
-              className="w-full h-auto object-contain"
-            />
-            <div className="bg-white p-4 text-center">
-              <h3 className="text-xl font-semibold mb-2 text-foreground">
-                Dropdown Master Interface
-              </h3>
-              <p className="text-sm text-muted-foreground">
-                Categories, Colors, Patterns, Subcategories management
-              </p>
+          <div className="relative bg-white border-2 border-primary/20 shadow-2xl overflow-hidden">
+            <div className="absolute inset-0 bg-linear-to-br from-primary/5 to-transparent z-10 pointer-events-none"></div>
+            <div className="relative w-full flex items-center justify-center p-1">
+              <img
+                src="/images/dropdown.png"
+                alt="Dropdown Master Interface"
+                className="w-auto h-auto max-w-full block"
+              />
             </div>
           </div>
+          {/* Decorative accents */}
+          <div className="absolute -top-2 -right-2 w-24 h-24 bg-primary/10 border-2 border-primary/20 -z-10"></div>
+          <div className="absolute -bottom-2 -left-2 w-16 h-16 bg-primary/5 border-2 border-primary/20 -z-10"></div>
         </motion.div>
       </div>
     </section>
