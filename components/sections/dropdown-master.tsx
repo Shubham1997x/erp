@@ -78,14 +78,21 @@ export function DropdownMaster() {
           transition={{ duration: 0.6 }}
           className="image-container-borders"
         >
-          <div className="feature-image-container aspect-video flex items-center justify-center p-12 relative">
-            <div className="text-center">
-              <div className="w-24 h-24 mx-auto mb-4 bg-primary/20 border border-primary/30 flex items-center justify-center">
-                <Settings className="h-12 w-12 text-primary" />
-              </div>
-              <p className="text-sm text-muted-foreground mb-2 font-semibold">Dropdown Master Interface</p>
-              <p className="text-xs text-muted-foreground/70">Image: /images/dropdown-master.png</p>
-              <p className="text-xs text-muted-foreground/70 mt-2">Shows: Categories, Colors, Patterns, Subcategories management</p>
+          <div className="feature-image-container relative">
+            <Image
+              src="/images/dropdown-master.png"
+              alt="Dropdown Master Interface"
+              width={1200}
+              height={800}
+              className="w-full h-auto object-contain"
+            />
+            <div className="bg-white p-4 text-center">
+              <h3 className="text-xl font-semibold mb-2 text-foreground">
+                Dropdown Master Interface
+              </h3>
+              <p className="text-sm text-muted-foreground">
+                Categories, Colors, Patterns, Subcategories management
+              </p>
             </div>
           </div>
         </motion.div>
