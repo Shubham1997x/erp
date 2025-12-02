@@ -5,16 +5,16 @@ import { Calculator } from "lucide-react";
 
 export function RecipeCalculator() {
   return (
-    <section id="recipe-calculator" className="section-padding section-gray">
+    <section id="recipe-calculator" className="section-padding section-light">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-10"
+          className="text-center mb-16"
         >
-          <h2 className="text-3xl sm:text-4xl font-bold mb-3 text-primary">
+          <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-primary">
             Recipe Calculator
           </h2>
           <p className="text-base text-muted-foreground max-w-3xl mx-auto">
@@ -92,7 +92,7 @@ export function RecipeCalculator() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: index * 0.1 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="bg-white border-2 border-primary/20 shadow-lg hover:shadow-xl transition-all group flex flex-col h-full"
               >
                 <div className="p-4 border-b-2 border-primary/10">
@@ -106,7 +106,11 @@ export function RecipeCalculator() {
                     </div>
                   </div>
                 </div>
-                <div className="relative bg-linear-to-br from-muted/50 to-white overflow-hidden">
+                <motion.div 
+                  className="relative bg-linear-to-br from-muted/50 to-white overflow-hidden"
+                  whileHover={{ scale: 1.02 }}
+                  transition={{ duration: 0.3, ease: "easeOut" }}
+                >
                   <div className="relative w-full flex items-center justify-center p-1">
                     <img
                       src={item.image}
@@ -114,7 +118,7 @@ export function RecipeCalculator() {
                       className="w-auto h-auto max-w-full block"
                     />
                   </div>
-                </div>
+                </motion.div>
               </motion.div>
             ))}
           </div>

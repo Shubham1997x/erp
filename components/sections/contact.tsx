@@ -9,8 +9,8 @@ import { Mail, Phone, MapPin, Send } from "lucide-react";
 
 export function Contact() {
   return (
-    <section className="section-padding section-light">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="contact" className="section-padding section-light">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}

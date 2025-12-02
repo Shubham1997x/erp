@@ -14,19 +14,19 @@ const orderStatuses = [
 
 export function OrderManagement() {
   return (
-    <section id="order-management" className="section-padding section-light">
+    <section id="order-management" className="section-padding section-gray">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-10"
+          className="text-center mb-16"
         >
-          <h2 className="text-3xl sm:text-4xl font-bold mb-3 text-primary">
+          <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-primary">
             Order Management
           </h2>
-          <p className="text-base text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-base text-muted-foreground max-w-3xl mx-auto">
             Capture orders, calculate pricing, and link to production.
           </p>
         </motion.div>
@@ -37,9 +37,9 @@ export function OrderManagement() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mb-10"
+          className="mb-12"
         >
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="bg-white border-2 border-primary/20 rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow">
               <div className="flex items-center gap-3 mb-3">
                 <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center shrink-0 border-2 border-primary/20">
@@ -88,10 +88,10 @@ export function OrderManagement() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mb-10"
+          className="mb-12"
         >
-          <h3 className="text-xl font-bold text-center mb-6 text-foreground">Order Process Steps</h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 max-w-6xl mx-auto">
+          <h3 className="text-2xl font-bold text-center mb-8 text-foreground">Order Process Steps</h3>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
             {[
               { step: 1, title: "Create Order", desc: "Add items, quantities, and pricing", image: "/images/order-1.png" },
               { step: 2, title: "Calculate & Approve", desc: "Auto-calculate GST and totals", image: "/images/order-2.png" },
@@ -116,7 +116,11 @@ export function OrderManagement() {
                     </div>
                   </div>
                 </div>
-                <div className="relative bg-linear-to-br from-muted/50 to-white overflow-auto">
+                <motion.div 
+                  className="relative bg-linear-to-br from-muted/50 to-white overflow-auto"
+                  whileHover={{ scale: 1.02 }}
+                  transition={{ duration: 0.3, ease: "easeOut" }}
+                >
                   <div className="relative w-full flex items-center justify-center p-1">
                     <img
                       src={item.image}
@@ -124,7 +128,7 @@ export function OrderManagement() {
                       className="w-auto h-auto max-w-full block"
                     />
                   </div>
-                </div>
+                </motion.div>
               </motion.div>
             ))}
           </div>
@@ -136,19 +140,15 @@ export function OrderManagement() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mt-10"
+          className="mt-12"
         >
-          <h3 className="text-xl font-bold text-center mb-6 text-foreground">
+          <h3 className="text-2xl font-bold text-center mb-8 text-foreground">
             Order Status Flow
           </h3>
           <div className="flex flex-wrap justify-center gap-3 lg:gap-4">
             {orderStatuses.map((status, index) => (
               <div key={index} className="flex items-center">
                 <motion.div
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: index * 0.1 }}
                   className={`px-4 py-2 text-sm font-semibold border-2 rounded ${
                     status === "In Production"
                       ? "bg-primary text-primary-foreground border-primary shadow-md"

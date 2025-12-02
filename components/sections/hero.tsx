@@ -13,7 +13,7 @@ import {
 
 export function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-white">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[hsl(0_0%_96%)]">
       {/* Subtle Background Pattern - Zoho Style */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(37,99,235,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(37,99,235,0.02)_1px,transparent_1px)] bg-size-[4rem_4rem]"></div>
 
@@ -25,9 +25,9 @@ export function Hero() {
         <div className="max-w-7xl mx-auto">
           {/* Badge - Centered */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
             className="flex justify-center mb-12"
           >
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-50 border-2 border-primary/20 shadow-sm">
@@ -41,16 +41,16 @@ export function Hero() {
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             {/* Left Column - Content */}
             <motion.div
-              initial={{ opacity: 0, x: -30 }}
+              initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
               className="space-y-8"
             >
               {/* Main Heading */}
               <motion.h1
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.2 }}
+                transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
                 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-tight"
               >
                 <span className="text-foreground">Complete ERP Solution</span>
@@ -62,7 +62,7 @@ export function Hero() {
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.3 }}
+                transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
                 className="text-base sm:text-lg text-muted-foreground leading-relaxed max-w-2xl"
               >
                 Streamline your entire manufacturing workflow—from raw materials
@@ -72,9 +72,9 @@ export function Hero() {
 
               {/* Key Features List */}
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.4 }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.6, delay: 0.4 }}
                 className="space-y-4"
               >
                 {[
@@ -85,7 +85,11 @@ export function Hero() {
                     key={index}
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.6, delay: 0.5 + index * 0.1 }}
+                    transition={{
+                      duration: 0.6,
+                      delay: 0.5 + index * 0.1,
+                      ease: "easeOut",
+                    }}
                     className="flex items-center gap-3"
                   >
                     <CheckCircle2 className="h-6 w-6 text-primary shrink-0" />
@@ -98,7 +102,7 @@ export function Hero() {
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.6 }}
+                transition={{ duration: 0.6, delay: 0.7, ease: "easeOut" }}
                 className="flex flex-col sm:flex-row gap-4 pt-4"
               >
                 <Button
@@ -114,7 +118,7 @@ export function Hero() {
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.7 }}
+                transition={{ duration: 0.6, delay: 0.9, ease: "easeOut" }}
                 className="pt-6 border-t-2 border-primary/10"
               >
                 <div className="flex flex-wrap items-center gap-8 text-sm text-muted-foreground">
@@ -136,15 +140,15 @@ export function Hero() {
 
             {/* Right Column - Dashboard Image with Animations */}
             <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
+              initial={{ opacity: 0, x: 50, scale: 0.9 }}
+              animate={{ opacity: 1, x: 0, scale: 1 }}
+              transition={{ duration: 1, delay: 0.3, ease: "easeOut" }}
               className="relative hidden lg:block"
             >
               <div className="relative flex items-center justify-center w-full">
                 {/* Dashboard Image - SaaS Style */}
                 <motion.div
-                  initial={{ opacity: 0, scale: 0.9, y: 50 }}
+                  initial={{ opacity: 0, scale: 0.95, y: 30 }}
                   animate={{ opacity: 1, scale: 1, y: 0 }}
                   transition={{
                     duration: 1,
@@ -163,17 +167,19 @@ export function Hero() {
                 >
                   <div className="relative bg-white border-2 border-primary/20 shadow-2xl overflow-hidden">
                     <div className="absolute inset-0 bg-linear-to-br from-primary/5 to-transparent z-10 pointer-events-none"></div>
-                    <div className="relative w-full flex items-center justify-center p-2">
+                    <motion.div
+                      className="relative w-full flex items-center justify-center p-2"
+                      transition={{ duration: 0.3, ease: "easeOut" }}
+                    >
                       <img
                         src="/images/dashboard.png"
                         alt="ERP Dashboard Overview"
                         className="w-auto h-auto max-w-full block"
                       />
-                    </div>
+                    </motion.div>
                     {/* Shine effect overlay */}
                     <motion.div
                       className="absolute inset-0 bg-linear-to-r from-transparent via-white/20 to-transparent -skew-x-12 z-20 pointer-events-none"
-                      initial={{ x: "-100%" }}
                       animate={{ x: "200%" }}
                       transition={{
                         duration: 3,
@@ -186,9 +192,10 @@ export function Hero() {
 
                   {/* Floating badge */}
                   <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: 1 }}
+                    initial={{ opacity: 0, scale: 0, y: -20 }}
+                    animate={{ opacity: 1, scale: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 1, ease: "easeOut" }}
+                    whileHover={{ scale: 1.05, y: -5 }}
                     className="absolute -top-4 -right-4 bg-primary text-white px-5 py-2.5 shadow-xl z-20 border-2 border-primary/30"
                   >
                     <div className="flex items-center gap-2">

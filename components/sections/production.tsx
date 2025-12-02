@@ -32,7 +32,7 @@ const features = [
 
 export function Production() {
   return (
-    <section id="production" className="section-padding section-light">
+    <section id="production" className="section-padding section-gray">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -44,7 +44,7 @@ export function Production() {
           <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-primary">
             Production Management
           </h2>
-          <p className="text-base text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-base text-muted-foreground max-w-3xl mx-auto">
             Track production batches with multi-step workflow and machine assignments.
           </p>
         </motion.div>
@@ -62,10 +62,12 @@ export function Production() {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="p-6 border-2 border-primary/20 hover:border-primary/40 transition-all bg-white shadow-md hover:shadow-lg"
               >
-                <div className="w-14 h-14 rounded-lg bg-primary/10 flex items-center justify-center mb-4 border-2 border-primary/20">
-                  <Icon className="h-7 w-7 text-primary" />
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center shrink-0 border-2 border-primary/20">
+                    <Icon className="h-5 w-5 text-primary" />
+                  </div>
+                  <h3 className="font-semibold text-base text-foreground">{feature.title}</h3>
                 </div>
-                <h3 className="text-base font-semibold mb-2 text-foreground">{feature.title}</h3>
                 <p className="text-sm text-muted-foreground">
                   {feature.description}
                 </p>
@@ -107,7 +109,11 @@ export function Production() {
                     </div>
                   </div>
                 </div>
-                <div className="relative bg-linear-to-br from-muted/50 to-white overflow-hidden">
+                <motion.div 
+                  className="relative bg-linear-to-br from-muted/50 to-white overflow-hidden"
+                  whileHover={{ scale: 1.02 }}
+                  transition={{ duration: 0.3, ease: "easeOut" }}
+                >
                   <div className="relative w-full flex items-center justify-center p-1">
                     <img
                       src={item.image}
@@ -115,7 +121,7 @@ export function Production() {
                       className="w-auto h-auto max-w-full block"
                     />
                   </div>
-                </div>
+                </motion.div>
               </motion.div>
             ))}
           </div>

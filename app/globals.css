@@ -3,10 +3,10 @@
 @layer base {
   :root {
     /* Zoho-inspired Professional Blue Theme */
-    /* 60% - Primary: White/Light backgrounds */
-    --background: 0 0% 100%;
+    /* 60% - Primary: Light but slightly dark backgrounds */
+    --background: 0 0% 96%;
     --foreground: 222 47% 11%;
-    --card: 0 0% 100%;
+    --card: 0 0% 98%;
     --card-foreground: 222 47% 11%;
     --popover: 0 0% 100%;
     --popover-foreground: 222 47% 11%;
@@ -97,7 +97,7 @@ html {
 
 /* ERP Landing Theme - Section backgrounds (Light Theme) */
 .section-light {
-  background: hsl(0 0% 100%);
+  background: hsl(0 0% 97%);
   color: hsl(0 0% 10%);
   position: relative;
   isolation: isolate;
@@ -109,7 +109,7 @@ html {
 }
 
 .section-gray {
-  background: hsl(0 0% 98%);
+  background: hsl(0 0% 95%);
   color: hsl(0 0% 10%);
   position: relative;
   isolation: isolate;
@@ -121,7 +121,7 @@ html {
 }
 
 .section-dark {
-  background: hsl(0 0% 97%) !important;
+  background: hsl(0 0% 94%) !important;
   color: hsl(0 0% 10%);
   position: relative;
   isolation: isolate;

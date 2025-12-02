@@ -86,10 +86,6 @@ export function Benefits() {
       <div className="relative z-10">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
           <h2 className="text-2xl sm:text-3xl font-semibold mb-4 text-foreground">
@@ -106,9 +102,6 @@ export function Benefits() {
             return (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
                 <Card className="h-full hover:shadow-lg transition-all border-2 border-primary/20 hover:border-primary/40 group bg-white">
@@ -138,10 +131,6 @@ export function Benefits() {
         </div>
 
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.8 }}
           className="mt-16 text-center"
         >
           <div className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-primary/10 text-primary">

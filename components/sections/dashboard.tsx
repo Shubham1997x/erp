@@ -96,7 +96,11 @@ export function Dashboard() {
             transition={{ duration: 0.6 }}
             className="relative"
           >
-            <div className="relative bg-white border-2 border-primary/20 shadow-2xl overflow-auto">
+            <motion.div 
+              className="relative bg-white border-2 border-primary/20 shadow-2xl overflow-auto"
+              whileHover={{ scale: 1.02 }}
+              transition={{ duration: 0.3, ease: "easeOut" }}
+            >
               <div className="absolute inset-0 bg-linear-to-br from-primary/5 to-transparent z-10 pointer-events-none"></div>
               <div className="relative w-full flex items-center justify-center p-1">
                 <img
@@ -105,7 +109,7 @@ export function Dashboard() {
                   className="w-auto h-auto max-w-full block"
                 />
               </div>
-            </div>
+            </motion.div>
             {/* Decorative corner accent */}
             <div className="absolute -top-2 -right-2 w-24 h-24 bg-primary/10 border-2 border-primary/20 -z-10"></div>
             <div className="absolute -bottom-2 -left-2 w-16 h-16 bg-primary/5 border-2 border-primary/20 -z-10"></div>

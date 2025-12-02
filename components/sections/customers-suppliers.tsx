@@ -5,16 +5,16 @@ import { Users, Building2, CreditCard, History, FileText } from "lucide-react";
 
 export function CustomersSuppliers() {
   return (
-    <section id="customers-suppliers" className="section-padding section-gray">
+    <section id="customers-suppliers" className="section-padding section-light">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-10"
+          className="text-center mb-16"
         >
-          <h2 className="text-3xl sm:text-4xl font-bold mb-3 text-primary">
+          <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-primary">
             Customer & Supplier Management
           </h2>
           <p className="text-base text-muted-foreground max-w-3xl mx-auto">
@@ -104,7 +104,11 @@ export function CustomersSuppliers() {
           transition={{ duration: 0.6 }}
           className="relative"
         >
-          <div className="relative bg-white border-2 border-primary/20 shadow-2xl overflow-hidden">
+          <motion.div 
+            className="relative bg-white border-2 border-primary/20 shadow-2xl overflow-hidden"
+            whileHover={{ scale: 1.02 }}
+            transition={{ duration: 0.3, ease: "easeOut" }}
+          >
             <div className="absolute inset-0 bg-linear-to-br from-primary/5 to-transparent z-10 pointer-events-none"></div>
             <div className="relative w-full flex items-center justify-center p-1">
               <img
@@ -113,7 +117,7 @@ export function CustomersSuppliers() {
                 className="w-auto h-auto max-w-full block"
               />
             </div>
-          </div>
+          </motion.div>
           {/* Decorative accents */}
           <div className="absolute -top-2 -right-2 w-24 h-24 bg-primary/10 border-2 border-primary/20 -z-10"></div>
           <div className="absolute -bottom-2 -left-2 w-16 h-16 bg-primary/5 border-2 border-primary/20 -z-10"></div>

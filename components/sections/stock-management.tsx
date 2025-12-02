@@ -11,7 +11,7 @@ import {
 
 export function StockManagement() {
   return (
-    <section id="stock-management" className="section-padding section-light">
+    <section id="stock-management" className="section-padding section-gray">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -102,7 +102,11 @@ export function StockManagement() {
             transition={{ duration: 0.6 }}
             className="relative"
           >
-            <div className="relative bg-white border-2 border-primary/20 shadow-2xl overflow-hidden">
+            <motion.div 
+              className="relative bg-white border-2 border-primary/20 shadow-2xl overflow-hidden"
+              whileHover={{ scale: 1.02 }}
+              transition={{ duration: 0.3, ease: "easeOut" }}
+            >
               <div className="absolute inset-0 bg-linear-to-br from-primary/5 to-transparent z-10 pointer-events-none"></div>
               <div className="relative w-full flex items-center justify-center p-1">
                 <img
@@ -111,7 +115,7 @@ export function StockManagement() {
                   className="w-auto h-auto max-w-full block"
                 />
               </div>
-            </div>
+            </motion.div>
             {/* Decorative accents */}
             <div className="absolute -top-2 -right-2 w-24 h-24 bg-primary/10 border-2 border-primary/20 -z-10"></div>
             <div className="absolute -bottom-2 -left-2 w-16 h-16 bg-primary/5 border-2 border-primary/20 -z-10"></div>

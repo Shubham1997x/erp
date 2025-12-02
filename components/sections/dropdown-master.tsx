@@ -28,16 +28,16 @@ const dropdownTypes = [
 
 export function DropdownMaster() {
   return (
-    <section id="dropdown-master" className="section-padding section-light">
+    <section id="dropdown-master" className="section-padding section-gray">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-10"
+          className="text-center mb-16"
         >
-          <h2 className="text-3xl sm:text-4xl font-bold mb-3 text-primary">
+          <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-primary">
             Dropdown Master
           </h2>
           <p className="text-base text-muted-foreground max-w-3xl mx-auto">
@@ -71,21 +71,21 @@ export function DropdownMaster() {
 
         {/* Dropdown Master UI Image - SaaS Style */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
           className="relative max-w-5xl mx-auto"
         >
           <div className="relative bg-white border-2 border-primary/20 shadow-2xl overflow-hidden">
             <div className="absolute inset-0 bg-linear-to-br from-primary/5 to-transparent z-10 pointer-events-none"></div>
-            <div className="relative w-full flex items-center justify-center p-1">
+            <motion.div 
+              className="relative w-full flex items-center justify-center p-1"
+              whileHover={{ scale: 1.02 }}
+              transition={{ duration: 0.3, ease: "easeOut" }}
+            >
               <img
                 src="/images/dropdown.png"
                 alt="Dropdown Master Interface"
                 className="w-auto h-auto max-w-full block"
               />
-            </div>
+            </motion.div>
           </div>
           {/* Decorative accents */}
           <div className="absolute -top-2 -right-2 w-24 h-24 bg-primary/10 border-2 border-primary/20 -z-10"></div>

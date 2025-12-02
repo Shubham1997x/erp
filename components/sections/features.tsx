@@ -115,9 +115,9 @@ const itemVariants = {
 
 export function Features() {
   return (
-    <section className="py-24 bg-white relative isolation-isolate">
+    <section className="section-padding section-gray relative isolation-isolate">
       <div className="relative z-10">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}

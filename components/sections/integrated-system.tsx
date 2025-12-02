@@ -5,8 +5,8 @@ import { Network, ArrowRight } from "lucide-react";
 
 export function IntegratedSystem() {
   return (
-    <section id="integrated" className="section-padding section-gray">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="integrated" className="section-padding section-light">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -74,7 +74,7 @@ export function IntegratedSystem() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.3 }}
+          transition={{ duration: 0.6 }}
           className="text-center mt-12"
         >
           <h3 className="text-xl font-semibold mb-4 text-foreground">

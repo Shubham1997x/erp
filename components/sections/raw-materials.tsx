@@ -281,39 +281,78 @@ export function RawMaterials() {
           transition={{ duration: 0.6 }}
           className="mb-16"
         >
-          <h3 className="text-2xl font-semibold text-center mb-8 text-foreground">
-            Procurement Workflow
-          </h3>
-          <div className="flex flex-wrap justify-center gap-4 lg:gap-6">
-            {workflowSteps.map((step, index) => {
-              const Icon = step.icon;
-              return (
-                <div key={index} className="flex items-center">
-                  <motion.div
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.4, delay: index * 0.1 }}
-                    className="flex flex-col items-center max-w-[180px]"
-                  >
-                    <div className="w-16 h-16 rounded-xl bg-primary/20 flex items-center justify-center mb-3 border border-primary/30">
-                      <Icon className="h-8 w-8 text-primary" />
-                    </div>
-                    <h4 className="font-medium text-sm mb-2 text-center text-foreground">
-                      {step.title}
-                    </h4>
-                    <p className="text-xs text-muted-foreground text-center">
-                      {step.description}
-                    </p>
-                  </motion.div>
-                  {index < workflowSteps.length - 1 && (
-                    <div className="hidden lg:block mx-2">
-                      <ArrowRight className="h-6 w-6 text-primary/60" />
-                    </div>
-                  )}
-                </div>
-              );
-            })}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-primary">
+              Procurement Workflow
+            </h2>
+            <p className="text-base text-muted-foreground max-w-3xl mx-auto">
+              From automated alerts to real-time inventory updates - a seamless procurement journey
+            </p>
+          </motion.div>
+          
+          {/* Vertical Timeline Design */}
+          <div className="max-w-4xl mx-auto">
+            <div className="relative">
+              {/* Vertical Timeline Line */}
+              <div className="hidden md:block absolute left-8 top-0 bottom-0 w-1 bg-gradient-to-b from-primary/20 via-primary/40 to-primary/20"></div>
+              
+              <div className="space-y-8">
+                {workflowSteps.map((step, index) => {
+                  const Icon = step.icon;
+                  const isEven = index % 2 === 0;
+                  
+                  return (
+                    <motion.div
+                      key={index}
+                      className="relative"
+                    >
+                      {/* Timeline Dot */}
+                      <div className="hidden md:block absolute left-8 top-8 -translate-x-1/2 z-10">
+                        <div className="w-6 h-6 rounded-full bg-primary border-4 border-white shadow-lg"></div>
+                        <div className="absolute inset-0 rounded-full bg-primary/20 animate-ping"></div>
+                      </div>
+                      
+                      {/* Content Card */}
+                      <div className={`md:ml-24 bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden border-2 border-primary/10 hover:border-primary/30 group`}>
+                        <div className={`flex flex-col md:flex-row items-center ${isEven ? 'md:flex-row' : 'md:flex-row-reverse'} gap-6 p-6`}>
+                          {/* Icon Section */}
+                          <div className="flex-shrink-0">
+                            <div className="relative">
+                              <div className="w-24 h-24 rounded-2xl bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center border-2 border-primary/30 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
+                                <Icon className="h-12 w-12 text-primary" />
+                              </div>
+                              {/* Step Number Badge */}
+                              <div className="absolute -top-2 -right-2 w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center text-xs font-bold shadow-md">
+                                {index + 1}
+                              </div>
+                            </div>
+                          </div>
+                          
+                          {/* Text Content */}
+                          <div className="flex-1 text-center md:text-left">
+                            <h4 className="text-xl font-bold mb-2 text-foreground group-hover:text-primary transition-colors">
+                              {step.title}
+                            </h4>
+                            <p className="text-sm text-muted-foreground leading-relaxed">
+                              {step.description}
+                            </p>
+                          </div>
+                        </div>
+                        
+                        {/* Progress Bar Effect */}
+                        <div className="h-1 bg-gradient-to-r from-primary/20 via-primary/40 to-primary/20 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
+                      </div>
+                    </motion.div>
+                  );
+                })}
+              </div>
+            </div>
           </div>
         </motion.div>
 
@@ -330,13 +369,15 @@ export function RawMaterials() {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="p-6 border-2 border-primary/20 hover:border-primary/40 transition-colors bg-white"
               >
-                <div className="w-12 h-12 rounded-lg bg-primary/20 flex items-center justify-center mb-4 border border-primary/30">
-                  <Icon className="h-6 w-6 text-primary" />
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center shrink-0 border-2 border-primary/20">
+                    <Icon className="h-5 w-5 text-primary" />
+                  </div>
+                  <h3 className="font-semibold text-base text-foreground">
+                    {feature.title}
+                  </h3>
                 </div>
-                <h3 className="text-xl font-medium mb-2 text-foreground">
-                  {feature.title}
-                </h3>
-                <p className="text-muted-foreground">{feature.description}</p>
+                <p className="text-sm text-muted-foreground">{feature.description}</p>
               </motion.div>
             );
           })}
