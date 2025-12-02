@@ -22,73 +22,73 @@ const features = [
     icon: Package,
     title: "Inventory Management",
     description:
-      "Real-time tracking of yarn, raw materials, and finished goods with automated reorder points and batch management.",
+      "Real-time tracking with automated reorder points and batch management.",
   },
   {
     icon: Factory,
     title: "Production Planning",
     description:
-      "Advanced scheduling and capacity planning for weaving operations with machine allocation and workflow optimization.",
+      "Advanced scheduling with machine allocation and workflow optimization.",
   },
   {
     icon: ShoppingCart,
     title: "Sales & Order Management",
     description:
-      "Complete order lifecycle management from quotation to delivery with customer relationship tracking.",
+      "Complete order lifecycle from quotation to delivery.",
   },
   {
     icon: Calculator,
     title: "Accounting & Finance",
     description:
-      "Comprehensive financial management including invoicing, payments, expenses, and financial reporting.",
+      "Financial management with invoicing, payments, and reporting.",
   },
   {
     icon: Users,
     title: "HR & Payroll",
     description:
-      "Employee management, attendance tracking, payroll processing, and performance evaluation systems.",
+      "Employee management, attendance, and payroll processing.",
   },
   {
     icon: BarChart3,
     title: "Analytics & Reporting",
     description:
-      "Powerful business intelligence with customizable dashboards, KPI tracking, and data visualization.",
+      "Business intelligence with customizable dashboards and KPI tracking.",
   },
   {
     icon: Settings,
     title: "Quality Control",
     description:
-      "Integrated QC processes with inspection workflows, defect tracking, and quality assurance protocols.",
+      "QC processes with inspection workflows and defect tracking.",
   },
   {
     icon: Shield,
     title: "Security & Compliance",
     description:
-      "Enterprise-grade security with role-based access control, audit trails, and compliance management.",
+      "Enterprise security with role-based access and audit trails.",
   },
   {
     icon: Zap,
     title: "Real-time Monitoring",
     description:
-      "Live production monitoring, machine status tracking, and instant alerts for operational issues.",
+      "Live production monitoring with instant alerts.",
   },
   {
     icon: Target,
     title: "Demand Forecasting",
     description:
-      "AI-powered demand prediction to optimize inventory levels and production schedules.",
+      "AI-powered demand prediction for inventory and production optimization.",
   },
   {
     icon: TrendingUp,
     title: "Cost Management",
     description:
-      "Track production costs, material usage, labor expenses, and profitability analysis by product line.",
+      "Track costs, material usage, and profitability by product line.",
   },
   {
     icon: Clock,
     title: "Time Tracking",
     description:
-      "Precise time tracking for production processes, machine utilization, and labor efficiency metrics.",
+      "Time tracking for production processes and machine utilization.",
   },
 ];
 
@@ -115,7 +115,8 @@ const itemVariants = {
 
 export function Features() {
   return (
-    <section className="py-24 bg-background">
+    <section className="py-24 bg-white relative isolation-isolate">
+      <div className="relative z-10">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -124,12 +125,11 @@ export function Features() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl sm:text-4xl font-bold mb-4">
+          <h2 className="text-2xl sm:text-3xl font-semibold mb-4 text-foreground">
             Comprehensive ERP Features
           </h2>
-          <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto">
-            Everything you need to manage your carpet manufacturing operations
-            efficiently and profitably.
+          <p className="text-sm sm:text-base text-muted-foreground max-w-2xl mx-auto">
+            Complete ERP solution for carpet manufacturing operations.
           </p>
         </motion.div>
 
@@ -144,25 +144,26 @@ export function Features() {
             const Icon = feature.icon;
             return (
               <motion.div key={index} variants={itemVariants}>
-                <Card className="h-full hover:shadow-lg transition-shadow border-2 hover:border-primary/20">
+                <Card className="h-full hover:shadow-lg transition-shadow border-2 border-primary/20 hover:border-primary/40 bg-white">
                   <CardHeader>
-                    <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
+                    <div className="w-12 h-12 rounded-lg bg-primary/20 flex items-center justify-center mb-4 border border-primary/30">
                       <Icon className="h-6 w-6 text-primary" />
                     </div>
-                    <CardTitle className="text-xl">{feature.title}</CardTitle>
+                    <CardTitle className="text-lg font-medium text-foreground">{feature.title}</CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <CardDescription className="text-base">
+                    <CardDescription className="text-sm">
                       {feature.description}
                     </CardDescription>
                   </CardContent>
                 </Card>
               </motion.div>
-            );
-          })}
-        </motion.div>
+          );
+        })}
+      </motion.div>
+    </div>
       </div>
-    </section>
+  </section>
   );
 }
 

@@ -17,7 +17,7 @@ const playfairDisplay = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Rajdhani ERP - Weaving Operational Excellence | Carpet Manufacturing ERP",
+  title: "Carpet ERP by Wantace - Weaving Operational Excellence | Carpet Manufacturing ERP",
   description:
     "Transform your carpet manufacturing operations with Rajdhani ERP. Complete ERP solution for weaving, inventory, production, sales, accounting, and more. Streamline operations and boost productivity.",
   keywords: [

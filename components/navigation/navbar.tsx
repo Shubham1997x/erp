@@ -10,6 +10,7 @@ import { motion, AnimatePresence } from "framer-motion";
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("");
+  const [scrolled, setScrolled] = useState(false);
 
   const navLinks = [
     { name: "Dashboard", href: "#dashboard", id: "dashboard" },
@@ -56,9 +57,10 @@ export function Navbar() {
       }
     });
 
-    // Also check on scroll for hero section
+    // Handle scroll for hero section and navbar background
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
+      setScrolled(scrollPosition > 20);
       if (scrollPosition < 100) {
         setActiveSection("");
       }
@@ -73,23 +75,41 @@ export function Navbar() {
   }, []);
 
   return (
-    <nav className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/60">
+    <nav
+      className={`sticky top-0 z-50 w-full transition-all duration-300 ${
+        scrolled
+          ? "border-b border-primary/30 bg-white/98 backdrop-blur-md shadow-sm"
+          : "border-b border-primary/10 bg-white/95 backdrop-blur-sm"
+      }`}
+    >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
-          <Link href="/" className="flex items-center gap-3">
-            <Image
-              src="/logo.png"
-              alt="Rajdhani ERP Logo"
-              width={56}
-              height={56}
-              className="h-12 w-auto"
-              priority
-            />
-            <span className="font-bold text-xl">Rajdhani</span>
+          <Link
+            href="/"
+            className="flex items-center gap-3 group"
+          >
+            <div className="relative">
+              <Image
+                src="/logo.svg"
+                alt="Carpet ERP Logo"
+                width={32}
+                height={32}
+                className="h-8 w-8 group-hover:scale-110 transition-transform duration-300"
+                priority
+              />
+            </div>
+            <div className="flex flex-col">
+              <span className="font-semibold text-base text-foreground leading-tight">
+                Carpet ERP
+              </span>
+              <span className="text-xs text-muted-foreground leading-tight">
+                by Wantace
+              </span>
+            </div>
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center gap-4">
+          <div className="hidden lg:flex items-center gap-1">
             {navLinks.map((link) => {
               const isActive = activeSection === link.id;
               return (
@@ -101,41 +121,69 @@ export function Navbar() {
                 >
                   <Link
                     href={link.href}
-                    className="relative block text-sm font-medium transition-all duration-300 group py-2"
+                    className={`relative inline-block text-sm font-medium transition-all duration-300 group px-4 py-2 ${
+                      isActive
+                        ? "text-primary"
+                        : "text-muted-foreground hover:text-foreground"
+                    }`}
                   >
-                    <span
-                      className={`relative z-10 transition-colors duration-300 ${
-                        isActive
-                          ? "text-primary"
-                          : "text-muted-foreground group-hover:text-foreground"
-                      }`}
-                    >
+                    <span className="relative inline-block">
                       {link.name}
+                      {/* Bottom underline - only under text */}
+                      <motion.span
+                        className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary origin-left"
+                        variants={{
+                          initial: { scaleX: isActive ? 1 : 0 },
+                          hover: { scaleX: 1 },
+                        }}
+                        transition={{ duration: 0.3, ease: "easeInOut" }}
+                      />
                     </span>
-                    {/* Animated underline on hover and active */}
-                    <motion.span
-                      className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary origin-left"
-                      variants={{
-                        initial: { scaleX: isActive ? 1 : 0 },
-                        hover: { scaleX: 1 },
-                      }}
-                      transition={{ duration: 0.3, ease: "easeInOut" }}
-                    />
                   </Link>
                 </motion.div>
               );
             })}
-            <Button>Request Demo</Button>
+            <div className="ml-4 pl-4 border-l border-primary/20">
+              <Button
+                size="sm"
+                className="bg-primary hover:bg-primary/90 text-white shadow-md hover:shadow-lg transition-all duration-300"
+              >
+                Request Demo
+              </Button>
+            </div>
           </div>
 
           {/* Mobile Menu Button */}
-          <button
-            className="lg:hidden p-2"
+          <motion.button
+            className="lg:hidden p-2 rounded-lg hover:bg-primary/10 transition-colors"
             onClick={() => setIsOpen(!isOpen)}
             aria-label="Toggle menu"
+            whileTap={{ scale: 0.95 }}
           >
-            {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-          </button>
+            <AnimatePresence mode="wait">
+              {isOpen ? (
+                <motion.div
+                  key="close"
+                  initial={{ rotate: -90, opacity: 0 }}
+                  animate={{ rotate: 0, opacity: 1 }}
+                  exit={{ rotate: 90, opacity: 0 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <X className="h-6 w-6 text-foreground" />
+                </motion.div>
+              ) : (
+                <motion.div
+                  key="menu"
+                  initial={{ rotate: 90, opacity: 0 }}
+                  animate={{ rotate: 0, opacity: 1 }}
+                  exit={{ rotate: -90, opacity: 0 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <Menu className="h-6 w-6 text-foreground" />
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </motion.button>
         </div>
       </div>
 
@@ -146,51 +194,53 @@ export function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden border-t bg-background"
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+            className="lg:hidden border-t border-primary/20 bg-white/98 backdrop-blur-md"
           >
-            <div className="container mx-auto px-4 py-4 space-y-4">
-              {navLinks.map((link) => {
+            <div className="container mx-auto px-4 py-6 space-y-2">
+              {navLinks.map((link, index) => {
                 const isActive = activeSection === link.id;
                 return (
-                  <Link
+                  <motion.div
                     key={link.name}
-                    href={link.href}
-                    className="relative block text-sm font-medium transition-all duration-300 group py-2"
-                    onClick={() => setIsOpen(false)}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: index * 0.05 }}
                   >
-                    <span
-                      className={`relative z-10 transition-colors duration-300 ${
+                    <Link
+                      href={link.href}
+                      className={`relative block text-sm font-medium transition-all duration-300 group py-3 px-4 rounded-lg ${
                         isActive
-                          ? "text-primary"
-                          : "text-muted-foreground group-hover:text-foreground"
+                          ? "text-primary bg-primary/10"
+                          : "text-muted-foreground hover:text-foreground hover:bg-primary/5"
                       }`}
+                      onClick={() => setIsOpen(false)}
                     >
-                      {link.name}
-                    </span>
-                    {/* Animated left border on hover and active */}
-                    <motion.span
-                      className="absolute left-0 top-0 bottom-0 w-1 bg-primary"
-                      initial={{ scaleY: 0 }}
-                      animate={{
-                        scaleY: isActive ? 1 : 0,
-                      }}
-                      whileHover={{ scaleY: 1 }}
-                      transition={{ duration: 0.3, ease: "easeInOut" }}
-                    />
-                    {/* Animated underline on hover and active */}
-                    <motion.span
-                      className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary"
-                      initial={{ scaleX: 0 }}
-                      animate={{
-                        scaleX: isActive ? 1 : 0,
-                      }}
-                      whileHover={{ scaleX: 1 }}
-                      transition={{ duration: 0.3, ease: "easeInOut" }}
-                    />
-                  </Link>
+                      <span className="relative z-10 flex items-center justify-between">
+                        {link.name}
+                        {isActive && (
+                          <motion.span
+                            className="h-2 w-2 bg-primary rounded-full"
+                            initial={{ scale: 0 }}
+                            animate={{ scale: 1 }}
+                            transition={{ duration: 0.2 }}
+                          />
+                        )}
+                      </span>
+                    </Link>
+                  </motion.div>
                 );
               })}
-              <Button className="w-full">Request Demo</Button>
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: navLinks.length * 0.05 }}
+                className="pt-4"
+              >
+                <Button className="w-full bg-primary hover:bg-primary/90 text-white shadow-md">
+                  Request Demo
+                </Button>
+              </motion.div>
             </div>
           </motion.div>
         )}

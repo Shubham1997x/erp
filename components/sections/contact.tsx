@@ -9,7 +9,7 @@ import { Mail, Phone, MapPin, Send } from "lucide-react";
 
 export function Contact() {
   return (
-    <section className="py-24 bg-muted/30">
+    <section className="section-padding section-light">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -18,12 +18,11 @@ export function Contact() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-primary">
+          <h2 className="text-2xl sm:text-3xl font-semibold mb-4 text-primary">
             Request a Demo
           </h2>
-          <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto">
-            See how Rajdhani ERP can transform your operations. Schedule a
-            personalized demo today.
+          <p className="text-sm sm:text-base text-muted-foreground max-w-2xl mx-auto">
+            Schedule a personalized demo today.
           </p>
         </motion.div>
 
@@ -34,11 +33,11 @@ export function Contact() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <Card>
+            <Card className="bg-white border-primary/20">
               <CardHeader>
-                <CardTitle>Get in Touch</CardTitle>
+                <CardTitle className="text-foreground">Get in Touch</CardTitle>
                 <CardDescription>
-                  Fill out the form and we'll get back to you within 24 hours.
+                  We'll get back to you within 24 hours.
                 </CardDescription>
               </CardHeader>
               <CardContent>
@@ -130,20 +129,20 @@ export function Contact() {
             transition={{ duration: 0.6 }}
             className="space-y-6"
           >
-            <Card>
+            <Card className="bg-white border-primary/20">
               <CardHeader>
-                <CardTitle>Contact Information</CardTitle>
+                <CardTitle className="text-foreground">Contact Information</CardTitle>
                 <CardDescription>
-                  Reach out to us through any of these channels.
+                  Contact us through any of these channels.
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                  <div className="w-10 h-10 rounded-lg bg-primary/20 flex items-center justify-center shrink-0 border border-primary/30">
                     <Mail className="h-5 w-5 text-primary" />
                   </div>
                   <div>
-                    <div className="font-semibold mb-1">Email</div>
+                    <div className="font-semibold mb-1 text-foreground">Email</div>
                     <a
                       href="mailto:info@rajdhanierp.com"
                       className="text-primary hover:underline"
@@ -153,11 +152,11 @@ export function Contact() {
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                  <div className="w-10 h-10 rounded-lg bg-primary/20 flex items-center justify-center shrink-0 border border-primary/30">
                     <Phone className="h-5 w-5 text-primary" />
                   </div>
                   <div>
-                    <div className="font-semibold mb-1">Phone</div>
+                    <div className="font-semibold mb-1 text-foreground">Phone</div>
                     <a
                       href="tel:+911234567890"
                       className="text-primary hover:underline"
@@ -167,11 +166,11 @@ export function Contact() {
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                  <div className="w-10 h-10 rounded-lg bg-primary/20 flex items-center justify-center shrink-0 border border-primary/30">
                     <MapPin className="h-5 w-5 text-primary" />
                   </div>
                   <div>
-                    <div className="font-semibold mb-1">Address</div>
+                    <div className="font-semibold mb-1 text-foreground">Address</div>
                     <p className="text-muted-foreground">
                       123 Business Park, Industrial Area
                       <br />
@@ -184,9 +183,9 @@ export function Contact() {
               </CardContent>
             </Card>
 
-            <Card className="bg-primary/5 border-primary/20">
+            <Card className="bg-primary/20 border-primary/30">
               <CardContent className="p-6">
-                <h3 className="font-semibold text-lg mb-2">
+                <h3 className="font-semibold text-lg mb-2 text-foreground">
                   Why Schedule a Demo?
                 </h3>
                 <ul className="space-y-2 text-sm text-muted-foreground">

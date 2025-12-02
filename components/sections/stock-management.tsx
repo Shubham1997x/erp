@@ -8,11 +8,10 @@ import {
   Package,
   BarChart3,
 } from "lucide-react";
-import Image from "next/image";
 
 export function StockManagement() {
   return (
-    <section id="stock-management" className="section-padding section-gray">
+    <section id="stock-management" className="section-padding section-light">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -21,13 +20,11 @@ export function StockManagement() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-primary">
+          <h2 className="text-2xl sm:text-3xl font-semibold mb-4 text-primary">
             Stock Management
           </h2>
-          <p className="text-base sm:text-lg text-muted-foreground max-w-3xl mx-auto">
-            Complete inventory control with real-time stock monitoring,
-            automated alerts, and comprehensive stock history tracking for both
-            raw materials and finished goods.
+          <p className="text-sm sm:text-base text-muted-foreground max-w-3xl mx-auto">
+            Real-time inventory control with automated alerts and stock history tracking.
           </p>
         </motion.div>
 
@@ -42,59 +39,55 @@ export function StockManagement() {
           >
             <div className="space-y-4">
               <div className="flex items-start gap-4">
-                <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                <div className="w-12 h-12 rounded-lg bg-primary/20 flex items-center justify-center shrink-0 border border-primary/30">
                   <Warehouse className="h-6 w-6 text-primary" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-lg mb-2">
+                  <h3 className="font-medium text-base mb-2 text-foreground">
                     Real-time Stock Levels
                   </h3>
-                  <p className="text-muted-foreground">
-                    Monitor current stock levels for all materials and finished
-                    products with instant updates as transactions occur.
+                  <p className="text-sm text-muted-foreground">
+                    Monitor stock levels with instant updates as transactions occur.
                   </p>
                 </div>
               </div>
 
               <div className="flex items-start gap-4">
-                <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                <div className="w-12 h-12 rounded-lg bg-primary/20 flex items-center justify-center shrink-0 border border-primary/30">
                   <AlertTriangle className="h-6 w-6 text-primary" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-lg mb-2">
+                  <h3 className="font-medium text-base mb-2 text-foreground">
                     Low Stock Alerts
                   </h3>
-                  <p className="text-muted-foreground">
-                    Automatic notifications when stock levels fall below minimum
-                    thresholds. Never run out of critical materials.
+                  <p className="text-sm text-muted-foreground">
+                    Automatic notifications when stock falls below minimum thresholds.
                   </p>
                 </div>
               </div>
 
               <div className="flex items-start gap-4">
-                <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                <div className="w-12 h-12 rounded-lg bg-primary/20 flex items-center justify-center shrink-0 border border-primary/30">
                   <TrendingDown className="h-6 w-6 text-primary" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-lg mb-2">Stock History</h3>
-                  <p className="text-muted-foreground">
-                    Complete audit trail of all stock movements including
-                    receipts, issues, transfers, and adjustments.
+                  <h3 className="font-medium text-base mb-2 text-foreground">Stock History</h3>
+                  <p className="text-sm text-muted-foreground">
+                    Complete audit trail of all stock movements and adjustments.
                   </p>
                 </div>
               </div>
 
               <div className="flex items-start gap-4">
-                <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                <div className="w-12 h-12 rounded-lg bg-primary/20 flex items-center justify-center shrink-0 border border-primary/30">
                   <BarChart3 className="h-6 w-6 text-primary" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-lg mb-2">
+                  <h3 className="font-medium text-base mb-2 text-foreground">
                     Stock Valuation
                   </h3>
-                  <p className="text-muted-foreground">
-                    Track inventory value with multiple costing methods (FIFO,
-                    LIFO, Average) and generate valuation reports.
+                  <p className="text-sm text-muted-foreground">
+                    Track inventory value with multiple costing methods and valuation reports.
                   </p>
                 </div>
               </div>
@@ -109,14 +102,19 @@ export function StockManagement() {
             transition={{ duration: 0.6 }}
             className="image-container-borders"
           >
-            <div className="feature-image-container aspect-video bg-muted flex items-center justify-center p-12">
-              <div className="text-center">
-                <Image
-                  src="/images/stock-management.png"
-                  alt="Stock Management"
-                  fill
-                  className="object-contain"
-                />
+            <div className="feature-image-container relative">
+              <img 
+                src="/images/stock-management.png" 
+                alt="Stock Management" 
+                className="w-full h-auto object-contain"
+              />
+              <div className="bg-white p-4 text-center">
+                <h3 className="text-xl font-semibold mb-2 text-foreground">
+                  Stock Management
+                </h3>
+                <p className="text-sm text-muted-foreground">
+                  Stock levels, Alerts, History, Valuation
+                </p>
               </div>
             </div>
           </motion.div>

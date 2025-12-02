@@ -18,7 +18,7 @@ const benefits = [
     icon: TrendingUp,
     title: "Increased Efficiency",
     description:
-      "Automate repetitive tasks and streamline workflows to boost productivity by up to 40%.",
+      "Automate tasks and streamline workflows to boost productivity.",
     stat: "40%",
     statLabel: "Productivity Increase",
   },
@@ -26,7 +26,7 @@ const benefits = [
     icon: DollarSign,
     title: "Cost Reduction",
     description:
-      "Optimize inventory levels, reduce waste, and minimize operational costs across all departments.",
+      "Optimize inventory and reduce operational costs.",
     stat: "30%",
     statLabel: "Cost Savings",
   },
@@ -34,7 +34,7 @@ const benefits = [
     icon: Clock,
     title: "Time Savings",
     description:
-      "Eliminate manual data entry and paperwork, saving hours every day for your team.",
+      "Eliminate manual data entry and save hours daily.",
     stat: "50%",
     statLabel: "Time Saved",
   },
@@ -42,7 +42,7 @@ const benefits = [
     icon: Shield,
     title: "Data Security",
     description:
-      "Enterprise-grade security with role-based access, encryption, and regular backups.",
+      "Enterprise security with role-based access and encryption.",
     stat: "99.9%",
     statLabel: "Uptime SLA",
   },
@@ -50,7 +50,7 @@ const benefits = [
     icon: Zap,
     title: "Real-time Insights",
     description:
-      "Make informed decisions with live dashboards and instant access to critical business data.",
+      "Live dashboards and instant access to business data.",
     stat: "24/7",
     statLabel: "Monitoring",
   },
@@ -58,7 +58,7 @@ const benefits = [
     icon: Users,
     title: "Better Collaboration",
     description:
-      "Connect all departments and teams on a single platform for seamless communication.",
+      "Connect all departments on a single platform.",
     stat: "100%",
     statLabel: "Team Integration",
   },
@@ -66,7 +66,7 @@ const benefits = [
     icon: BarChart3,
     title: "Data-Driven Decisions",
     description:
-      "Advanced analytics and reporting help you identify trends and opportunities.",
+      "Advanced analytics to identify trends and opportunities.",
     stat: "360°",
     statLabel: "Visibility",
   },
@@ -74,7 +74,7 @@ const benefits = [
     icon: CheckCircle2,
     title: "Quality Assurance",
     description:
-      "Integrated QC processes ensure consistent product quality and customer satisfaction.",
+      "Integrated QC processes for consistent quality.",
     stat: "95%+",
     statLabel: "Quality Score",
   },
@@ -82,7 +82,8 @@ const benefits = [
 
 export function Benefits() {
   return (
-    <section className="py-24 bg-background">
+    <section className="py-24 bg-white relative isolation-isolate">
+      <div className="relative z-10">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -91,12 +92,11 @@ export function Benefits() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl sm:text-4xl font-bold mb-4">
+          <h2 className="text-2xl sm:text-3xl font-semibold mb-4 text-foreground">
             Why Choose Rajdhani ERP?
           </h2>
-          <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto">
-            Experience the difference with a solution built specifically for carpet
-            manufacturing excellence.
+          <p className="text-sm sm:text-base text-muted-foreground max-w-2xl mx-auto">
+            Built specifically for carpet manufacturing excellence.
           </p>
         </motion.div>
 
@@ -111,15 +111,15 @@ export function Benefits() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
-                <Card className="h-full hover:shadow-lg transition-all border-2 hover:border-primary/20 group">
+                <Card className="h-full hover:shadow-lg transition-all border-2 border-primary/20 hover:border-primary/40 group bg-white">
                   <CardHeader>
-                    <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
+                    <div className="w-12 h-12 rounded-lg bg-primary/20 flex items-center justify-center mb-4 group-hover:bg-primary/30 transition-colors border border-primary/30">
                       <Icon className="h-6 w-6 text-primary" />
                     </div>
-                    <CardTitle className="text-xl mb-2">{benefit.title}</CardTitle>
+                    <CardTitle className="text-lg font-medium mb-2 text-foreground">{benefit.title}</CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-muted-foreground mb-4">
+                    <p className="text-sm text-muted-foreground mb-4">
                       {benefit.description}
                     </p>
                     <div className="pt-4 border-t">
@@ -151,6 +151,7 @@ export function Benefits() {
             </span>
           </div>
         </motion.div>
+      </div>
       </div>
     </section>
   );

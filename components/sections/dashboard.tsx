@@ -1,8 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Zap, TrendingUp, Package, DollarSign } from "lucide-react";
 import Image from "next/image";
+import { Zap, TrendingUp, Package, BarChart3 } from "lucide-react";
 
 export function Dashboard() {
   return (
@@ -13,15 +13,13 @@ export function Dashboard() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-12"
         >
-          <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-primary">
-            Your Entire Business, Distilled into a Single View
+          <h2 className="text-2xl sm:text-3xl font-semibold mb-4 text-primary">
+            Your Business in One View
           </h2>
-          <p className="text-base sm:text-lg text-muted-foreground max-w-3xl mx-auto">
-            The Rajdhani Dashboard provides real-time, high-level overviews of
-            your entire operation, key performance metrics, and automated
-            insights to keep you ahead of the curve.
+          <p className="text-sm sm:text-base text-muted-foreground max-w-2xl mx-auto">
+            Real-time insights and metrics at a glance
           </p>
         </motion.div>
 
@@ -35,63 +33,55 @@ export function Dashboard() {
           >
             <div className="space-y-4">
               <div className="flex items-start gap-4">
-                <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
+                <div className="w-12 h-12 rounded-lg bg-primary/20 flex items-center justify-center shrink-0 border border-primary/30">
                   <Zap className="h-6 w-6 text-primary" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-lg mb-2">
+                  <h3 className="font-medium text-base mb-2 text-foreground">
                     Real-time Statistics
                   </h3>
-                  <p className="text-muted-foreground">
-                    Monitor total products, materials, orders, and revenue at a
-                    glance. All data updates in real-time as your business
-                    operates.
+                  <p className="text-sm text-muted-foreground">
+                    Monitor products, orders, and revenue in real-time
                   </p>
                 </div>
               </div>
 
               <div className="flex items-start gap-4">
-                <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
+                <div className="w-12 h-12 rounded-lg bg-primary/20 flex items-center justify-center shrink-0 border border-primary/30">
                   <TrendingUp className="h-6 w-6 text-primary" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-lg mb-2">
+                  <h3 className="font-medium text-base mb-2 text-foreground">
                     Performance Metrics
                   </h3>
-                  <p className="text-muted-foreground">
-                    Track production efficiency, order fulfillment rates, and
-                    inventory levels with comprehensive visualizations and trend
-                    analysis.
+                  <p className="text-sm text-muted-foreground">
+                    Track efficiency and trends with visual analytics
                   </p>
                 </div>
               </div>
 
               <div className="flex items-start gap-4">
-                <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
+                <div className="w-12 h-12 rounded-lg bg-primary/20 flex items-center justify-center shrink-0 border border-primary/30">
                   <Zap className="h-6 w-6 text-primary" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-lg mb-2">
+                  <h3 className="font-medium text-base mb-2 text-foreground">
                     Automated Insights
                   </h3>
-                  <p className="text-muted-foreground">
-                    Receive proactive alerts for low stock levels, pending
-                    orders, production status changes, and critical business
-                    events.
+                  <p className="text-sm text-muted-foreground">
+                    Proactive alerts for critical business events
                   </p>
                 </div>
               </div>
 
               <div className="flex items-start gap-4">
-                <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
+                <div className="w-12 h-12 rounded-lg bg-primary/20 flex items-center justify-center shrink-0 border border-primary/30">
                   <Package className="h-6 w-6 text-primary" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-lg mb-2">Activity Feed</h3>
-                  <p className="text-muted-foreground">
-                    Get a live look at recent activities across every module -
-                    from new orders to production completions and inventory
-                    updates.
+                  <h3 className="font-medium text-base mb-2 text-foreground">Activity Feed</h3>
+                  <p className="text-sm text-muted-foreground">
+                    Live updates across all modules
                   </p>
                 </div>
               </div>
@@ -105,32 +95,13 @@ export function Dashboard() {
             transition={{ duration: 0.6 }}
             className="image-container-borders"
           >
-            <div className="feature-image-container aspect-video bg-muted flex items-center justify-center p-12 relative">
+            <div className="feature-image-container aspect-video relative overflow-hidden">
               <Image
                 src="/images/dashboard-overview.png"
-                alt="Dashboard Overview"
+                alt="ERP Dashboard Overview - Revenue, Active Orders, Sales Trends, Production Efficiency"
                 fill
-                className="object-fill"
-                onError={(e) => {
-                  // Fallback to placeholder if image doesn't exist
-                  const target = e.target as HTMLImageElement;
-                  target.style.display = "none";
-                  const parent = target.parentElement;
-                  if (parent) {
-                    parent.innerHTML = `
-                      <div class="text-center">
-                        <div class="w-24 h-24 mx-auto mb-4 rounded-lg bg-primary/10 flex items-center justify-center">
-                          <svg class="h-12 w-12 text-primary/50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                          </svg>
-                        </div>
-                        <p class="text-sm text-muted-foreground mb-2">Dashboard Screenshot Placeholder</p>
-                        <p class="text-xs text-muted-foreground/70">Replace with: /images/dashboard-overview.png</p>
-                        <p class="text-xs text-muted-foreground/70 mt-2">Shows: Revenue (₹8,500,000), Active Orders (42), Sales Trends, Production Efficiency</p>
-                      </div>
-                    `;
-                  }
-                }}
+                className="object-contain"
+                sizes="(max-width: 1024px) 100vw, 50vw"
               />
             </div>
           </motion.div>

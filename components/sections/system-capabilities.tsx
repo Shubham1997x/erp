@@ -54,12 +54,9 @@ export function SystemCapabilities() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-primary">
-            System Capabilities at a Glance
+          <h2 className="text-2xl sm:text-3xl font-semibold mb-4 text-primary">
+            System Capabilities
           </h2>
-          <p className="text-base sm:text-lg text-muted-foreground max-w-3xl mx-auto">
-            A robust platform built for performance, scalability, and ease of use.
-          </p>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -71,7 +68,7 @@ export function SystemCapabilities() {
             transition={{ duration: 0.6 }}
             className="space-y-4"
           >
-            <h3 className="text-2xl font-bold mb-6">Core Functionality</h3>
+            <h3 className="text-xl font-semibold mb-6 text-foreground">Core Functionality</h3>
             {capabilities.core.map((cap, index) => {
               const Icon = cap.icon;
               return (
@@ -81,12 +78,12 @@ export function SystemCapabilities() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.4, delay: index * 0.1 }}
-                  className="flex items-center gap-4 p-4 rounded-lg border border-border hover:border-primary/30 transition-colors"
+                  className="flex items-center gap-4 p-4 border border-primary/20 hover:border-primary/40 transition-colors bg-white"
                 >
-                  <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
+                  <div className="w-10 h-10 rounded-lg bg-primary/20 flex items-center justify-center shrink-0 border border-primary/30">
                     <Icon className="h-5 w-5 text-primary" />
                   </div>
-                  <span className="font-medium">{cap.name}</span>
+                  <span className="font-medium text-foreground">{cap.name}</span>
                 </motion.div>
               );
             })}
@@ -100,7 +97,7 @@ export function SystemCapabilities() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="space-y-4"
           >
-            <h3 className="text-2xl font-bold mb-6">Automation & Data</h3>
+            <h3 className="text-xl font-semibold mb-6 text-foreground">Automation & Data</h3>
             {capabilities.automation.map((cap, index) => {
               const Icon = cap.icon;
               return (
@@ -110,12 +107,12 @@ export function SystemCapabilities() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.4, delay: index * 0.1 }}
-                  className="flex items-center gap-4 p-4 rounded-lg border border-border hover:border-primary/30 transition-colors"
+                  className="flex items-center gap-4 p-4 border border-primary/20 hover:border-primary/40 transition-colors bg-white"
                 >
-                  <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
+                  <div className="w-10 h-10 rounded-lg bg-primary/20 flex items-center justify-center shrink-0 border border-primary/30">
                     <Icon className="h-5 w-5 text-primary" />
                   </div>
-                  <span className="font-medium">{cap.name}</span>
+                  <span className="font-medium text-foreground">{cap.name}</span>
                 </motion.div>
               );
             })}
@@ -129,7 +126,7 @@ export function SystemCapabilities() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="space-y-4"
           >
-            <h3 className="text-2xl font-bold mb-6">Platform & Technology</h3>
+            <h3 className="text-xl font-semibold mb-6 text-foreground">Platform & Technology</h3>
             {capabilities.platform.map((cap, index) => {
               const Icon = cap.icon;
               return (
@@ -139,12 +136,12 @@ export function SystemCapabilities() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.4, delay: index * 0.1 }}
-                  className="flex items-center gap-4 p-4 rounded-lg border border-border hover:border-primary/30 transition-colors"
+                  className="flex items-center gap-4 p-4 border border-primary/20 hover:border-primary/40 transition-colors bg-white"
                 >
-                  <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
+                  <div className="w-10 h-10 rounded-lg bg-primary/20 flex items-center justify-center shrink-0 border border-primary/30">
                     <Icon className="h-5 w-5 text-primary" />
                   </div>
-                  <span className="font-medium">{cap.name}</span>
+                  <span className="font-medium text-foreground">{cap.name}</span>
                 </motion.div>
               );
             })}

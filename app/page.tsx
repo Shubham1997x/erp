@@ -22,22 +22,22 @@ import { Loader } from "@/components/ui/loader";
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
 
-  useEffect(() => {
-    // Hide loader after page loads
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 2000); // Show loader for 2 seconds
+  // useEffect(() => {
+  //   // Hide loader after page loads
+  //   const timer = setTimeout(() => {
+  //     setIsLoading(false);
+  //   }, 2000); // Show loader for 2 seconds
 
-    return () => clearTimeout(timer);
-  }, []);
+  //   return () => clearTimeout(timer);
+  // }, []);
 
-  if (isLoading) {
-    return (
-      <div className="fixed inset-0 bg-background flex items-center justify-center z-50">
-        <Loader />
-      </div>
-    );
-  }
+  // if (isLoading) {
+  //   return (
+  //     <div className="fixed inset-0 bg-background flex items-center justify-center z-50">
+  //       <Loader />
+  //     </div>
+  //   );
+  // }
 
   return (
     <main className="min-h-screen">
