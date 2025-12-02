@@ -22,10 +22,10 @@ export function ProductRecipe() {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-[35%_65%] gap-4 lg:gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-[35%_65%] gap-6 lg:gap-6">
           {/* Left Column: Product Catalog and Recipe Management stacked */}
           <div className="flex flex-col">
-            <h4 className="text-xl font-bold mb-4 text-foreground">Management Features</h4>
+            <h4 className="text-xl font-bold mb-4 text-foreground text-center lg:text-left">Management Features</h4>
             <div className="flex flex-col gap-8">
               {/* Product Definition */}
             <motion.div
@@ -105,8 +105,8 @@ export function ProductRecipe() {
             transition={{ duration: 0.6 }}
             className="flex flex-col"
           >
-            <h4 className="text-xl font-bold mb-4 text-foreground">Recipe Setup Process</h4>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <h4 className="text-xl font-bold mb-4 text-foreground text-center lg:text-left">Recipe Setup Process</h4>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
               {[
                 { step: 1, title: "Define Recipe", desc: "Add raw materials and quantities per unit", image: "/images/recipe-1.png" },
                 { step: 2, title: "Save & Use", desc: "Recipe saved and ready for calculations", image: "/images/recipe-2.png" },
@@ -131,7 +131,7 @@ export function ProductRecipe() {
                     </div>
                   </div>
                   <motion.div 
-                    className="relative bg-linear-to-br from-muted/50 to-white overflow-hidden flex-1 min-h-[400px] flex items-center justify-center"
+                    className="relative bg-linear-to-br from-muted/50 to-white overflow-hidden flex-1 min-h-[250px] sm:min-h-[300px] md:min-h-[400px] flex items-center justify-center"
                     whileHover={{ scale: 1.02 }}
                     transition={{ duration: 0.3, ease: "easeOut" }}
                   >

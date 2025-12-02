@@ -145,11 +145,11 @@ export function OrderManagement() {
           <h3 className="text-2xl font-bold text-center mb-8 text-foreground">
             Order Status Flow
           </h3>
-          <div className="flex flex-wrap justify-center gap-3 lg:gap-4">
+          <div className="flex flex-wrap justify-center gap-2 sm:gap-3 lg:gap-4">
             {orderStatuses.map((status, index) => (
               <div key={index} className="flex items-center">
                 <motion.div
-                  className={`px-4 py-2 text-sm font-semibold border-2 rounded ${
+                  className={`px-2 sm:px-3 md:px-4 py-1.5 sm:py-2 text-xs sm:text-sm font-semibold border-2 ${
                     status === "In Production"
                       ? "bg-primary text-primary-foreground border-primary shadow-md"
                       : "bg-white text-foreground border-primary/30 hover:border-primary/50 transition-colors"
@@ -158,7 +158,7 @@ export function OrderManagement() {
                   {status}
                 </motion.div>
                 {index < orderStatuses.length - 1 && (
-                  <ArrowRight className="h-5 w-5 text-muted-foreground mx-2" />
+                  <ArrowRight className="h-3 w-3 sm:h-4 sm:w-4 md:h-5 md:w-5 text-muted-foreground mx-1 sm:mx-2 shrink-0" />
                 )}
               </div>
             ))}

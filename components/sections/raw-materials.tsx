@@ -118,7 +118,7 @@ export function RawMaterials() {
           transition={{ duration: 0.6 }}
           className="mb-20"
         >
-          <div className="relative bg-white border-2 border-primary/30 p-6 lg:p-12">
+            <div className="relative bg-white border-2 border-primary/30 p-4 sm:p-6 lg:p-12">
             {/* Dashboard & Analytics - Top Center */}
             <motion.div
               initial={{ opacity: 0, y: -20 }}
@@ -127,7 +127,7 @@ export function RawMaterials() {
               transition={{ duration: 0.5 }}
               className="flex justify-center mb-8"
             >
-              <div className="bg-[hsl(0_0%_98%)] border-2 border-amber-400/30 p-6 max-w-md">
+              <div className="bg-[hsl(0_0%_98%)] border-2 border-amber-400/30 p-4 sm:p-6 max-w-md">
                 <h3 className="text-xl font-semibold mb-4 text-center text-foreground">
                   Dashboard & Analytics
                 </h3>
@@ -156,7 +156,7 @@ export function RawMaterials() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5 }}
-                className="bg-[hsl(0_0%_98%)] border-2 border-primary/20 p-6 relative"
+                className="bg-[hsl(0_0%_98%)] border-2 border-primary/20 p-4 sm:p-6 relative"
               >
                 <h3 className="text-xl font-semibold mb-4 text-foreground">
                   Procurement
@@ -286,12 +286,12 @@ export function RawMaterials() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-16"
+            className="text-center mb-12 sm:mb-16"
           >
             <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-primary">
               Procurement Workflow
             </h2>
-            <p className="text-base text-muted-foreground max-w-3xl mx-auto">
+            <p className="text-base text-muted-foreground max-w-3xl mx-auto px-4">
               From automated alerts to real-time inventory updates - a seamless procurement journey
             </p>
           </motion.div>
@@ -320,7 +320,7 @@ export function RawMaterials() {
                       
                       {/* Content Card */}
                       <div className={`md:ml-24 bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden border-2 border-primary/10 hover:border-primary/30 group`}>
-                        <div className={`flex flex-col md:flex-row items-center ${isEven ? 'md:flex-row' : 'md:flex-row-reverse'} gap-6 p-6`}>
+                        <div className={`flex flex-col md:flex-row items-center ${isEven ? 'md:flex-row' : 'md:flex-row-reverse'} gap-6 p-4 sm:p-6`}>
                           {/* Icon Section */}
                           <div className="flex-shrink-0">
                             <div className="relative">
@@ -335,7 +335,7 @@ export function RawMaterials() {
                           </div>
                           
                           {/* Text Content */}
-                          <div className="flex-1 text-center md:text-left">
+                          <div className="flex-1 text-center md:text-left w-full">
                             <h4 className="text-xl font-bold mb-2 text-foreground group-hover:text-primary transition-colors">
                               {step.title}
                             </h4>

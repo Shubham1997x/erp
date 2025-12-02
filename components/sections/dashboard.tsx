@@ -22,16 +22,16 @@ export function Dashboard() {
           </p>
         </motion.div>
 
-        <div className="flex flex-col lg:flex-row gap-16 items-center">
+        <div className="flex flex-col lg:flex-row gap-8 sm:gap-12 lg:gap-16 items-center">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="space-y-8"
+            className="space-y-8 w-full lg:w-auto"
           >
             <div className="space-y-6">
-              <div className="flex items-start gap-5">
+              <div className="flex items-start gap-5 justify-center lg:justify-start">
                 <div className="w-14 h-14 rounded-lg bg-primary/10 flex items-center justify-center shrink-0 border-2 border-primary/20">
                   <Zap className="h-7 w-7 text-primary" />
                 </div>
