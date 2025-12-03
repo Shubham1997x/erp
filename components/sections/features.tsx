@@ -1,7 +1,13 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import {
   Package,
   Factory,
@@ -33,8 +39,7 @@ const features = [
   {
     icon: ShoppingCart,
     title: "Sales & Order Management",
-    description:
-      "Complete order lifecycle from quotation to delivery.",
+    description: "Complete order lifecycle from quotation to delivery.",
   },
   {
     icon: Calculator,
@@ -45,8 +50,7 @@ const features = [
   {
     icon: Users,
     title: "HR & Payroll",
-    description:
-      "Employee management, attendance, and payroll processing.",
+    description: "Employee management, attendance, and payroll processing.",
   },
   {
     icon: BarChart3,
@@ -57,20 +61,17 @@ const features = [
   {
     icon: Settings,
     title: "Quality Control",
-    description:
-      "QC processes with inspection workflows and defect tracking.",
+    description: "QC processes with inspection workflows and defect tracking.",
   },
   {
     icon: Shield,
     title: "Security & Compliance",
-    description:
-      "Enterprise security with role-based access and audit trails.",
+    description: "Enterprise security with role-based access and audit trails.",
   },
   {
     icon: Zap,
     title: "Real-time Monitoring",
-    description:
-      "Live production monitoring with instant alerts.",
+    description: "Live production monitoring with instant alerts.",
   },
   {
     icon: Target,
@@ -117,53 +118,54 @@ export function Features() {
   return (
     <section className="section-padding section-gray relative isolation-isolate">
       <div className="relative z-10">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-2xl sm:text-3xl font-semibold mb-4 text-foreground">
-            Comprehensive ERP Features
-          </h2>
-          <p className="text-sm sm:text-base text-muted-foreground max-w-2xl mx-auto">
-            Complete ERP solution for carpet manufacturing operations.
-          </p>
-        </motion.div>
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-2xl sm:text-3xl font-semibold mb-4 text-foreground">
+              Comprehensive ERP Features
+            </h2>
+            <p className="text-sm sm:text-base text-muted-foreground max-w-2xl mx-auto">
+              Complete ERP solution for carpet manufacturing operations.
+            </p>
+          </motion.div>
 
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-        >
-          {features.map((feature, index) => {
-            const Icon = feature.icon;
-            return (
-              <motion.div key={index} variants={itemVariants}>
-                <Card className="h-full rounded-lg shadow-none transition-all border border-primary/20 hover:border-primary/40 ">
-                  <CardContent className="p-6">
-                    <div className="flex items-center gap-3 mb-3">
-                      <div className="w-14 h-14 rounded-lg bg-primary/20 flex items-center justify-center shrink-0 border border-primary/30">
-                        <Icon className="h-7 w-7 text-primary" />
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+          >
+            {features.map((feature, index) => {
+              const Icon = feature.icon;
+              return (
+                <motion.div key={index} variants={itemVariants}>
+                  <Card className="h-full bg-trasparent rounded-lg shadow-none transition-all border border-primary/20 hover:border-primary/40 ">
+                    <CardContent className="p-6">
+                      <div className="flex items-center gap-3 mb-3">
+                        <div className="w-14 h-14 rounded-lg bg-primary/20 flex items-center justify-center shrink-0 border border-primary/30">
+                          <Icon className="h-7 w-7 text-primary" />
+                        </div>
+                        <CardTitle className="text-lg font-semibold text-foreground">
+                          {feature.title}
+                        </CardTitle>
                       </div>
-                      <CardTitle className="text-lg font-semibold text-foreground">{feature.title}</CardTitle>
-                    </div>
-                    <CardDescription className="text-sm">
-                      {feature.description}
-                    </CardDescription>
-                  </CardContent>
-                </Card>
-              </motion.div>
-          );
-        })}
-      </motion.div>
-    </div>
+                      <CardDescription className="text-sm">
+                        {feature.description}
+                      </CardDescription>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              );
+            })}
+          </motion.div>
+        </div>
       </div>
-  </section>
+    </section>
   );
 }
-

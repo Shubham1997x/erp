@@ -130,9 +130,7 @@ export function Modules() {
   return (
     <section className="py-24 bg-muted/30">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          className="text-center mb-16"
-        >
+        <motion.div className="text-center mb-16">
           <h2 className="text-3xl sm:text-4xl font-bold mb-4">
             Integrated ERP Modules
           </h2>
@@ -150,7 +148,7 @@ export function Modules() {
                 key={index}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
-                <Card className="h-full rounded-lg shadow-none transition-all duration-300 border border-primary/20 hover:border-primary/40  group">
+                <Card className="h-full rounded-lg shadow-none transition-all duration-300 border border-primary/20 hover:border-primary/40 bg-transparent group">
                   <CardContent className="p-6">
                     <div className="flex items-center gap-3 mb-3">
                       <div className="w-14 h-14 rounded-lg bg-primary/20 flex items-center justify-center shrink-0 border border-primary/30 group-hover:scale-110 transition-transform">
