@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import { Check } from "lucide-react";
 
 const plans = [
@@ -109,12 +108,15 @@ export function Pricing() {
                   </ul>
                 </CardContent>
                 <CardFooter>
-                  <Button
-                    className="w-full"
-                    variant={plan.popular ? "default" : "outline"}
+                  <button
+                    className={`w-full inline-flex items-center justify-center rounded-lg transition-all duration-300 px-4 py-2 font-medium cursor-pointer ${
+                      plan.popular
+                        ? "bg-primary hover:bg-primary/90 text-white"
+                        : "border border-primary/30 bg-transparent text-foreground hover:bg-primary/5 hover:border-primary/50"
+                    }`}
                   >
                     Get Started
-                  </Button>
+                  </button>
                 </CardFooter>
               </Card>
             </motion.div>
@@ -127,7 +129,9 @@ export function Pricing() {
           <p className="text-muted-foreground mb-4">
             All plans are customizable based on your specific requirements.
           </p>
-          <Button variant="outline">Contact Sales for Custom Quote</Button>
+          <button className="inline-flex items-center justify-center border border-primary/30 bg-transparent text-foreground hover:bg-primary/5 hover:border-primary/50 rounded-lg transition-all duration-300 px-4 py-2 font-medium cursor-pointer">
+            Contact Sales for Custom Quote
+          </button>
         </motion.div>
       </div>
     </section>

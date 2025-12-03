@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
 import { ArrowRight, Sparkles } from "lucide-react";
 
 export function CTASection() {
@@ -70,20 +69,13 @@ export function CTASection() {
             transition={{ duration: 0.6, delay: 0.5 }}
             className="flex flex-col sm:flex-row gap-4 justify-center items-center"
           >
-            <Button
-              size="lg"
-              className="group text-base px-8 py-6 bg-primary hover:bg-primary/90 text-white rounded-lg transition-all duration-300"
-            >
+            <button className="group inline-flex items-center justify-center text-base font-medium px-8 py-6 bg-primary hover:bg-primary/90 text-white rounded-lg transition-all duration-300 cursor-pointer">
               Start Free Trial
               <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-            </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              className="text-base px-8 py-6 border border-white/30 bg-transparent text-white hover:bg-white/20 hover:border-white/50 hover:text-white transition-all duration-300"
-            >
+            </button>
+            <button className="inline-flex items-center justify-center text-base font-medium px-8 py-6 border border-white/30 bg-transparent text-white hover:bg-white/20 hover:border-white/50 hover:text-white rounded-lg transition-all duration-300 cursor-pointer">
               Schedule Demo
-            </Button>
+            </button>
           </motion.div>
 
           <motion.div

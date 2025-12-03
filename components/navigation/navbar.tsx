@@ -3,7 +3,6 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -13,20 +12,21 @@ export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
 
   const navLinks = [
-    { name: "Dashboard", href: "#dashboard", id: "dashboard" },
-    { name: "Products", href: "#product-recipe", id: "product-recipe" },
-    { name: "Raw Materials", href: "#raw-materials", id: "raw-materials" },
-    { name: "Orders", href: "#order-management", id: "order-management" },
-    { name: "Production", href: "#production", id: "production" },
+    { name: "Dashboard", href: "#dashboard", id: "dashboard", priority: "high" },
+    { name: "Products", href: "#product-recipe", id: "product-recipe", priority: "high" },
+    { name: "Raw Materials", href: "#raw-materials", id: "raw-materials", priority: "medium" },
+    { name: "Orders", href: "#order-management", id: "order-management", priority: "high" },
+    { name: "Production", href: "#production", id: "production", priority: "high" },
     {
       name: "Customers",
       href: "#customers-suppliers",
       id: "customers-suppliers",
+      priority: "medium",
     },
-    { name: "Stock", href: "#stock-management", id: "stock-management" },
-    { name: "Analytics", href: "#analytics", id: "analytics" },
-    { name: "Calculator", href: "#recipe-calculator", id: "recipe-calculator" },
-    { name: "Contact", href: "#contact", id: "contact" },
+    { name: "Stock", href: "#stock-management", id: "stock-management", priority: "medium" },
+    { name: "Analytics", href: "#analytics", id: "analytics", priority: "low" },
+    { name: "Calculator", href: "#recipe-calculator", id: "recipe-calculator", priority: "low" },
+    { name: "Contact", href: "#contact", id: "contact", priority: "low" },
   ];
 
   useEffect(() => {
@@ -77,65 +77,140 @@ export function Navbar() {
   return (
     <nav className="sticky top-0 z-50 w-full transition-all duration-300">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-3">
-        <div className="flex h-14 items-center justify-between border border-primary/20 rounded-lg px-6 bg-white">
-          <Link href="/" className="flex items-center gap-3 group">
-            <div className="relative">
+        <div className="flex h-14 items-center justify-between border border-primary/20 rounded-lg px-2 sm:px-4 lg:px-6 bg-white overflow-hidden">
+          <Link href="/" className="flex items-center gap-2 sm:gap-3 group shrink-0 min-w-0">
+            <div className="relative shrink-0">
               <Image
                 src="/logo.svg"
                 alt="Carpet ERP Logo"
                 width={32}
                 height={32}
-                className="h-8 w-8 group-hover:scale-110 transition-transform duration-300"
+                className="h-7 w-7 sm:h-8 sm:w-8 group-hover:scale-110 transition-transform duration-300"
                 priority
               />
             </div>
-            <div className="flex flex-col">
-              <span className="font-semibold text-base text-foreground leading-tight">
+            <div className="flex flex-col min-w-0">
+              <span className="font-semibold text-sm sm:text-base text-foreground leading-tight truncate">
                 Carpet ERP
               </span>
-              <span className="text-xs text-muted-foreground leading-tight">
+              <span className="text-[10px] sm:text-xs text-muted-foreground leading-tight truncate">
                 by Wantace
               </span>
             </div>
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center gap-1">
-            {navLinks.map((link) => {
-              const isActive = activeSection === link.id;
-              return (
-                <motion.div
-                  key={link.name}
-                  className="relative"
-                  whileHover="hover"
-                  initial="initial"
-                >
-                  <Link
-                    href={link.href}
-                    className={`relative inline-block text-sm font-medium transition-all duration-300 group px-4 py-2 ${
-                      isActive
-                        ? "text-primary"
-                        : "text-muted-foreground hover:text-foreground"
-                    }`}
+          <div className="hidden lg:flex items-center gap-0.5 min-w-0 flex-1 justify-end max-w-full">
+            {/* High priority links - always visible on lg+ */}
+            {navLinks
+              .filter((link) => link.priority === "high")
+              .map((link) => {
+                const isActive = activeSection === link.id;
+                return (
+                  <motion.div
+                    key={link.name}
+                    className="relative shrink-0"
+                    whileHover="hover"
+                    initial="initial"
                   >
-                    <span className="relative inline-block">
-                      {link.name}
-                      {/* Bottom underline - only under text */}
-                      <motion.span
-                        className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary origin-left"
-                        variants={{
-                          initial: { scaleX: isActive ? 1 : 0 },
-                          hover: { scaleX: 1 },
-                        }}
-                        transition={{ duration: 0.3, ease: "easeInOut" }}
-                      />
-                    </span>
-                  </Link>
-                </motion.div>
-              );
-            })}
-            <div className="ml-4 pl-4 border-l border-primary/20">
-              <button className="bg-primary text-sm hover:bg-primary/90 cursor-pointer text-white rounded-lg transition-all px-4 py-2">Request Demo</button>
+                    <Link
+                      href={link.href}
+                      className={`relative inline-block text-xs lg:text-sm font-medium transition-all duration-300 group px-2 lg:px-3 xl:px-4 py-2 whitespace-nowrap ${
+                        isActive
+                          ? "text-primary"
+                          : "text-muted-foreground hover:text-foreground"
+                      }`}
+                    >
+                      <span className="relative inline-block">
+                        {link.name}
+                        <motion.span
+                          className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary origin-left"
+                          variants={{
+                            initial: { scaleX: isActive ? 1 : 0 },
+                            hover: { scaleX: 1 },
+                          }}
+                          transition={{ duration: 0.3, ease: "easeInOut" }}
+                        />
+                      </span>
+                    </Link>
+                  </motion.div>
+                );
+              })}
+            
+            {/* Medium priority links - visible on xl+ */}
+            {navLinks
+              .filter((link) => link.priority === "medium")
+              .map((link) => {
+                const isActive = activeSection === link.id;
+                return (
+                  <motion.div
+                    key={link.name}
+                    className="relative hidden xl:block shrink-0"
+                    whileHover="hover"
+                    initial="initial"
+                  >
+                    <Link
+                      href={link.href}
+                      className={`relative inline-block text-xs lg:text-sm font-medium transition-all duration-300 group px-2 lg:px-3 xl:px-4 py-2 whitespace-nowrap ${
+                        isActive
+                          ? "text-primary"
+                          : "text-muted-foreground hover:text-foreground"
+                      }`}
+                    >
+                      <span className="relative inline-block">
+                        {link.name}
+                        <motion.span
+                          className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary origin-left"
+                          variants={{
+                            initial: { scaleX: isActive ? 1 : 0 },
+                            hover: { scaleX: 1 },
+                          }}
+                          transition={{ duration: 0.3, ease: "easeInOut" }}
+                        />
+                      </span>
+                    </Link>
+                  </motion.div>
+                );
+              })}
+            
+            {/* Low priority links - visible on 2xl+ */}
+            {navLinks
+              .filter((link) => link.priority === "low")
+              .map((link) => {
+                const isActive = activeSection === link.id;
+                return (
+                  <motion.div
+                    key={link.name}
+                    className="relative hidden 2xl:block shrink-0"
+                    whileHover="hover"
+                    initial="initial"
+                  >
+                    <Link
+                      href={link.href}
+                      className={`relative inline-block text-xs lg:text-sm font-medium transition-all duration-300 group px-2 lg:px-3 xl:px-4 py-2 whitespace-nowrap ${
+                        isActive
+                          ? "text-primary"
+                          : "text-muted-foreground hover:text-foreground"
+                      }`}
+                    >
+                      <span className="relative inline-block">
+                        {link.name}
+                        <motion.span
+                          className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary origin-left"
+                          variants={{
+                            initial: { scaleX: isActive ? 1 : 0 },
+                            hover: { scaleX: 1 },
+                          }}
+                          transition={{ duration: 0.3, ease: "easeInOut" }}
+                        />
+                      </span>
+                    </Link>
+                  </motion.div>
+                );
+              })}
+            
+            <div className="ml-1 xl:ml-2 2xl:ml-4 pl-1 xl:pl-2 2xl:pl-4 border-l border-primary/20 shrink-0">
+              <button className="bg-primary text-xs lg:text-sm hover:bg-primary/90 cursor-pointer text-white rounded-lg transition-all px-2 lg:px-3 xl:px-4 py-2 whitespace-nowrap">Request Demo</button>
             </div>
           </div>
 
@@ -223,9 +298,9 @@ export function Navbar() {
                 transition={{ delay: navLinks.length * 0.05 }}
                 className="pt-4"
               >
-                <Button className="w-full bg-primary hover:bg-primary/90 text-white rounded-lg">
+                <button className="w-full inline-flex items-center justify-center bg-primary hover:bg-primary/90 text-white rounded-lg transition-all duration-300 px-4 py-2 font-medium cursor-pointer">
                   Request Demo
-                </Button>
+                </button>
               </motion.div>
             </div>
           </motion.div>

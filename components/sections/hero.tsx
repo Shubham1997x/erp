@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
 import {
   ArrowRight,
   CheckCircle2,
@@ -137,13 +136,10 @@ export function Hero() {
                 transition={{ duration: 0.6, delay: 0.7, ease: "easeOut" }}
                 className="flex flex-col sm:flex-row gap-4 pt-4 w-full justify-center items-center"
               >
-                <Button
-                  size="lg"
-                  className="group text-base px-8 py-6 bg-primary hover:bg-primary/90 text-white rounded-lg transition-all duration-300 mx-auto sm:mx-0"
-                >
+                <button className="group inline-flex items-center justify-center text-base font-medium px-8 py-6 bg-primary hover:bg-primary/90 text-white rounded-lg transition-all duration-300 mx-auto sm:mx-0 hover:scale-105 hover:shadow-xl active:scale-100 cursor-pointer">
                   Start Free Trial
-                  <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-                </Button>
+                  <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
+                </button>
               </motion.div>
 
               {/* Trust Indicators */}
@@ -239,13 +235,10 @@ export function Hero() {
                 transition={{ duration: 0.6, delay: 0.7, ease: "easeOut" }}
                 className="flex flex-col sm:flex-row gap-4 pt-4"
               >
-                <Button
-                  size="lg"
-                  className="group text-base px-8 py-6 bg-primary hover:bg-primary/90 text-white rounded-lg transition-all duration-300"
-                >
+                <button className="group inline-flex items-center justify-center text-base font-medium px-8 py-6 bg-primary hover:bg-primary/90 text-white rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-xl active:scale-100 cursor-pointer">
                   Start Free Trial
-                  <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-                </Button>
+                  <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
+                </button>
               </motion.div>
 
               {/* Trust Indicators */}
