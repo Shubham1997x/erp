@@ -140,15 +140,15 @@ export function Footer() {
 
         <div className="border-t border-white/10 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
           <p className="text-sm text-gray-400">
-            © {new Date().getFullYear()} Rajdhani ERP. All rights reserved.
+            © {new Date().getFullYear()} Carpet ERP by Wantace. All rights reserved.
           </p>
           <div className="flex items-center gap-2 text-sm text-gray-400">
             <Mail className="h-4 w-4" />
             <a
-              href="mailto:info@rajdhanierp.com"
+              href="mailto:info@wantace.com"
               className="hover:text-white transition-colors"
             >
-              info@rajdhanierp.com
+              info@wantace.com
             </a>
           </div>
         </div>

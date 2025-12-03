@@ -63,7 +63,7 @@ export function Workflow() {
             Streamlined Workflow
           </h2>
           <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto">
-            See how Rajdhani ERP transforms your manufacturing process from order
+            See how Carpet ERP transforms your manufacturing process from order
             to delivery.
           </p>
         </motion.div>
@@ -97,7 +97,7 @@ export function Workflow() {
               </div>
               <div className="flex-1">
                 <div className="image-container-borders">
-                  <div className="feature-image-container relative overflow-hidden border-2 border-primary/30 bg-muted aspect-video flex items-center justify-center">
+                  <div className="feature-image-container relative overflow-hidden border border-primary/30 bg-muted aspect-video flex items-center justify-center">
                   <div className="text-center p-8">
                     <div className="w-24 h-24 mx-auto mb-4 rounded-lg bg-primary/10 flex items-center justify-center">
                       <ArrowRight className="h-12 w-12 text-primary/50" />

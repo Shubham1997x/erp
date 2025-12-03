@@ -73,9 +73,9 @@ export function Pricing() {
               transition={{ duration: 0.5, delay: index * 0.1 }}
             >
               <Card
-                className={`h-full flex flex-col border-2 ${
+                className={`h-full flex flex-col border rounded-lg shadow-none ${
                   plan.popular
-                    ? "border-primary shadow-lg scale-105"
+                    ? "border-primary scale-105"
                     : "border-border"
                 }`}
               >

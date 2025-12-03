@@ -40,9 +40,9 @@ export function OrderManagement() {
           className="mb-12"
         >
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="bg-white border-2 border-primary/20 rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow">
+            <div className=" border border-primary/20 rounded-lg p-4 transition-all">
               <div className="flex items-center gap-3 mb-3">
-                <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center shrink-0 border-2 border-primary/20">
+                <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center shrink-0 border border-primary/20">
                   <ShoppingCart className="h-5 w-5 text-primary" />
                 </div>
                 <h3 className="font-semibold text-base text-foreground">Order Creation</h3>
@@ -52,9 +52,9 @@ export function OrderManagement() {
               </p>
             </div>
 
-            <div className="bg-white border-2 border-primary/20 rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow">
+            <div className=" border border-primary/20 rounded-lg p-4 transition-all">
               <div className="flex items-center gap-3 mb-3">
-                <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center shrink-0 border-2 border-primary/20">
+                <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center shrink-0 border border-primary/20">
                   <Calculator className="h-5 w-5 text-primary" />
                 </div>
                 <h3 className="font-semibold text-base text-foreground">
@@ -66,9 +66,9 @@ export function OrderManagement() {
               </p>
             </div>
 
-            <div className="bg-white border-2 border-primary/20 rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow">
+            <div className=" border border-primary/20 rounded-lg p-4 transition-all">
               <div className="flex items-center gap-3 mb-3">
-                <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center shrink-0 border-2 border-primary/20">
+                <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center shrink-0 border border-primary/20">
                   <Users className="h-5 w-5 text-primary" />
                 </div>
                 <h3 className="font-semibold text-base text-foreground">
@@ -103,7 +103,7 @@ export function OrderManagement() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: index * 0.1 }}
-                className="bg-white border-2 border-primary/20 shadow-md hover:shadow-lg transition-all group flex flex-col h-full"
+                className=" border border-primary/20 rounded-lg transition-all group flex flex-col h-full"
               >
                 <div className="p-3 border-b-2 border-primary/10">
                   <div className="flex items-center gap-3">
@@ -149,10 +149,10 @@ export function OrderManagement() {
             {orderStatuses.map((status, index) => (
               <div key={index} className="flex items-center">
                 <motion.div
-                  className={`px-2 sm:px-3 md:px-4 py-1.5 sm:py-2 text-xs sm:text-sm font-semibold border-2 ${
+                  className={`px-2 sm:px-3 md:px-4 py-1.5 sm:py-2 text-xs sm:text-sm font-semibold border ${
                     status === "In Production"
-                      ? "bg-primary text-primary-foreground border-primary shadow-md"
-                      : "bg-white text-foreground border-primary/30 hover:border-primary/50 transition-colors"
+                      ? "bg-primary text-primary-foreground border-primary rounded-lg"
+                      : " text-foreground border-primary/30 hover:border-primary/50 transition-colors"
                   }`}
                 >
                   {status}

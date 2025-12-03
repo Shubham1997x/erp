@@ -42,7 +42,7 @@ export function Screenshots() {
             See It In Action
           </h2>
           <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto">
-            Explore the intuitive interface and powerful features of Rajdhani
+            Explore the intuitive interface and powerful features of Carpet
             ERP.
           </p>
         </motion.div>
@@ -56,7 +56,7 @@ export function Screenshots() {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
                 <div className="image-container-borders">
-                  <Card className="feature-image-container overflow-hidden border-2 border-primary/30 hover:border-primary/50 transition-all group">
+                  <Card className="feature-image-container overflow-hidden border border-primary/30 hover:border-primary/50 transition-all group">
                     <div className="relative bg-linear-to-br from-muted to-muted/50 p-8 aspect-video flex items-center justify-center">
                       <div className="text-center">
                         <DeviceIcon className="h-16 w-16 mx-auto mb-4 text-primary/30 group-hover:text-primary/50 transition-colors" />

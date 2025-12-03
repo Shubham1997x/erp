@@ -10,7 +10,7 @@ const testimonials = [
     role: "CEO, Premium Carpets Ltd.",
     company: "Premium Carpets",
     content:
-      "Rajdhani ERP has transformed our operations. Production efficiency increased by 35%, and we now have complete visibility into our entire supply chain.",
+      "Carpet ERP has transformed our operations. Production efficiency increased by 35%, and we now have complete visibility into our entire supply chain.",
     rating: 5,
     image: "/placeholder-avatar-1.png",
   },
@@ -55,7 +55,7 @@ const testimonials = [
     role: "Founder, Craft Weavers",
     company: "Craft Weavers",
     content:
-      "As a growing business, we needed a scalable solution. Rajdhani ERP has grown with us and continues to add value as we expand our operations.",
+      "As a growing business, we needed a scalable solution. Carpet ERP has grown with us and continues to add value as we expand our operations.",
     rating: 5,
     image: "/placeholder-avatar-6.png",
   },
@@ -73,7 +73,7 @@ export function Testimonials() {
           </h2>
           <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto">
             Join hundreds of satisfied customers who have transformed their
-            operations with Rajdhani ERP.
+            operations with Carpet ERP.
           </p>
         </motion.div>
 
@@ -83,7 +83,7 @@ export function Testimonials() {
               key={index}
               transition={{ duration: 0.5, delay: index * 0.1 }}
             >
-              <Card className="h-full hover:shadow-lg transition-shadow border-2">
+              <Card className="h-full rounded-lg shadow-none transition-all border border-primary/20">
                 <CardContent className="p-6">
                   <div className="flex items-center gap-1 mb-4">
                     {[...Array(testimonial.rating)].map((_, i) => (

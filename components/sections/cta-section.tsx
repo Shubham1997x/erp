@@ -49,7 +49,7 @@ export function CTASection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 text-white drop-shadow-lg"
+            className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 text-white"
           >
             Ready to Streamline Your Operations?
           </motion.h2>
@@ -72,7 +72,7 @@ export function CTASection() {
           >
             <Button
               size="lg"
-              className="group text-base px-8 py-6 bg-primary hover:bg-primary/90 text-white shadow-lg shadow-primary/30 hover:shadow-primary/40 transition-all duration-300"
+              className="group text-base px-8 py-6 bg-primary hover:bg-primary/90 text-white rounded-lg transition-all duration-300"
             >
               Start Free Trial
               <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
@@ -80,7 +80,7 @@ export function CTASection() {
             <Button
               size="lg"
               variant="outline"
-              className="text-base px-8 py-6 border-2 border-white/30 bg-transparent text-white hover:bg-white/20 hover:border-white/50 hover:text-white transition-all duration-300"
+              className="text-base px-8 py-6 border border-white/30 bg-transparent text-white hover:bg-white/20 hover:border-white/50 hover:text-white transition-all duration-300"
             >
               Schedule Demo
             </Button>

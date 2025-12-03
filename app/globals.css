@@ -67,12 +67,7 @@ body {
   font-weight: 400;
 }
 
-/* Remove all rounded corners globally */
-* {
-  border-radius: 0 !important;
-}
-
-/* Allow specific exceptions if needed (none for now) */
+/* Rounded corners are now allowed - use rounded-lg, rounded-xl, etc. in components */
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-serif), Georgia, serif;

@@ -118,7 +118,7 @@ export function RawMaterials() {
           transition={{ duration: 0.6 }}
           className="mb-20"
         >
-            <div className="relative bg-white border-2 border-primary/30 p-4 sm:p-6 lg:p-12">
+            <div className="relative bg-white border border-primary/30 rounded-lg p-4 sm:p-6 lg:p-12">
             {/* Dashboard & Analytics - Top Center */}
             <motion.div
               initial={{ opacity: 0, y: -20 }}
@@ -127,18 +127,18 @@ export function RawMaterials() {
               transition={{ duration: 0.5 }}
               className="flex justify-center mb-8"
             >
-              <div className="bg-[hsl(0_0%_98%)] border-2 border-amber-400/30 p-4 sm:p-6 max-w-md">
+              <div className="bg-[hsl(0_0%_98%)] border border-amber-400/30 rounded-lg p-4 sm:p-6 max-w-md">
                 <h3 className="text-xl font-semibold mb-4 text-center text-foreground">
                   Dashboard & Analytics
                 </h3>
                 <div className="grid grid-cols-2 gap-4">
-                  <div className="flex flex-col items-center p-4 bg-amber-500/10 border border-amber-400/20">
+                  <div className="flex flex-col items-center p-4 bg-amber-500/10 border border-amber-400/20 rounded-lg">
                     <BarChart3 className="h-8 w-8 text-amber-400 mb-2" />
                     <span className="text-sm font-normal text-foreground">
                       Dashboard
                     </span>
                   </div>
-                  <div className="flex flex-col items-center p-4 bg-amber-500/10 border border-amber-400/20">
+                  <div className="flex flex-col items-center p-4 bg-amber-500/10 border border-amber-400/20 rounded-lg">
                     <TrendingUp className="h-8 w-8 text-amber-400 mb-2" />
                     <span className="text-sm font-normal text-foreground">
                       Analytics
@@ -156,19 +156,19 @@ export function RawMaterials() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5 }}
-                className="bg-[hsl(0_0%_98%)] border-2 border-primary/20 p-4 sm:p-6 relative"
+                className="bg-[hsl(0_0%_98%)] border border-primary/20 rounded-lg p-4 sm:p-6 relative"
               >
                 <h3 className="text-xl font-semibold mb-4 text-foreground">
                   Procurement
                 </h3>
                 <div className="grid grid-cols-2 gap-4">
-                  <div className="flex flex-col items-center p-4 bg-primary/10 border border-primary/20">
+                  <div className="flex flex-col items-center p-4 bg-primary/10 border border-primary/20 rounded-lg">
                     <ShoppingCart className="h-8 w-8 text-primary mb-2" />
                     <span className="text-sm font-normal text-foreground">
                       Suppliers
                     </span>
                   </div>
-                  <div className="flex flex-col items-center p-4 bg-primary/10 border border-primary/20">
+                  <div className="flex flex-col items-center p-4 bg-primary/10 border border-primary/20 rounded-lg">
                     <Handshake className="h-8 w-8 text-primary mb-2" />
                     <span className="text-sm font-normal text-foreground">
                       Purchase Orders
@@ -187,7 +187,7 @@ export function RawMaterials() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.1 }}
-                className="bg-[hsl(0_0%_98%)] border-2 border-primary/30 p-6 relative"
+                className="bg-[hsl(0_0%_98%)] border border-primary/30 rounded-lg p-6 relative"
               >
                 <h3 className="text-xl font-semibold mb-4 text-foreground">
                   Raw Materials Inventory
@@ -202,7 +202,7 @@ export function RawMaterials() {
                         whileInView={{ opacity: 1, scale: 1 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.3, delay: 0.2 + index * 0.1 }}
-                        className={`flex flex-col items-center p-3 bg-gradient-to-br ${material.color} border ${material.borderColor}`}
+                        className={`flex flex-col items-center p-3 bg-gradient-to-br ${material.color} border ${material.borderColor} rounded-lg`}
                       >
                         <Icon
                           className={`h-6 w-6 ${material.iconColor} mb-1`}
@@ -234,12 +234,12 @@ export function RawMaterials() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.2 }}
-                className="bg-[hsl(0_0%_98%)] border-2 border-primary/20 p-6"
+                className="bg-[hsl(0_0%_98%)] border border-primary/20 rounded-lg p-6"
               >
                 <h3 className="text-xl font-semibold mb-4 text-foreground">
                   Production Ready
                 </h3>
-                <div className="flex flex-col items-center p-4 bg-primary/10 border border-primary/20">
+                <div className="flex flex-col items-center p-4 bg-primary/10 border border-primary/20 rounded-lg">
                   <Factory className="h-8 w-8 text-primary mb-2" />
                   <span className="text-sm font-normal text-foreground">
                     Materials Flow to Production
@@ -256,7 +256,7 @@ export function RawMaterials() {
               transition={{ duration: 0.5, delay: 0.3 }}
               className="flex justify-center"
             >
-              <div className="bg-[hsl(0_0%_98%)] border-2 border-primary/30 p-6 max-w-md">
+              <div className="bg-[hsl(0_0%_98%)] border border-primary/30 rounded-lg p-6 max-w-md">
                 <div className="flex items-center justify-center gap-4">
                   <Factory className="h-10 w-10 text-primary" />
                   <div>
@@ -314,21 +314,21 @@ export function RawMaterials() {
                     >
                       {/* Timeline Dot */}
                       <div className="hidden md:block absolute left-8 top-8 -translate-x-1/2 z-10">
-                        <div className="w-6 h-6 rounded-full bg-primary border-4 border-white shadow-lg"></div>
+                        <div className="w-6 h-6 rounded-full bg-primary border-4 border-white"></div>
                         <div className="absolute inset-0 rounded-full bg-primary/20 animate-ping"></div>
                       </div>
                       
                       {/* Content Card */}
-                      <div className={`md:ml-24 bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden border-2 border-primary/10 hover:border-primary/30 group`}>
+                      <div className={`md:ml-24 bg-white rounded-xl transition-all duration-300 overflow-hidden border border-primary/10 hover:border-primary/30 group`}>
                         <div className={`flex flex-col md:flex-row items-center ${isEven ? 'md:flex-row' : 'md:flex-row-reverse'} gap-6 p-4 sm:p-6`}>
                           {/* Icon Section */}
                           <div className="flex-shrink-0">
                             <div className="relative">
-                              <div className="w-24 h-24 rounded-2xl bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center border-2 border-primary/30 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
+                              <div className="w-24 h-24 rounded-2xl bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center border border-primary/30 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
                                 <Icon className="h-12 w-12 text-primary" />
                               </div>
                               {/* Step Number Badge */}
-                              <div className="absolute -top-2 -right-2 w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center text-xs font-bold shadow-md">
+                              <div className="absolute -top-2 -right-2 w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center text-xs font-bold">
                                 {index + 1}
                               </div>
                             </div>
@@ -367,10 +367,10 @@ export function RawMaterials() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="p-6 border-2 border-primary/20 hover:border-primary/40 transition-colors bg-white"
+                className="p-6 border border-primary/20 hover:border-primary/40 transition-colors bg-white rounded-lg"
               >
                 <div className="flex items-center gap-3 mb-3">
-                  <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center shrink-0 border-2 border-primary/20">
+                  <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center shrink-0 border border-primary/20">
                     <Icon className="h-5 w-5 text-primary" />
                   </div>
                   <h3 className="font-semibold text-base text-foreground">

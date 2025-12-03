@@ -55,9 +55,9 @@ export function DropdownMaster() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="p-6 border-2 border-primary/20 hover:border-primary/40 transition-all text-center bg-white shadow-md hover:shadow-lg"
+                className="p-6 border border-primary/20 hover:border-primary/40 transition-all text-center  rounded-lg"
               >
-                <div className="w-16 h-16 rounded-lg bg-primary/10 flex items-center justify-center mx-auto mb-4 border-2 border-primary/20">
+                <div className="w-16 h-16 rounded-lg  flex items-center justify-center mx-auto mb-4 border border-primary/20">
                   <Icon className="h-8 w-8 text-primary" />
                 </div>
                 <h3 className="text-base font-semibold mb-2 text-foreground">{type.title}</h3>
@@ -73,7 +73,7 @@ export function DropdownMaster() {
         <motion.div
           className="relative max-w-5xl mx-auto"
         >
-          <div className="relative bg-white border-2 border-primary/20 shadow-2xl overflow-hidden">
+          <div className="relative  border border-primary/20 rounded-lg overflow-hidden">
             <div className="absolute inset-0 bg-linear-to-br from-primary/5 to-transparent z-10 pointer-events-none"></div>
             <motion.div 
               className="relative w-full flex items-center justify-center p-1"
@@ -88,8 +88,8 @@ export function DropdownMaster() {
             </motion.div>
           </div>
           {/* Decorative accents */}
-          <div className="absolute -top-2 -right-2 w-24 h-24 bg-primary/10 border-2 border-primary/20 -z-10"></div>
-          <div className="absolute -bottom-2 -left-2 w-16 h-16 bg-primary/5 border-2 border-primary/20 -z-10"></div>
+          <div className="absolute -top-2 -right-2 w-24 h-24  border border-primary/20 -z-10"></div>
+          <div className="absolute -bottom-2 -left-2 w-16 h-16  border border-primary/20 -z-10"></div>
         </motion.div>
       </div>
     </section>

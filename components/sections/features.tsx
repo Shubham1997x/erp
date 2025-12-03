@@ -144,14 +144,14 @@ export function Features() {
             const Icon = feature.icon;
             return (
               <motion.div key={index} variants={itemVariants}>
-                <Card className="h-full hover:shadow-lg transition-shadow border-2 border-primary/20 hover:border-primary/40 bg-white">
-                  <CardHeader>
-                    <div className="w-12 h-12 rounded-lg bg-primary/20 flex items-center justify-center mb-4 border border-primary/30">
-                      <Icon className="h-6 w-6 text-primary" />
+                <Card className="h-full rounded-lg shadow-none transition-all border border-primary/20 hover:border-primary/40 ">
+                  <CardContent className="p-6">
+                    <div className="flex items-center gap-3 mb-3">
+                      <div className="w-14 h-14 rounded-lg bg-primary/20 flex items-center justify-center shrink-0 border border-primary/30">
+                        <Icon className="h-7 w-7 text-primary" />
+                      </div>
+                      <CardTitle className="text-lg font-semibold text-foreground">{feature.title}</CardTitle>
                     </div>
-                    <CardTitle className="text-lg font-medium text-foreground">{feature.title}</CardTitle>
-                  </CardHeader>
-                  <CardContent>
                     <CardDescription className="text-sm">
                       {feature.description}
                     </CardDescription>

@@ -39,7 +39,7 @@ export function StockManagement() {
           >
             <div className="space-y-6">
               <div className="flex items-start gap-5 justify-center lg:justify-start">
-                <div className="w-14 h-14 rounded-lg bg-primary/10 flex items-center justify-center shrink-0 border-2 border-primary/20">
+                <div className="w-14 h-14 rounded-lg bg-primary/10 flex items-center justify-center shrink-0 border border-primary/20">
                   <Warehouse className="h-7 w-7 text-primary" />
                 </div>
                 <div>
@@ -53,7 +53,7 @@ export function StockManagement() {
               </div>
 
               <div className="flex items-start gap-5">
-                <div className="w-14 h-14 rounded-lg bg-primary/10 flex items-center justify-center shrink-0 border-2 border-primary/20">
+                <div className="w-14 h-14 rounded-lg bg-primary/10 flex items-center justify-center shrink-0 border border-primary/20">
                   <AlertTriangle className="h-7 w-7 text-primary" />
                 </div>
                 <div>
@@ -67,7 +67,7 @@ export function StockManagement() {
               </div>
 
               <div className="flex items-start gap-5">
-                <div className="w-14 h-14 rounded-lg bg-primary/10 flex items-center justify-center shrink-0 border-2 border-primary/20">
+                <div className="w-14 h-14 rounded-lg bg-primary/10 flex items-center justify-center shrink-0 border border-primary/20">
                   <TrendingDown className="h-7 w-7 text-primary" />
                 </div>
                 <div>
@@ -79,7 +79,7 @@ export function StockManagement() {
               </div>
 
               <div className="flex items-start gap-5">
-                <div className="w-14 h-14 rounded-lg bg-primary/10 flex items-center justify-center shrink-0 border-2 border-primary/20">
+                <div className="w-14 h-14 rounded-lg bg-primary/10 flex items-center justify-center shrink-0 border border-primary/20">
                   <BarChart3 className="h-7 w-7 text-primary" />
                 </div>
                 <div>
@@ -103,7 +103,7 @@ export function StockManagement() {
             className="relative"
           >
             <motion.div 
-              className="relative bg-white border-2 border-primary/20 shadow-2xl overflow-hidden"
+              className="relative  border border-primary/20 rounded-lg overflow-hidden"
               whileHover={{ scale: 1.02 }}
               transition={{ duration: 0.3, ease: "easeOut" }}
             >
@@ -117,8 +117,8 @@ export function StockManagement() {
               </div>
             </motion.div>
             {/* Decorative accents */}
-            <div className="absolute -top-2 -right-2 w-24 h-24 bg-primary/10 border-2 border-primary/20 -z-10"></div>
-            <div className="absolute -bottom-2 -left-2 w-16 h-16 bg-primary/5 border-2 border-primary/20 -z-10"></div>
+            <div className="absolute -top-2 -right-2 w-24 h-24 bg-primary/10 border border-primary/20 -z-10"></div>
+            <div className="absolute -bottom-2 -left-2 w-16 h-16 bg-primary/5 border border-primary/20 -z-10"></div>
           </motion.div>
         </div>
       </div>

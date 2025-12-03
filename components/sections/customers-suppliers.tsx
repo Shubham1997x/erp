@@ -29,10 +29,10 @@ export function CustomersSuppliers() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="bg-white border-2 border-primary/20 rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow"
+            className=" border border-primary/20 rounded-lg p-6 transition-all"
           >
             <div className="flex items-center gap-4 mb-4">
-              <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center shrink-0 border-2 border-primary/20">
+              <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center shrink-0 border border-primary/20">
                 <Users className="h-6 w-6 text-primary" />
               </div>
               <h3 className="text-xl font-semibold text-foreground">Customer Management</h3>
@@ -65,10 +65,10 @@ export function CustomersSuppliers() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="bg-white border-2 border-primary/20 rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow"
+            className=" border border-primary/20 rounded-lg p-6 transition-all"
           >
             <div className="flex items-center gap-4 mb-4">
-              <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center shrink-0 border-2 border-primary/20">
+              <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center shrink-0 border border-primary/20">
                 <Building2 className="h-6 w-6 text-primary" />
               </div>
               <h3 className="text-xl font-semibold text-foreground">Supplier Management</h3>
@@ -105,7 +105,7 @@ export function CustomersSuppliers() {
           className="relative"
         >
           <motion.div 
-            className="relative bg-white border-2 border-primary/20 shadow-2xl overflow-hidden"
+            className="relative  border border-primary/20 rounded-lg overflow-hidden"
             whileHover={{ scale: 1.02 }}
             transition={{ duration: 0.3, ease: "easeOut" }}
           >
@@ -119,8 +119,8 @@ export function CustomersSuppliers() {
             </div>
           </motion.div>
           {/* Decorative accents */}
-          <div className="absolute -top-2 -right-2 w-24 h-24 bg-primary/10 border-2 border-primary/20 -z-10"></div>
-          <div className="absolute -bottom-2 -left-2 w-16 h-16 bg-primary/5 border-2 border-primary/20 -z-10"></div>
+          <div className="absolute -top-2 -right-2 w-24 h-24 bg-primary/10 border border-primary/20 -z-10"></div>
+          <div className="absolute -bottom-2 -left-2 w-16 h-16 bg-primary/5 border border-primary/20 -z-10"></div>
         </motion.div>
       </div>
     </section>

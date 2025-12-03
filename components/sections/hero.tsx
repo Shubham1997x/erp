@@ -28,7 +28,7 @@ export function Hero() {
         <div className="hidden sm:block absolute top-20 left-8 w-32 h-px bg-linear-to-r from-blue-500/30 to-transparent"></div>
         
         {/* Minimal circle - top right area - Smaller on mobile */}
-        <div className="absolute top-32 right-1/4 w-16 h-16 sm:w-24 sm:h-24 border-2 border-blue-500/25 rounded-full opacity-50 sm:opacity-100"></div>
+        <div className="absolute top-32 right-1/4 w-16 h-16 sm:w-24 sm:h-24 border border-blue-500/25 rounded-full opacity-50 sm:opacity-100"></div>
         
         {/* Subtle line accent - bottom left - Hidden on mobile */}
         <svg
@@ -46,11 +46,11 @@ export function Hero() {
         </svg>
 
         {/* Minimal geometric accent - center left - Hidden on mobile */}
-        <div className="hidden sm:block absolute top-1/2 left-16 w-16 h-16 border-2 border-blue-500/20 rotate-45"></div>
+        <div className="hidden sm:block absolute top-1/2 left-16 w-16 h-16 border border-blue-500/20 rotate-45"></div>
         
         {/* Subtle dot pattern - scattered - Smaller on mobile */}
-        <div className="absolute top-1/3 right-1/3 w-1.5 h-1.5 sm:w-2 sm:h-2 bg-blue-500/40 rounded-full"></div>
-        <div className="absolute top-2/3 left-1/4 w-1.5 h-1.5 sm:w-2 sm:h-2 bg-blue-500/40 rounded-full"></div>
+        <div className="absolute top-1/3 right-1/3 w-1.5 h-1.5 sm:w-2 sm:h-2  rounded-full"></div>
+        <div className="absolute top-2/3 left-1/4 w-1.5 h-1.5 sm:w-2 sm:h-2  rounded-full"></div>
       </div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-20">
@@ -62,7 +62,7 @@ export function Hero() {
             transition={{ duration: 0.6, ease: "easeOut" }}
             className="flex justify-center mb-12"
           >
-            <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-2 bg-blue-50 border-2 border-primary/20 shadow-sm">
+            <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-2  border border-primary/20 rounded-lg">
               <Shield className="h-3 w-3 sm:h-4 sm:w-4 text-primary shrink-0" />
               <span className="text-xs sm:text-sm font-medium text-primary text-center">
                 Trusted by 500+ Manufacturing Companies
@@ -139,7 +139,7 @@ export function Hero() {
               >
                 <Button
                   size="lg"
-                  className="group text-base px-8 py-6 bg-primary hover:bg-primary/90 text-white shadow-lg shadow-primary/30 hover:shadow-primary/40 transition-all duration-300 mx-auto sm:mx-0"
+                  className="group text-base px-8 py-6 bg-primary hover:bg-primary/90 text-white rounded-lg transition-all duration-300 mx-auto sm:mx-0"
                 >
                   Start Free Trial
                   <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
@@ -241,7 +241,7 @@ export function Hero() {
               >
                 <Button
                   size="lg"
-                  className="group text-base px-8 py-6 bg-primary hover:bg-primary/90 text-white shadow-lg shadow-primary/30 hover:shadow-primary/40 transition-all duration-300"
+                  className="group text-base px-8 py-6 bg-primary hover:bg-primary/90 text-white rounded-lg transition-all duration-300"
                 >
                   Start Free Trial
                   <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
@@ -299,7 +299,7 @@ export function Hero() {
                   }}
                   className="relative w-full max-w-[1000px] z-10"
                 >
-                  <div className="relative bg-white border-2 border-primary/20 shadow-2xl overflow-hidden">
+                  <div className="relative  border border-primary/20 rounded-lg overflow-hidden">
                     <div className="absolute inset-0 bg-linear-to-br from-primary/5 to-transparent z-10 pointer-events-none"></div>
                     <motion.div
                       className="relative w-full flex items-center justify-center p-2"
@@ -330,7 +330,7 @@ export function Hero() {
                     animate={{ opacity: 1, scale: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 1, ease: "easeOut" }}
                     whileHover={{ scale: 1.05, y: -5 }}
-                    className="absolute -top-4 -right-4 bg-primary text-white px-5 py-2.5 shadow-xl z-20 border-2 border-primary/30"
+                    className="absolute -top-4 -right-4 bg-primary text-white px-5 py-2.5 rounded-lg z-20 border border-primary/30"
                   >
                     <div className="flex items-center gap-2">
                       <TrendingUp className="h-4 w-4" />
@@ -341,13 +341,13 @@ export function Hero() {
                   </motion.div>
 
                   {/* Decorative corner accents */}
-                  <div className="absolute -top-2 -right-2 w-24 h-24 bg-primary/10 border-2 border-primary/20 -z-10"></div>
-                  <div className="absolute -bottom-2 -left-2 w-16 h-16 bg-primary/5 border-2 border-primary/20 -z-10"></div>
+                  <div className="absolute -top-2 -right-2 w-24 h-24  border border-primary/20 -z-10"></div>
+                  <div className="absolute -bottom-2 -left-2 w-16 h-16  border border-primary/20 -z-10"></div>
                 </motion.div>
 
                 {/* Decorative floating elements */}
                 <motion.div
-                  className="absolute top-20 -right-8 w-32 h-32 bg-primary/10 blur-3xl z-0"
+                  className="absolute top-20 -right-8 w-32 h-32  blur-3xl z-0"
                   animate={{
                     y: [0, -20, 0],
                     scale: [1, 1.1, 1],
@@ -359,7 +359,7 @@ export function Hero() {
                   }}
                 />
                 <motion.div
-                  className="absolute bottom-20 -left-8 w-40 h-40 bg-blue-200/20 blur-3xl z-0"
+                  className="absolute bottom-20 -left-8 w-40 h-40  blur-3xl z-0"
                   animate={{
                     y: [0, 20, 0],
                     scale: [1, 1.15, 1],

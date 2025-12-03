@@ -75,19 +75,10 @@ export function Navbar() {
   }, []);
 
   return (
-    <nav
-      className={`sticky top-0 z-50 w-full transition-all duration-300 ${
-        scrolled
-          ? "border-b border-primary/30 bg-white/98 backdrop-blur-md shadow-sm"
-          : "border-b border-primary/10 bg-white/95 backdrop-blur-sm"
-      }`}
-    >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex h-16 items-center justify-between">
-          <Link
-            href="/"
-            className="flex items-center gap-3 group"
-          >
+    <nav className="sticky top-0 z-50 w-full transition-all duration-300">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-3">
+        <div className="flex h-14 items-center justify-between border border-primary/20 rounded-lg px-6 bg-white">
+          <Link href="/" className="flex items-center gap-3 group">
             <div className="relative">
               <Image
                 src="/logo.svg"
@@ -144,18 +135,13 @@ export function Navbar() {
               );
             })}
             <div className="ml-4 pl-4 border-l border-primary/20">
-              <Button
-                size="sm"
-                className="bg-primary hover:bg-primary/90 text-white shadow-md hover:shadow-lg transition-all duration-300"
-              >
-                Request Demo
-              </Button>
+              <button className="bg-primary text-sm hover:bg-blue-600 cursor-pointer text-white rounded-xl transition-all px-4 py-2">Request Demo</button>
             </div>
           </div>
 
           {/* Mobile Menu Button */}
           <motion.button
-            className="lg:hidden p-2 rounded-lg hover:bg-primary/10 transition-colors"
+            className="lg:hidden p-2 rounded-lg border border-primary/20 hover:border-primary/40 transition-colors"
             onClick={() => setIsOpen(!isOpen)}
             aria-label="Toggle menu"
             whileTap={{ scale: 0.95 }}
@@ -195,7 +181,7 @@ export function Navbar() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="lg:hidden border-t border-primary/20 bg-white/98 backdrop-blur-md"
+            className="lg:hidden border border-primary/20 rounded-lg mt-2 mx-4"
           >
             <div className="container mx-auto px-4 py-6 space-y-2">
               {navLinks.map((link, index) => {
@@ -237,7 +223,7 @@ export function Navbar() {
                 transition={{ delay: navLinks.length * 0.05 }}
                 className="pt-4"
               >
-                <Button className="w-full bg-primary hover:bg-primary/90 text-white shadow-md">
+                <Button className="w-full bg-primary hover:bg-primary/90 text-white rounded-lg">
                   Request Demo
                 </Button>
               </motion.div>

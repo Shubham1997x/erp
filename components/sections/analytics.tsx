@@ -75,9 +75,9 @@ export function Analytics() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="p-6 border-2 border-primary/20 hover:border-primary/40 transition-colors bg-white"
+                className="p-6 border border-primary/20 hover:border-primary/40 transition-colors "
               >
-                <div className="w-12 h-12 rounded-lg bg-primary/20 flex items-center justify-center mb-4 border border-primary/30">
+                <div className="w-12 h-12 rounded-lg  flex items-center justify-center mb-4 border border-primary/30">
                   <Icon className="h-6 w-6 text-primary" />
                 </div>
                 <h3 className="text-base font-semibold mb-2 text-foreground">{feature.title}</h3>

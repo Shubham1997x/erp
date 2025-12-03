@@ -1,7 +1,13 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -33,7 +39,7 @@ export function Contact() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <Card className="bg-white border-primary/20">
+            <Card className=" border-primary/20">
               <CardHeader>
                 <CardTitle className="text-foreground">Get in Touch</CardTitle>
                 <CardDescription>
@@ -129,34 +135,40 @@ export function Contact() {
             transition={{ duration: 0.6 }}
             className="space-y-6"
           >
-            <Card className="bg-white border-primary/20">
+            <Card className=" border border-primary/20 rounded-lg shadow-none">
               <CardHeader>
-                <CardTitle className="text-foreground">Contact Information</CardTitle>
+                <CardTitle className="text-foreground">
+                  Contact Information
+                </CardTitle>
                 <CardDescription>
                   Contact us through any of these channels.
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-lg bg-primary/20 flex items-center justify-center shrink-0 border border-primary/30">
+                  <div className="w-10 h-10 rounded-lg  flex items-center justify-center shrink-0 border border-primary/30">
                     <Mail className="h-5 w-5 text-primary" />
                   </div>
                   <div>
-                    <div className="font-semibold mb-1 text-foreground">Email</div>
+                    <div className="font-semibold mb-1 text-foreground">
+                      Email
+                    </div>
                     <a
-                      href="mailto:info@rajdhanierp.com"
+                      href="mailto:info@wantace.com"
                       className="text-primary hover:underline"
                     >
-                      info@rajdhanierp.com
+                      info@wantace.com
                     </a>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-lg bg-primary/20 flex items-center justify-center shrink-0 border border-primary/30">
+                  <div className="w-10 h-10 rounded-lg  flex items-center justify-center shrink-0 border border-primary/30">
                     <Phone className="h-5 w-5 text-primary" />
                   </div>
                   <div>
-                    <div className="font-semibold mb-1 text-foreground">Phone</div>
+                    <div className="font-semibold mb-1 text-foreground">
+                      Phone
+                    </div>
                     <a
                       href="tel:+911234567890"
                       className="text-primary hover:underline"
@@ -166,11 +178,13 @@ export function Contact() {
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-lg bg-primary/20 flex items-center justify-center shrink-0 border border-primary/30">
+                  <div className="w-10 h-10 rounded-lg  flex items-center justify-center shrink-0 border border-primary/30">
                     <MapPin className="h-5 w-5 text-primary" />
                   </div>
                   <div>
-                    <div className="font-semibold mb-1 text-foreground">Address</div>
+                    <div className="font-semibold mb-1 text-foreground">
+                      Address
+                    </div>
                     <p className="text-muted-foreground">
                       123 Business Park, Industrial Area
                       <br />
@@ -183,7 +197,7 @@ export function Contact() {
               </CardContent>
             </Card>
 
-            <Card className="bg-primary/20 border-primary/30">
+            <Card className=" border border-primary/30 rounded-lg shadow-none">
               <CardContent className="p-6">
                 <h3 className="font-semibold text-lg mb-2 text-foreground">
                   Why Schedule a Demo?
@@ -214,4 +228,3 @@ export function Contact() {
     </section>
   );
 }
-

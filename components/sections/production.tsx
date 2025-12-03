@@ -60,10 +60,10 @@ export function Production() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="p-6 border-2 border-primary/20 hover:border-primary/40 transition-all bg-white shadow-md hover:shadow-lg"
+                className="p-6 border border-primary/20 hover:border-primary/40 transition-all  rounded-lg"
               >
                 <div className="flex items-center gap-3 mb-3 justify-center md:justify-start">
-                  <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center shrink-0 border-2 border-primary/20">
+                  <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center shrink-0 border border-primary/20">
                     <Icon className="h-5 w-5 text-primary" />
                   </div>
                   <h3 className="font-semibold text-base text-foreground">{feature.title}</h3>
@@ -96,7 +96,7 @@ export function Production() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-white border-2 border-primary/20 shadow-lg hover:shadow-xl transition-all group flex flex-col h-full"
+                className=" border border-primary/20 rounded-lg transition-all group flex flex-col h-full"
               >
                 <div className="p-4 border-b-2 border-primary/10">
                   <div className="flex items-center gap-3">

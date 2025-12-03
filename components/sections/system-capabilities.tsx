@@ -78,9 +78,9 @@ export function SystemCapabilities() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.4, delay: index * 0.1 }}
-                  className="flex items-center gap-4 p-4 border border-primary/20 hover:border-primary/40 transition-colors bg-white justify-center md:justify-start"
+                  className="flex items-center gap-4 p-4 border border-primary/20 hover:border-primary/40 transition-colors  rounded-lg justify-center md:justify-start"
                 >
-                  <div className="w-10 h-10 rounded-lg bg-primary/20 flex items-center justify-center shrink-0 border border-primary/30">
+                  <div className="w-10 h-10 rounded-lg  flex items-center justify-center shrink-0 border border-primary/30">
                     <Icon className="h-5 w-5 text-primary" />
                   </div>
                   <span className="font-medium text-foreground">{cap.name}</span>
@@ -107,9 +107,9 @@ export function SystemCapabilities() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.4, delay: index * 0.1 }}
-                  className="flex items-center gap-4 p-4 border border-primary/20 hover:border-primary/40 transition-colors bg-white justify-center md:justify-start"
+                  className="flex items-center gap-4 p-4 border border-primary/20 hover:border-primary/40 transition-colors  rounded-lg justify-center md:justify-start"
                 >
-                  <div className="w-10 h-10 rounded-lg bg-primary/20 flex items-center justify-center shrink-0 border border-primary/30">
+                  <div className="w-10 h-10 rounded-lg  flex items-center justify-center shrink-0 border border-primary/30">
                     <Icon className="h-5 w-5 text-primary" />
                   </div>
                   <span className="font-medium text-foreground">{cap.name}</span>
@@ -136,9 +136,9 @@ export function SystemCapabilities() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.4, delay: index * 0.1 }}
-                  className="flex items-center gap-4 p-4 border border-primary/20 hover:border-primary/40 transition-colors bg-white justify-center md:justify-start"
+                  className="flex items-center gap-4 p-4 border border-primary/20 hover:border-primary/40 transition-colors  rounded-lg justify-center md:justify-start"
                 >
-                  <div className="w-10 h-10 rounded-lg bg-primary/20 flex items-center justify-center shrink-0 border border-primary/30">
+                  <div className="w-10 h-10 rounded-lg  flex items-center justify-center shrink-0 border border-primary/30">
                     <Icon className="h-5 w-5 text-primary" />
                   </div>
                   <span className="font-medium text-foreground">{cap.name}</span>

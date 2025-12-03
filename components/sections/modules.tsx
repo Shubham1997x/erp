@@ -32,7 +32,6 @@ const modules = [
       "Stock valuation and costing",
       "Material requirement planning (MRP)",
     ],
-    color: "from-blue-500 to-cyan-500",
   },
   {
     icon: Cog,
@@ -46,7 +45,6 @@ const modules = [
       "Production tracking and monitoring",
       "Waste and defect management",
     ],
-    color: "from-purple-500 to-pink-500",
   },
   {
     icon: FileText,
@@ -60,7 +58,6 @@ const modules = [
       "Sales analytics and forecasting",
       "Delivery and shipping management",
     ],
-    color: "from-green-500 to-emerald-500",
   },
   {
     icon: DollarSign,
@@ -74,7 +71,6 @@ const modules = [
       "Tax management and compliance",
       "Budget planning and control",
     ],
-    color: "from-orange-500 to-red-500",
   },
   {
     icon: UserCheck,
@@ -88,7 +84,6 @@ const modules = [
       "Performance appraisals",
       "Training and development",
     ],
-    color: "from-indigo-500 to-blue-500",
   },
   {
     icon: LineChart,
@@ -102,7 +97,6 @@ const modules = [
       "Data visualization",
       "Export and sharing capabilities",
     ],
-    color: "from-teal-500 to-cyan-500",
   },
   {
     icon: CheckCircle2,
@@ -116,7 +110,6 @@ const modules = [
       "Supplier quality management",
       "Compliance documentation",
     ],
-    color: "from-yellow-500 to-orange-500",
   },
   {
     icon: Package2,
@@ -130,7 +123,6 @@ const modules = [
       "Logistics and transportation",
       "Supplier performance tracking",
     ],
-    color: "from-rose-500 to-pink-500",
   },
 ];
 
@@ -158,21 +150,19 @@ export function Modules() {
                 key={index}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
-                <Card className="h-full hover:shadow-xl transition-all duration-300 border-2 hover:border-primary/30 group">
-                  <CardHeader>
-                    <div
-                      className={`w-14 h-14 rounded-xl bg-linear-to-br ${module.color} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}
-                    >
-                      <Icon className="h-7 w-7 text-white" />
+                <Card className="h-full rounded-lg shadow-none transition-all duration-300 border border-primary/20 hover:border-primary/40  group">
+                  <CardContent className="p-6">
+                    <div className="flex items-center gap-3 mb-3">
+                      <div className="w-14 h-14 rounded-lg bg-primary/20 flex items-center justify-center shrink-0 border border-primary/30 group-hover:scale-110 transition-transform">
+                        <Icon className="h-7 w-7 text-primary" />
+                      </div>
+                      <CardTitle className="text-xl font-semibold">
+                        {module.title}
+                      </CardTitle>
                     </div>
-                    <CardTitle className="text-xl mb-2">
-                      {module.title}
-                    </CardTitle>
-                    <CardDescription className="text-sm">
+                    <CardDescription className="text-sm mb-4">
                       {module.description}
                     </CardDescription>
-                  </CardHeader>
-                  <CardContent>
                     <ul className="space-y-2">
                       {module.features.map((feature, idx) => (
                         <li

@@ -82,14 +82,18 @@ const benefits = [
 
 export function Benefits() {
   return (
-    <section className="py-24 bg-white relative isolation-isolate">
+    <section className="py-24  relative isolation-isolate">
       <div className="relative z-10">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
           <h2 className="text-2xl sm:text-3xl font-semibold mb-4 text-foreground">
-            Why Choose Rajdhani ERP?
+            Why Choose Carpet ERP?
           </h2>
           <p className="text-sm sm:text-base text-muted-foreground max-w-2xl mx-auto">
             Built specifically for carpet manufacturing excellence.
@@ -102,20 +106,23 @@ export function Benefits() {
             return (
               <motion.div
                 key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
-                <Card className="h-full hover:shadow-lg transition-all border-2 border-primary/20 hover:border-primary/40 group bg-white">
-                  <CardHeader>
-                    <div className="w-12 h-12 rounded-lg bg-primary/20 flex items-center justify-center mb-4 group-hover:bg-primary/30 transition-colors border border-primary/30">
-                      <Icon className="h-6 w-6 text-primary" />
+                <Card className="h-full rounded-lg shadow-none transition-all border border-primary/20 hover:border-primary/40 group ">
+                  <CardContent className="p-6">
+                    <div className="flex items-center gap-3 mb-3">
+                      <div className="w-14 h-14 rounded-lg  flex items-center justify-center shrink-0 border border-primary/30  transition-colors">
+                        <Icon className="h-7 w-7 text-primary" />
+                      </div>
+                      <CardTitle className="text-lg font-semibold text-foreground">{benefit.title}</CardTitle>
                     </div>
-                    <CardTitle className="text-lg font-medium mb-2 text-foreground">{benefit.title}</CardTitle>
-                  </CardHeader>
-                  <CardContent>
                     <p className="text-sm text-muted-foreground mb-4">
                       {benefit.description}
                     </p>
-                    <div className="pt-4 border-t">
+                    <div className="pt-4 border-t border-primary/10">
                       <div className="text-3xl font-bold text-primary mb-1">
                         {benefit.stat}
                       </div>
@@ -131,9 +138,13 @@ export function Benefits() {
         </div>
 
         <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
           className="mt-16 text-center"
         >
-          <div className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-primary/10 text-primary">
+          <div className="inline-flex items-center gap-2 px-6 py-3 rounded-full  text-primary border border-primary/20">
             <CheckCircle2 className="h-5 w-5" />
             <span className="font-medium">
               Trusted by 500+ carpet manufacturing companies

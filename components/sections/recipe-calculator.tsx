@@ -30,9 +30,9 @@ export function RecipeCalculator() {
           transition={{ duration: 0.6 }}
           className="mb-10"
         >
-          <div className="bg-white border-2 border-primary/20 rounded-lg p-6 shadow-md max-w-4xl mx-auto">
+          <div className=" border border-primary/20 rounded-lg p-6 max-w-4xl mx-auto">
             <div className="flex items-center gap-4 mb-6">
-              <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center shrink-0 border-2 border-primary/20">
+              <div className="w-12 h-12 rounded-lg  flex items-center justify-center shrink-0 border border-primary/20">
                 <Calculator className="h-6 w-6 text-primary" />
               </div>
               <h3 className="text-xl font-semibold text-foreground">
@@ -93,7 +93,7 @@ export function RecipeCalculator() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-white border-2 border-primary/20 shadow-lg hover:shadow-xl transition-all group flex flex-col h-full"
+                className=" border border-primary/20 rounded-lg transition-all group flex flex-col h-full"
               >
                 <div className="p-4 border-b-2 border-primary/10">
                   <div className="flex items-center gap-3">
