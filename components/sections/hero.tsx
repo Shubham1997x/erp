@@ -18,17 +18,17 @@ export function Hero() {
       <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(37,99,235,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(37,99,235,0.02)_1px,transparent_1px)] bg-size-[4rem_4rem]"></div>
 
       {/* Soft Gradient Orbs - Professional Blue - Smaller on mobile */}
-      <div className="absolute top-0 right-0 w-[300px] h-[300px] sm:w-[400px] sm:h-[400px] lg:w-[600px] lg:h-[600px] bg-linear-to-br from-blue-50 to-transparent opacity-50 blur-3xl"></div>
-      <div className="absolute bottom-0 left-0 w-[250px] h-[250px] sm:w-[350px] sm:h-[350px] lg:w-[500px] lg:h-[500px] bg-linear-to-tr from-blue-50 to-transparent opacity-40 blur-3xl"></div>
+      <div className="absolute top-0 right-0 w-[300px] h-[300px] sm:w-[400px] sm:h-[400px] lg:w-[600px] lg:h-[600px] bg-linear-to-br from-primary/10 to-transparent opacity-50 blur-3xl"></div>
+      <div className="absolute bottom-0 left-0 w-[250px] h-[250px] sm:w-[350px] sm:h-[350px] lg:w-[500px] lg:h-[500px] bg-linear-to-tr from-primary/10 to-transparent opacity-40 blur-3xl"></div>
 
       {/* Minimal Background Shapes - Strategically Placed */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden z-[5]">
         {/* Subtle corner accent - top left - Hidden on mobile */}
-        <div className="hidden sm:block absolute top-20 left-8 w-px h-32 bg-linear-to-b from-blue-500/30 to-transparent"></div>
-        <div className="hidden sm:block absolute top-20 left-8 w-32 h-px bg-linear-to-r from-blue-500/30 to-transparent"></div>
+        <div className="hidden sm:block absolute top-20 left-8 w-px h-32 bg-linear-to-b from-primary/30 to-transparent"></div>
+        <div className="hidden sm:block absolute top-20 left-8 w-32 h-px bg-linear-to-r from-primary/30 to-transparent"></div>
         
         {/* Minimal circle - top right area - Smaller on mobile */}
-        <div className="absolute top-32 right-1/4 w-16 h-16 sm:w-24 sm:h-24 border border-blue-500/25 rounded-full opacity-50 sm:opacity-100"></div>
+        <div className="absolute top-32 right-1/4 w-16 h-16 sm:w-24 sm:h-24 border border-primary/25 rounded-full opacity-50 sm:opacity-100"></div>
         
         {/* Subtle line accent - bottom left - Hidden on mobile */}
         <svg
@@ -38,7 +38,7 @@ export function Hero() {
         >
           <path
             d="M 0 1 L 200 1"
-            stroke="rgb(37, 99, 235)"
+            stroke="hsl(var(--primary))"
             strokeWidth="1.5"
             strokeDasharray="4 4"
             opacity="0.4"
@@ -46,7 +46,7 @@ export function Hero() {
         </svg>
 
         {/* Minimal geometric accent - center left - Hidden on mobile */}
-        <div className="hidden sm:block absolute top-1/2 left-16 w-16 h-16 border border-blue-500/20 rotate-45"></div>
+        <div className="hidden sm:block absolute top-1/2 left-16 w-16 h-16 border border-primary/20 rotate-45"></div>
         
         {/* Subtle dot pattern - scattered - Smaller on mobile */}
         <div className="absolute top-1/3 right-1/3 w-1.5 h-1.5 sm:w-2 sm:h-2  rounded-full"></div>

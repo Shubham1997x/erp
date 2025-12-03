@@ -52,9 +52,9 @@ const materialTypes = [
   {
     icon: Layers,
     name: "Yarn",
-    color: "from-blue-500/20 to-blue-600/20",
-    borderColor: "border-blue-400/40",
-    iconColor: "text-blue-400",
+    color: "from-primary/20 to-primary/30",
+    borderColor: "border-primary/40",
+    iconColor: "text-primary",
   },
   {
     icon: Droplet,
@@ -118,7 +118,7 @@ export function RawMaterials() {
           transition={{ duration: 0.6 }}
           className="mb-20"
         >
-            <div className="relative bg-white border border-primary/30 rounded-lg p-4 sm:p-6 lg:p-12">
+          <div className="relative border border-primary/30 rounded-lg p-4 sm:p-6 lg:p-12">
             {/* Dashboard & Analytics - Top Center */}
             <motion.div
               initial={{ opacity: 0, y: -20 }}
@@ -292,39 +292,43 @@ export function RawMaterials() {
               Procurement Workflow
             </h2>
             <p className="text-base text-muted-foreground max-w-3xl mx-auto px-4">
-              From automated alerts to real-time inventory updates - a seamless procurement journey
+              From automated alerts to real-time inventory updates - a seamless
+              procurement journey
             </p>
           </motion.div>
-          
+
           {/* Vertical Timeline Design */}
           <div className="max-w-4xl mx-auto">
             <div className="relative">
               {/* Vertical Timeline Line */}
-              <div className="hidden md:block absolute left-8 top-0 bottom-0 w-1 bg-gradient-to-b from-primary/20 via-primary/40 to-primary/20"></div>
-              
+              <div className="hidden md:block absolute left-8 top-0 bottom-0 w-1 bg-linear-to-b from-primary/20 via-primary/40 to-primary/20"></div>
+
               <div className="space-y-8">
                 {workflowSteps.map((step, index) => {
                   const Icon = step.icon;
                   const isEven = index % 2 === 0;
-                  
+
                   return (
-                    <motion.div
-                      key={index}
-                      className="relative"
-                    >
+                    <motion.div key={index} className="relative">
                       {/* Timeline Dot */}
                       <div className="hidden md:block absolute left-8 top-8 -translate-x-1/2 z-10">
                         <div className="w-6 h-6 rounded-full bg-primary border-4 border-white"></div>
                         <div className="absolute inset-0 rounded-full bg-primary/20 animate-ping"></div>
                       </div>
-                      
+
                       {/* Content Card */}
-                      <div className={`md:ml-24 bg-white rounded-xl transition-all duration-300 overflow-hidden border border-primary/10 hover:border-primary/30 group`}>
-                        <div className={`flex flex-col md:flex-row items-center ${isEven ? 'md:flex-row' : 'md:flex-row-reverse'} gap-6 p-4 sm:p-6`}>
+                      <div
+                        className={`md:ml-24 rounded-xl transition-all duration-300 overflow-hidden border border-primary/10 hover:border-primary/30 group`}
+                      >
+                        <div
+                          className={`flex flex-col md:flex-row items-center ${
+                            isEven ? "md:flex-row" : "md:flex-row-reverse"
+                          } gap-6 p-4 sm:p-6`}
+                        >
                           {/* Icon Section */}
-                          <div className="flex-shrink-0">
+                          <div className="shrink-0">
                             <div className="relative">
-                              <div className="w-24 h-24 rounded-2xl bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center border border-primary/30 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
+                              <div className="w-24 h-24 rounded-2xl bg-linear-to-br from-primary/20 to-primary/10 flex items-center justify-center border border-primary/30 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
                                 <Icon className="h-12 w-12 text-primary" />
                               </div>
                               {/* Step Number Badge */}
@@ -333,7 +337,7 @@ export function RawMaterials() {
                               </div>
                             </div>
                           </div>
-                          
+
                           {/* Text Content */}
                           <div className="flex-1 text-center md:text-left w-full">
                             <h4 className="text-xl font-bold mb-2 text-foreground group-hover:text-primary transition-colors">
@@ -344,9 +348,9 @@ export function RawMaterials() {
                             </p>
                           </div>
                         </div>
-                        
+
                         {/* Progress Bar Effect */}
-                        <div className="h-1 bg-gradient-to-r from-primary/20 via-primary/40 to-primary/20 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
+                        <div className="h-1 bg-linear-to-r from-primary/20 via-primary/40 to-primary/20 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
                       </div>
                     </motion.div>
                   );
@@ -367,7 +371,7 @@ export function RawMaterials() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="p-6 border border-primary/20 hover:border-primary/40 transition-colors bg-white rounded-lg"
+                className="p-6 border border-primary/20 hover:border-primary/40 transition-colors  rounded-lg"
               >
                 <div className="flex items-center gap-3 mb-3">
                   <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center shrink-0 border border-primary/20">
@@ -377,7 +381,9 @@ export function RawMaterials() {
                     {feature.title}
                   </h3>
                 </div>
-                <p className="text-sm text-muted-foreground">{feature.description}</p>
+                <p className="text-sm text-muted-foreground">
+                  {feature.description}
+                </p>
               </motion.div>
             );
           })}

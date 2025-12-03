@@ -135,7 +135,7 @@ export function Navbar() {
               );
             })}
             <div className="ml-4 pl-4 border-l border-primary/20">
-              <button className="bg-primary text-sm hover:bg-blue-600 cursor-pointer text-white rounded-xl transition-all px-4 py-2">Request Demo</button>
+              <button className="bg-primary text-sm hover:bg-primary/90 cursor-pointer text-white rounded-lg transition-all px-4 py-2">Request Demo</button>
             </div>
           </div>
 
