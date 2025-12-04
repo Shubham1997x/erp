@@ -18,7 +18,8 @@ export function CustomersSuppliers() {
             Customer & Supplier Management
           </h2>
           <p className="text-base text-muted-foreground max-w-3xl mx-auto">
-            Manage customers and suppliers with relationship tracking and credit management.
+            Manage customers and suppliers with relationship tracking and credit
+            management.
           </p>
         </motion.div>
 
@@ -35,25 +36,33 @@ export function CustomersSuppliers() {
               <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center shrink-0 border border-primary/20">
                 <Users className="h-6 w-6 text-primary" />
               </div>
-              <h3 className="text-xl font-semibold text-foreground">Customer Management</h3>
+              <h3 className="text-xl font-semibold text-foreground">
+                Customer Management
+              </h3>
             </div>
             <div className="space-y-4">
               <div className="flex items-start gap-3">
                 <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0"></div>
                 <div className="text-sm">
-                  <strong className="text-foreground">Customer Database:</strong> Complete customer profiles with contact information and preferences
+                  <strong className="text-foreground">
+                    Customer Database:
+                  </strong>{" "}
+                  Complete customer profiles with contact information and
+                  preferences
                 </div>
               </div>
               <div className="flex items-start gap-3">
                 <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0"></div>
                 <div className="text-sm">
-                  <strong className="text-foreground">Credit Limits:</strong> Set and monitor credit limits with automatic alerts
+                  <strong className="text-foreground">Credit Limits:</strong>{" "}
+                  Set and monitor credit limits with automatic alerts
                 </div>
               </div>
               <div className="flex items-start gap-3">
                 <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0"></div>
                 <div className="text-sm">
-                  <strong className="text-foreground">Order History:</strong> Complete transaction history with order and payment tracking
+                  <strong className="text-foreground">Order History:</strong>{" "}
+                  Complete transaction history with order and payment tracking
                 </div>
               </div>
             </div>
@@ -71,25 +80,36 @@ export function CustomersSuppliers() {
               <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center shrink-0 border border-primary/20">
                 <Building2 className="h-6 w-6 text-primary" />
               </div>
-              <h3 className="text-xl font-semibold text-foreground">Supplier Management</h3>
+              <h3 className="text-xl font-semibold text-foreground">
+                Supplier Management
+              </h3>
             </div>
             <div className="space-y-4">
               <div className="flex items-start gap-3">
                 <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0"></div>
                 <div className="text-sm">
-                  <strong className="text-foreground">Supplier Database:</strong> Complete supplier information with contact details and certifications
+                  <strong className="text-foreground">
+                    Supplier Database:
+                  </strong>{" "}
+                  Complete supplier information with contact details and
+                  certifications
                 </div>
               </div>
               <div className="flex items-start gap-3">
                 <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0"></div>
                 <div className="text-sm">
-                  <strong className="text-foreground">Purchase History:</strong> Track purchase orders, delivery performance, and payment terms
+                  <strong className="text-foreground">Purchase History:</strong>{" "}
+                  Track purchase orders, delivery performance, and payment terms
                 </div>
               </div>
               <div className="flex items-start gap-3">
                 <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0"></div>
                 <div className="text-sm">
-                  <strong className="text-foreground">Performance Tracking:</strong> Monitor supplier performance including delivery times and quality ratings
+                  <strong className="text-foreground">
+                    Performance Tracking:
+                  </strong>{" "}
+                  Monitor supplier performance including delivery times and
+                  quality ratings
                 </div>
               </div>
             </div>
@@ -104,7 +124,7 @@ export function CustomersSuppliers() {
           transition={{ duration: 0.6 }}
           className="relative"
         >
-          <motion.div 
+          <motion.div
             className="relative  border border-primary/20 rounded-lg overflow-hidden"
             whileHover={{ scale: 1.02 }}
             transition={{ duration: 0.3, ease: "easeOut" }}
@@ -118,12 +138,8 @@ export function CustomersSuppliers() {
               />
             </div>
           </motion.div>
-          {/* Decorative accents */}
-          <div className="absolute -top-2 -right-2 w-24 h-24 bg-primary/10 border border-primary/20 -z-10"></div>
-          <div className="absolute -bottom-2 -left-2 w-16 h-16 bg-primary/5 border border-primary/20 -z-10"></div>
         </motion.div>
       </div>
     </section>
   );
 }
-

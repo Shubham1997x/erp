@@ -12,20 +12,55 @@ export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
 
   const navLinks = [
-    { name: "Dashboard", href: "#dashboard", id: "dashboard", priority: "high" },
-    { name: "Products", href: "#product-recipe", id: "product-recipe", priority: "high" },
-    { name: "Raw Materials", href: "#raw-materials", id: "raw-materials", priority: "medium" },
-    { name: "Orders", href: "#order-management", id: "order-management", priority: "high" },
-    { name: "Production", href: "#production", id: "production", priority: "high" },
+    {
+      name: "Dashboard",
+      href: "#dashboard",
+      id: "dashboard",
+      priority: "high",
+    },
+    {
+      name: "Products",
+      href: "#product-recipe",
+      id: "product-recipe",
+      priority: "high",
+    },
+    {
+      name: "Raw Materials",
+      href: "#raw-materials",
+      id: "raw-materials",
+      priority: "medium",
+    },
+    {
+      name: "Orders",
+      href: "#order-management",
+      id: "order-management",
+      priority: "high",
+    },
+    {
+      name: "Production",
+      href: "#production",
+      id: "production",
+      priority: "high",
+    },
     {
       name: "Customers",
       href: "#customers-suppliers",
       id: "customers-suppliers",
       priority: "medium",
     },
-    { name: "Stock", href: "#stock-management", id: "stock-management", priority: "medium" },
+    {
+      name: "Stock",
+      href: "#stock-management",
+      id: "stock-management",
+      priority: "medium",
+    },
     { name: "Analytics", href: "#analytics", id: "analytics", priority: "low" },
-    { name: "Calculator", href: "#recipe-calculator", id: "recipe-calculator", priority: "low" },
+    {
+      name: "Calculator",
+      href: "#recipe-calculator",
+      id: "recipe-calculator",
+      priority: "low",
+    },
     { name: "Contact", href: "#contact", id: "contact", priority: "low" },
   ];
 
@@ -78,7 +113,10 @@ export function Navbar() {
     <nav className="sticky top-0 z-50 w-full transition-all duration-300">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-3">
         <div className="flex h-14 items-center justify-between border border-primary/20 rounded-lg px-2 sm:px-4 lg:px-6 bg-white overflow-hidden">
-          <Link href="/" className="flex items-center gap-2 sm:gap-3 group shrink-0 min-w-0">
+          <Link
+            href="/"
+            className="flex items-center gap-2 sm:gap-3 group shrink-0 min-w-0"
+          >
             <div className="relative shrink-0">
               <Image
                 src="/logo.svg"
@@ -136,7 +174,7 @@ export function Navbar() {
                   </motion.div>
                 );
               })}
-            
+
             {/* Medium priority links - visible on xl+ */}
             {navLinks
               .filter((link) => link.priority === "medium")
@@ -172,7 +210,7 @@ export function Navbar() {
                   </motion.div>
                 );
               })}
-            
+
             {/* Low priority links - visible on 2xl+ */}
             {navLinks
               .filter((link) => link.priority === "low")
@@ -208,9 +246,11 @@ export function Navbar() {
                   </motion.div>
                 );
               })}
-            
+
             <div className="ml-1 xl:ml-2 2xl:ml-4 pl-1 xl:pl-2 2xl:pl-4 border-l border-primary/20 shrink-0">
-              <button className="bg-primary text-xs lg:text-sm hover:bg-primary/90 cursor-pointer text-white rounded-lg transition-all px-2 lg:px-3 xl:px-4 py-2 whitespace-nowrap">Request Demo</button>
+              <button className="bg-primary text-xs lg:text-sm hover:bg-primary/90 cursor-pointer text-white rounded-lg transition-all px-2 lg:px-3 xl:px-4 py-2 whitespace-nowrap">
+                Request Demo
+              </button>
             </div>
           </div>
 
@@ -251,34 +291,76 @@ export function Navbar() {
       {/* Mobile Navigation */}
       <AnimatePresence>
         {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="lg:hidden border border-primary/20 rounded-lg mt-2 mx-4"
-          >
-            <div className="container mx-auto px-4 py-6 space-y-2">
-              {navLinks.map((link, index) => {
-                const isActive = activeSection === link.id;
-                return (
-                  <motion.div
-                    key={link.name}
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: index * 0.05 }}
-                  >
-                    <Link
-                      href={link.href}
-                      className={`relative block text-sm font-medium transition-all duration-300 group py-3 px-4 rounded-lg ${
-                        isActive
-                          ? "text-primary bg-primary/10"
-                          : "text-muted-foreground hover:text-foreground hover:bg-primary/5"
-                      }`}
-                      onClick={() => setIsOpen(false)}
+          <>
+            {/* Backdrop */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              className="fixed inset-0 bg-black/50 z-40 lg:hidden"
+              onClick={() => setIsOpen(false)}
+            />
+            {/* Sidebar */}
+            <motion.div
+              initial={{ x: "100%", opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              exit={{ x: "100%", opacity: 0 }}
+              transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
+              className="fixed right-0 top-0 h-full w-full bg-white z-50 lg:hidden shadow-xl overflow-y-auto [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:bg-white [&::-webkit-scrollbar-thumb]:bg-gray-200 [&::-webkit-scrollbar-thumb]:rounded-full hover:[&::-webkit-scrollbar-thumb]:bg-gray-300"
+            >
+              {/* Header with Logo and Close Button */}
+              <div className="flex items-center justify-between p-4 border-b border-primary/20">
+                <Link href="/" className="flex items-center gap-3 group" onClick={() => setIsOpen(false)}>
+                  <div className="relative">
+                    <Image
+                      src="/logo.svg"
+                      alt="Carpet ERP Logo"
+                      width={32}
+                      height={32}
+                      className="h-8 w-8 group-hover:scale-110 transition-transform duration-300"
+                      priority
+                    />
+                  </div>
+                  <div className="flex flex-col">
+                    <span className="font-semibold text-base text-foreground leading-tight">
+                      Carpet ERP
+                    </span>
+                    <span className="text-xs text-muted-foreground leading-tight">
+                      by Wantace
+                    </span>
+                  </div>
+                </Link>
+                <button
+                  onClick={() => setIsOpen(false)}
+                  className="p-2 rounded-full hover:bg-muted transition-colors"
+                  aria-label="Close menu"
+                >
+                  <X className="h-5 w-5 text-foreground" />
+                </button>
+              </div>
+
+              {/* Navigation Links */}
+              <div className="p-4 space-y-1">
+                {navLinks.map((link, index) => {
+                  const isActive = activeSection === link.id;
+                  return (
+                    <motion.div
+                      key={link.name}
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: index * 0.05 }}
                     >
-                      <span className="relative z-10 flex items-center justify-between">
-                        {link.name}
+                      <Link
+                        href={link.href}
+                        className={`relative flex items-center justify-between text-sm font-medium transition-all duration-300 group py-3 px-4 rounded-lg ${
+                          isActive
+                            ? "text-primary bg-primary/10"
+                            : "text-muted-foreground hover:text-foreground hover:bg-primary/5"
+                        }`}
+                        onClick={() => setIsOpen(false)}
+                      >
+                        <span>{link.name}</span>
                         {isActive && (
                           <motion.span
                             className="h-2 w-2 bg-primary rounded-full"
@@ -287,23 +369,23 @@ export function Navbar() {
                             transition={{ duration: 0.2 }}
                           />
                         )}
-                      </span>
-                    </Link>
-                  </motion.div>
-                );
-              })}
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: navLinks.length * 0.05 }}
-                className="pt-4"
-              >
-                <button className="w-full inline-flex items-center justify-center bg-primary hover:bg-primary/90 text-white rounded-lg transition-all duration-300 px-4 py-2 font-medium cursor-pointer">
+                      </Link>
+                    </motion.div>
+                  );
+                })}
+              </div>
+
+              {/* Request Demo Button */}
+              <div className="p-4 border-t border-primary/20 mt-auto">
+                <button
+                  onClick={() => setIsOpen(false)}
+                  className="w-full inline-flex items-center justify-center bg-primary hover:bg-primary/90 text-white rounded-lg transition-all duration-300 px-4 py-3 font-medium cursor-pointer"
+                >
                   Request Demo
                 </button>
-              </motion.div>
-            </div>
-          </motion.div>
+              </div>
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
     </nav>

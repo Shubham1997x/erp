@@ -13,6 +13,25 @@ import {
 export function Hero() {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[hsl(0_0%_96%)]">
+      {/* Background Image with Opacity */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{
+          backgroundImage: 'url(https://images.unsplash.com/photo-1524661135-423995f22fa0?w=1920&q=80)',
+        }}
+      >
+        <div className="absolute inset-0 bg-[hsl(0_0%_96%)]/85"></div>
+      </div>
+
+      {/* Centered Small Background Image */}
+      <div className="absolute top-10 right-10 inset-0 flex items-start justify-center pointer-events-none z-1">
+        <img 
+          src="/images/bg.jpg" 
+          alt="Background" 
+          className="w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96 object-contain opacity-30"
+        />
+      </div>
+      
       {/* Subtle Background Pattern - Zoho Style */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(37,99,235,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(37,99,235,0.02)_1px,transparent_1px)] bg-size-[4rem_4rem]"></div>
 
