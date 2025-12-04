@@ -14,10 +14,11 @@ export function Hero() {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[hsl(0_0%_96%)]">
       {/* Background Image with Opacity */}
-      <div 
+      <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: 'url(https://images.unsplash.com/photo-1524661135-423995f22fa0?w=1920&q=80)',
+          backgroundImage:
+            "url(https://images.unsplash.com/photo-1524661135-423995f22fa0?w=1920&q=80)",
         }}
       >
         <div className="absolute inset-0 bg-[hsl(0_0%_96%)]/85"></div>
@@ -25,13 +26,13 @@ export function Hero() {
 
       {/* Centered Small Background Image */}
       <div className="absolute top-10 right-10 inset-0 flex items-start justify-center pointer-events-none z-1">
-        <img 
-          src="/images/bg.jpg" 
-          alt="Background" 
+        <img
+          src="/images/bg.png"
+          alt="Background"
           className="w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96 object-contain opacity-30"
         />
       </div>
-      
+
       {/* Subtle Background Pattern - Zoho Style */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(37,99,235,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(37,99,235,0.02)_1px,transparent_1px)] bg-size-[4rem_4rem]"></div>
 
@@ -44,10 +45,10 @@ export function Hero() {
         {/* Subtle corner accent - top left - Hidden on mobile */}
         <div className="hidden sm:block absolute top-20 left-8 w-px h-32 bg-linear-to-b from-primary/30 to-transparent"></div>
         <div className="hidden sm:block absolute top-20 left-8 w-32 h-px bg-linear-to-r from-primary/30 to-transparent"></div>
-        
+
         {/* Minimal circle - top right area - Smaller on mobile */}
         <div className="absolute top-32 right-1/4 w-16 h-16 sm:w-24 sm:h-24 border border-primary/25 rounded-full opacity-50 sm:opacity-100"></div>
-        
+
         {/* Subtle line accent - bottom left - Hidden on mobile */}
         <svg
           className="hidden sm:block absolute bottom-32 left-12 w-40 h-1"
@@ -65,7 +66,7 @@ export function Hero() {
 
         {/* Minimal geometric accent - center left - Hidden on mobile */}
         <div className="hidden sm:block absolute top-1/2 left-16 w-16 h-16 border border-primary/20 rotate-45"></div>
-        
+
         {/* Subtle dot pattern - scattered - Smaller on mobile */}
         <div className="absolute top-1/3 right-1/3 w-1.5 h-1.5 sm:w-2 sm:h-2  rounded-full"></div>
         <div className="absolute top-2/3 left-1/4 w-1.5 h-1.5 sm:w-2 sm:h-2  rounded-full"></div>
@@ -143,7 +144,9 @@ export function Hero() {
                     className="flex items-center gap-3 justify-center w-full max-w-md mx-auto"
                   >
                     <CheckCircle2 className="h-6 w-6 text-primary shrink-0" />
-                    <span className="text-base text-foreground text-center flex-1">{feature}</span>
+                    <span className="text-base text-foreground text-center flex-1">
+                      {feature}
+                    </span>
                   </motion.div>
                 ))}
               </motion.div>
