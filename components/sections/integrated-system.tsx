@@ -31,41 +31,73 @@ export function IntegratedSystem() {
         >
           <div className="feature-image-container p-12">
             <div className="text-center mb-8">
-              <div className="w-20 h-20 rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-4">
+              <motion.div
+                whileHover={{ scale: 1.1, rotate: 5 }}
+                className="w-20 h-20 rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-4 border border-primary/20 transition-all"
+              >
                 <Network className="h-10 w-10 text-primary" />
-              </div>
+              </motion.div>
               <h3 className="text-xl font-semibold mb-4 text-foreground">
                 Integrated Ecosystem Flow
               </h3>
               <p className="text-muted-foreground">
-                Placeholder for system integration diagram
+                Seamless data flow across all modules
               </p>
             </div>
 
             {/* Simplified Flow Visualization */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="text-center p-6 bg-white border border-primary/20">
-                <h4 className="font-semibold mb-2 text-foreground">Input</h4>
-                <div className="space-y-2 text-sm text-muted-foreground">
-                  <div>Procurement</div>
-                  <div>Customers</div>
-                </div>
-              </div>
-              <div className="text-center p-6 bg-primary/20 border border-primary/30">
-                <h4 className="font-semibold mb-2 text-foreground">Core Operations</h4>
-                <div className="space-y-2 text-sm text-muted-foreground">
-                  <div>Raw Materials</div>
-                  <div>Production</div>
-                  <div>Finished Goods</div>
-                </div>
-              </div>
-              <div className="text-center p-6 bg-white border border-primary/20">
-                <h4 className="font-semibold mb-2 text-foreground">Output</h4>
-                <div className="space-y-2 text-sm text-muted-foreground">
-                  <div>Fulfillment</div>
-                  <div>Delivery</div>
-                </div>
-              </div>
+              {[
+                {
+                  title: "Input",
+                  items: ["Procurement", "Customers"],
+                  bg: "bg-white",
+                  border: "border-primary/20",
+                },
+                {
+                  title: "Core Operations",
+                  items: ["Raw Materials", "Production", "Finished Goods"],
+                  bg: "bg-primary/10",
+                  border: "border-primary/30",
+                  highlight: true,
+                },
+                {
+                  title: "Output",
+                  items: ["Fulfillment", "Delivery"],
+                  bg: "bg-white",
+                  border: "border-primary/20",
+                },
+              ].map((step, idx) => (
+                <motion.div
+                  key={idx}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: idx * 0.1 }}
+                  whileHover={{ scale: 1.05, y: -5 }}
+                  className={`text-center p-6 ${step.bg} border ${step.border} rounded-lg transition-all hover:shadow-lg ${
+                    step.highlight ? "ring-2 ring-primary/20" : ""
+                  }`}
+                >
+                  <h4 className="font-semibold mb-4 text-foreground text-lg">
+                    {step.title}
+                  </h4>
+                  <div className="space-y-3">
+                    {step.items.map((item, itemIdx) => (
+                      <motion.div
+                        key={itemIdx}
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: idx * 0.1 + itemIdx * 0.05 }}
+                        className="text-sm text-muted-foreground px-3 py-2 rounded-md hover:bg-primary/5 transition-colors"
+                      >
+                        {item}
+                      </motion.div>
+                    ))}
+                  </div>
+                </motion.div>
+              ))}
             </div>
           </div>
         </motion.div>

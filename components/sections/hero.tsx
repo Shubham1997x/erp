@@ -9,30 +9,11 @@ import {
   TrendingUp,
   Users,
 } from "lucide-react";
+import { Globe } from "@/components/ui/features-section-demo-3";
 
 export function Hero() {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[hsl(0_0%_96%)]">
-      {/* Background Image with Opacity */}
-      <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{
-          backgroundImage:
-            "url(https://images.unsplash.com/photo-1524661135-423995f22fa0?w=1920&q=80)",
-        }}
-      >
-        <div className="absolute inset-0 bg-[hsl(0_0%_96%)]/85"></div>
-      </div>
-
-      {/* Centered Small Background Image */}
-      <div className="absolute top-10 right-10 inset-0 flex items-start justify-center pointer-events-none z-1">
-        <img
-          src="/images/bg.png"
-          alt="Background"
-          className="w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96 object-contain opacity-30"
-        />
-      </div>
-
       {/* Subtle Background Pattern - Zoho Style */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(37,99,235,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(37,99,235,0.02)_1px,transparent_1px)] bg-size-[4rem_4rem]"></div>
 
@@ -40,14 +21,21 @@ export function Hero() {
       <div className="absolute top-0 right-0 w-[300px] h-[300px] sm:w-[400px] sm:h-[400px] lg:w-[600px] lg:h-[600px] bg-linear-to-br from-primary/10 to-transparent opacity-50 blur-3xl"></div>
       <div className="absolute bottom-0 left-0 w-[250px] h-[250px] sm:w-[350px] sm:h-[350px] lg:w-[500px] lg:h-[500px] bg-linear-to-tr from-primary/10 to-transparent opacity-40 blur-3xl"></div>
 
+      {/* Centered Globe */}
+      <motion.div
+        initial={{ opacity: 0.3, scale: 0.8 }}
+        animate={{ opacity: 0.9, scale: 1 }}
+        transition={{ duration: 1.5, delay: 0.5, ease: "easeOut" }}
+        className="absolute top-24 right-30 inset-0 flex items-top justify-center pointer-events-none z-3"
+      >
+        <Globe />
+      </motion.div>
+
       {/* Minimal Background Shapes - Strategically Placed */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden z-[5]">
+      <div className="absolute inset-0 pointer-events-none overflow-hidden z-5">
         {/* Subtle corner accent - top left - Hidden on mobile */}
         <div className="hidden sm:block absolute top-20 left-8 w-px h-32 bg-linear-to-b from-primary/30 to-transparent"></div>
         <div className="hidden sm:block absolute top-20 left-8 w-32 h-px bg-linear-to-r from-primary/30 to-transparent"></div>
-
-        {/* Minimal circle - top right area - Smaller on mobile */}
-        <div className="absolute top-32 right-1/4 w-16 h-16 sm:w-24 sm:h-24 border border-primary/25 rounded-full opacity-50 sm:opacity-100"></div>
 
         {/* Subtle line accent - bottom left - Hidden on mobile */}
         <svg

@@ -144,18 +144,25 @@ export function Features() {
             {features.map((feature, index) => {
               const Icon = feature.icon;
               return (
-                <motion.div key={index} variants={itemVariants}>
-                  <Card className="h-full bg-trasparent rounded-lg shadow-none transition-all border border-primary/20 hover:border-primary/40 ">
+                <motion.div
+                  key={index}
+                  variants={itemVariants}
+                  whileHover={{ y: -5 }}
+                >
+                  <Card className="h-full bg-white rounded-lg shadow-sm transition-all border border-primary/20 hover:border-primary/40 hover:shadow-lg hover:shadow-primary/5 group">
                     <CardContent className="p-6">
-                      <div className="flex items-center gap-3 mb-3">
-                        <div className="w-14 h-14 rounded-lg bg-primary/20 flex items-center justify-center shrink-0 border border-primary/30">
+                      <div className="flex items-center gap-3 mb-4">
+                        <motion.div
+                          whileHover={{ scale: 1.1, rotate: 5 }}
+                          className="w-14 h-14 rounded-lg bg-primary/10 flex items-center justify-center shrink-0 border border-primary/30 transition-all group-hover:bg-primary/20"
+                        >
                           <Icon className="h-7 w-7 text-primary" />
-                        </div>
-                        <CardTitle className="text-lg font-semibold text-foreground">
+                        </motion.div>
+                        <CardTitle className="text-lg font-semibold text-foreground group-hover:text-primary transition-colors">
                           {feature.title}
                         </CardTitle>
                       </div>
-                      <CardDescription className="text-sm">
+                      <CardDescription className="text-sm leading-relaxed">
                         {feature.description}
                       </CardDescription>
                     </CardContent>

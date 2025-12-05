@@ -111,27 +111,48 @@ export function Benefits() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
-                <Card className="h-full rounded-lg shadow-none transition-all border border-primary/20 hover:border-primary/40 group ">
-                  <CardContent className="p-6">
-                    <div className="flex items-center gap-3 mb-3">
-                      <div className="w-14 h-14 rounded-lg  flex items-center justify-center shrink-0 border border-primary/30  transition-colors">
-                        <Icon className="h-7 w-7 text-primary" />
+                <motion.div whileHover={{ y: -8 }}>
+                  <Card className="h-full bg-white rounded-lg shadow-sm transition-all border border-primary/20 hover:border-primary/40 hover:shadow-xl hover:shadow-primary/5 group">
+                    <CardContent className="p-6">
+                      <div className="flex items-center gap-3 mb-4">
+                        <motion.div
+                          whileHover={{ scale: 1.15, rotate: 5 }}
+                          className="w-14 h-14 rounded-lg bg-primary/10 flex items-center justify-center shrink-0 border border-primary/30 transition-all group-hover:bg-primary/20 group-hover:border-primary/40"
+                        >
+                          <Icon className="h-7 w-7 text-primary" />
+                        </motion.div>
+                        <CardTitle className="text-lg font-semibold text-foreground group-hover:text-primary transition-colors">
+                          {benefit.title}
+                        </CardTitle>
                       </div>
-                      <CardTitle className="text-lg font-semibold text-foreground">{benefit.title}</CardTitle>
-                    </div>
-                    <p className="text-sm text-muted-foreground mb-4">
-                      {benefit.description}
-                    </p>
-                    <div className="pt-4 border-t border-primary/10">
-                      <div className="text-3xl font-bold text-primary mb-1">
-                        {benefit.stat}
-                      </div>
-                      <div className="text-xs text-muted-foreground uppercase tracking-wide">
-                        {benefit.statLabel}
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
+                      <p className="text-sm text-muted-foreground mb-5 leading-relaxed">
+                        {benefit.description}
+                      </p>
+                      <motion.div
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: index * 0.1 + 0.3 }}
+                        className="pt-4 border-t border-primary/10"
+                      >
+                        <motion.div
+                          className="text-3xl font-bold text-primary mb-1"
+                          animate={{ scale: [1, 1.05, 1] }}
+                          transition={{
+                            duration: 2,
+                            repeat: Infinity,
+                            delay: index * 0.2,
+                          }}
+                        >
+                          {benefit.stat}
+                        </motion.div>
+                        <div className="text-xs text-muted-foreground uppercase tracking-wide font-medium">
+                          {benefit.statLabel}
+                        </div>
+                      </motion.div>
+                    </CardContent>
+                  </Card>
+                </motion.div>
               </motion.div>
             );
           })}
@@ -144,12 +165,15 @@ export function Benefits() {
           transition={{ duration: 0.6 }}
           className="mt-16 text-center"
         >
-          <div className="inline-flex items-center gap-2 px-6 py-3 rounded-full  text-primary border border-primary/20">
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-primary/5 text-primary border border-primary/30 hover:border-primary/40 hover:bg-primary/10 transition-all shadow-sm"
+          >
             <CheckCircle2 className="h-5 w-5" />
             <span className="font-medium">
               Trusted by 500+ carpet manufacturing companies
             </span>
-          </div>
+          </motion.div>
         </motion.div>
       </div>
       </div>
