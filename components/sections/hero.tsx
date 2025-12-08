@@ -18,21 +18,23 @@ export function Hero() {
       <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(37,99,235,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(37,99,235,0.02)_1px,transparent_1px)] bg-size-[4rem_4rem]"></div>
 
       {/* Soft Gradient Orbs - Professional Blue - Smaller on mobile */}
-      <div className="absolute top-0 right-0 w-[300px] h-[300px] sm:w-[400px] sm:h-[400px] lg:w-[600px] lg:h-[600px] bg-linear-to-br from-primary/10 to-transparent opacity-50 blur-3xl"></div>
-      <div className="absolute bottom-0 left-0 w-[250px] h-[250px] sm:w-[350px] sm:h-[350px] lg:w-[500px] lg:h-[500px] bg-linear-to-tr from-primary/10 to-transparent opacity-40 blur-3xl"></div>
+      <div className="absolute top-0 right-0 w-[200px] h-[200px] sm:w-[400px] sm:h-[400px] lg:w-[600px] lg:h-[600px] bg-linear-to-br from-primary/10 to-transparent opacity-50 blur-3xl"></div>
+      <div className="absolute bottom-0 left-0 w-[150px] h-[150px] sm:w-[350px] sm:h-[350px] lg:w-[500px] lg:h-[500px] bg-linear-to-tr from-primary/10 to-transparent opacity-40 blur-3xl"></div>
 
-      {/* Centered Globe */}
+      {/* Centered Globe - Hidden on mobile, visible on larger screens */}
       <motion.div
         initial={{ opacity: 0.3, scale: 0.8 }}
         animate={{ opacity: 0.9, scale: 1 }}
         transition={{ duration: 1.5, delay: 0.5, ease: "easeOut" }}
-        className="absolute top-24 right-30 inset-0 flex items-top justify-center pointer-events-none z-3"
+        className="hidden md:flex absolute top-24 left-0 right-0 items-start justify-center pointer-events-none z-10"
       >
-        <Globe />
+        <div className="scale-75 lg:scale-100">
+          <Globe />
+        </div>
       </motion.div>
 
       {/* Minimal Background Shapes - Strategically Placed */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden z-5">
+      <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
         {/* Subtle corner accent - top left - Hidden on mobile */}
         <div className="hidden sm:block absolute top-20 left-8 w-px h-32 bg-linear-to-b from-primary/30 to-transparent"></div>
         <div className="hidden sm:block absolute top-20 left-8 w-32 h-px bg-linear-to-r from-primary/30 to-transparent"></div>
@@ -60,18 +62,18 @@ export function Hero() {
         <div className="absolute top-2/3 left-1/4 w-1.5 h-1.5 sm:w-2 sm:h-2  rounded-full"></div>
       </div>
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-20">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-12 sm:py-16 lg:py-20">
         <div className="max-w-7xl mx-auto">
           {/* Badge - Centered */}
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
-            className="flex justify-center mb-12"
+            className="flex justify-center mb-8 sm:mb-10 lg:mb-12"
           >
-            <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-2  border border-primary/20 rounded-lg">
+            <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 border border-primary/20 rounded-lg max-w-[90%] sm:max-w-none">
               <Shield className="h-3 w-3 sm:h-4 sm:w-4 text-primary shrink-0" />
-              <span className="text-xs sm:text-sm font-medium text-primary text-center">
+              <span className="text-[10px] xs:text-xs sm:text-sm font-medium text-primary text-center leading-tight">
                 Trusted by 500+ Manufacturing Companies
               </span>
             </div>
@@ -83,14 +85,14 @@ export function Hero() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
-              className="w-full max-w-2xl mx-auto flex flex-col items-center space-y-6 sm:space-y-8"
+              className="w-full max-w-2xl mx-auto flex flex-col items-center space-y-4 sm:space-y-6 lg:space-y-8"
             >
               {/* Main Heading */}
               <motion.h1
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-                className="text-4xl sm:text-5xl font-bold tracking-tight leading-tight text-center"
+                className="text-3xl xs:text-4xl sm:text-5xl font-bold tracking-tight leading-tight text-center px-2"
               >
                 <span className="text-foreground">Complete ERP Solution</span>
                 <br />
@@ -102,7 +104,7 @@ export function Hero() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
-                className="text-base sm:text-lg text-muted-foreground leading-relaxed text-center px-4"
+                className="text-sm sm:text-base lg:text-lg text-muted-foreground leading-relaxed text-center px-4 sm:px-6"
               >
                 Streamline your entire manufacturing workflow—from raw materials
                 to finished products—with real-time insights, automated
@@ -144,11 +146,11 @@ export function Hero() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.7, ease: "easeOut" }}
-                className="flex flex-col sm:flex-row gap-4 pt-4 w-full justify-center items-center"
+                className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-4 w-full justify-center items-center px-4"
               >
-                <button className="group inline-flex items-center justify-center text-base font-medium px-8 py-6 bg-primary hover:bg-primary/90 text-white rounded-lg transition-all duration-300 mx-auto sm:mx-0 hover:scale-105 hover:shadow-xl active:scale-100 cursor-pointer">
+                <button className="group inline-flex items-center justify-center text-sm sm:text-base font-medium px-6 sm:px-8 py-4 sm:py-6 bg-primary hover:bg-primary/90 text-white rounded-lg transition-all duration-300 w-full sm:w-auto hover:scale-105 hover:shadow-xl active:scale-100 cursor-pointer">
                   Start Free Trial
-                  <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
+                  <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5 group-hover:translate-x-1 transition-transform duration-300" />
                 </button>
               </motion.div>
 
@@ -157,19 +159,19 @@ export function Hero() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.9, ease: "easeOut" }}
-                className="pt-6 border-t-2 border-primary/10 w-full"
+                className="pt-4 sm:pt-6 border-t-2 border-primary/10 w-full px-4"
               >
-                <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-xs sm:text-sm text-muted-foreground">
-                  <div className="flex items-center gap-2">
-                    <Shield className="h-4 w-4 sm:h-5 sm:w-5 text-primary shrink-0" />
+                <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 lg:gap-6 text-[10px] xs:text-xs sm:text-sm text-muted-foreground">
+                  <div className="flex items-center gap-1.5 sm:gap-2">
+                    <Shield className="h-3 w-3 sm:h-4 sm:w-4 lg:h-5 lg:w-5 text-primary shrink-0" />
                     <span className="font-medium">99.9% Uptime</span>
                   </div>
-                  <div className="flex items-center gap-2">
-                    <Users className="h-4 w-4 sm:h-5 sm:w-5 text-primary shrink-0" />
+                  <div className="flex items-center gap-1.5 sm:gap-2">
+                    <Users className="h-3 w-3 sm:h-4 sm:w-4 lg:h-5 lg:w-5 text-primary shrink-0" />
                     <span className="font-medium">500+ Active Users</span>
                   </div>
-                  <div className="flex items-center gap-2">
-                    <TrendingUp className="h-4 w-4 sm:h-5 sm:w-5 text-primary shrink-0" />
+                  <div className="flex items-center gap-1.5 sm:gap-2">
+                    <TrendingUp className="h-3 w-3 sm:h-4 sm:w-4 lg:h-5 lg:w-5 text-primary shrink-0" />
                     <span className="font-medium">40% Efficiency Gain</span>
                   </div>
                 </div>
@@ -381,7 +383,7 @@ export function Hero() {
       </div>
 
       {/* Bottom Gradient Fade */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-linear-to-t from-white to-transparent pointer-events-none"></div>
+      <div className="absolute bottom-0 left-0 right-0 h-16 sm:h-24 lg:h-32 bg-linear-to-t from-white to-transparent pointer-events-none"></div>
     </section>
   );
 }
