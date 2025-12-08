@@ -38,7 +38,7 @@ export function Contact() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <Card className=" border-primary/20">
+            <Card className=" border-primary/20 rounded-lg">
               <CardHeader>
                 <CardTitle className="text-foreground">Get in Touch</CardTitle>
                 <CardDescription>

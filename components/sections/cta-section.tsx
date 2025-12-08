@@ -37,7 +37,7 @@ export function CTASection() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="inline-flex items-center gap-2 px-4 py-2 bg-primary/20 border border-primary/40 mb-6"
+            className="inline-flex items-center gap-2 px-4 py-2 bg-primary/20 border border-primary/40 mb-6 rounded-md"
           >
             <Sparkles className="h-4 w-4 text-primary brightness-125" />
             <span className="text-sm font-medium text-primary brightness-125">Transform Your Manufacturing</span>
