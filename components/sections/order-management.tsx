@@ -103,29 +103,28 @@ export function OrderManagement() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: index * 0.1 }}
-                className=" border border-primary/20 rounded-lg transition-all group flex flex-col h-full"
+                className="border border-primary/20 rounded-lg transition-all group flex flex-col h-full bg-white shadow-sm hover:shadow-md"
               >
-                <div className="p-3 border-b-2 border-primary/10">
+                <div className="p-4 border-b border-primary/10 shrink-0">
                   <div className="flex items-center gap-3">
-                    <div className="bg-primary text-primary-foreground px-2.5 py-1 font-bold text-sm shrink-0">
+                    <div className="bg-primary text-primary-foreground px-3 py-1.5 font-bold text-sm rounded shrink-0 min-w-8 text-center">
                       {item.step}
                     </div>
-                    <div className="flex-1">
-                      <h4 className="font-semibold text-sm text-foreground">{item.title}</h4>
-                      <p className="text-xs text-muted-foreground mt-0.5">{item.desc}</p>
+                    <div className="flex-1 min-w-0">
+                      <h4 className="font-semibold text-base text-foreground leading-tight">{item.title}</h4>
+                      <p className="text-xs text-muted-foreground mt-1 leading-relaxed">{item.desc}</p>
                     </div>
                   </div>
                 </div>
                 <motion.div 
-                  className="relative bg-linear-to-br from-muted/50 to-white overflow-auto"
-                  whileHover={{ scale: 1.02 }}
+                  className="relative bg-linear-to-br from-muted/30 to-white overflow-hidden flex-1 flex items-center justify-center min-h-[200px] sm:min-h-[240px] md:min-h-[280px]"
                   transition={{ duration: 0.3, ease: "easeOut" }}
                 >
-                  <div className="relative w-full flex items-center justify-center p-1">
+                  <div className="relative w-full h-full flex items-center justify-center p-3">
                     <img
                       src={item.image}
                       alt={item.title}
-                      className="w-auto h-auto max-w-full block"
+                      className="w-full h-full object-contain max-w-full max-h-full"
                     />
                   </div>
                 </motion.div>

@@ -104,7 +104,6 @@ export function StockManagement() {
           >
             <motion.div 
               className="relative  border border-primary/20 rounded-lg overflow-hidden"
-              whileHover={{ scale: 1.02 }}
               transition={{ duration: 0.3, ease: "easeOut" }}
             >
               <div className="absolute inset-0 bg-linear-to-br from-primary/5 to-transparent z-10 pointer-events-none"></div>

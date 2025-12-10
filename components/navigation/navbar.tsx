@@ -61,6 +61,7 @@ export function Navbar() {
       id: "recipe-calculator",
       priority: "low",
     },
+    { name: "Pricing", href: "#pricing", id: "pricing", priority: "high" },
     { name: "Contact", href: "#contact", id: "contact", priority: "low" },
   ];
 

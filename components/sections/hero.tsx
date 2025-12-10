@@ -39,21 +39,6 @@ export function Hero() {
         <div className="hidden sm:block absolute top-20 left-8 w-px h-32 bg-linear-to-b from-primary/30 to-transparent"></div>
         <div className="hidden sm:block absolute top-20 left-8 w-32 h-px bg-linear-to-r from-primary/30 to-transparent"></div>
 
-        {/* Subtle line accent - bottom left - Hidden on mobile */}
-        <svg
-          className="hidden sm:block absolute bottom-32 left-12 w-40 h-1"
-          viewBox="0 0 200 2"
-          fill="none"
-        >
-          <path
-            d="M 0 1 L 200 1"
-            stroke="hsl(var(--primary))"
-            strokeWidth="1.5"
-            strokeDasharray="4 4"
-            opacity="0.4"
-          />
-        </svg>
-
         {/* Minimal geometric accent - center left - Hidden on mobile */}
         <div className="hidden sm:block absolute top-1/2 left-16 w-16 h-16 border border-primary/20 rotate-45"></div>
 
@@ -63,7 +48,7 @@ export function Hero() {
       </div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-12 sm:py-16 lg:py-20">
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-[2500px] mx-auto">
           {/* Badge - Centered */}
           <motion.div
             initial={{ opacity: 0, y: -20 }}
@@ -282,27 +267,19 @@ export function Hero() {
               initial={{ opacity: 0, x: 50, scale: 0.9 }}
               animate={{ opacity: 1, x: 0, scale: 1 }}
               transition={{ duration: 1, delay: 0.3, ease: "easeOut" }}
-              className="relative hidden lg:block"
+              className="relative hidden lg:block overflow-visible"
             >
               <div className="relative flex items-center justify-center w-full">
                 {/* Dashboard Image - SaaS Style */}
                 <motion.div
-                  initial={{ opacity: 0, scale: 0.95, y: 30 }}
+                  initial={{ opacity: 0, scale: 1, y: 30 }}
                   animate={{ opacity: 1, scale: 1, y: 0 }}
                   transition={{
                     duration: 1,
                     delay: 0.5,
                     ease: [0.16, 1, 0.3, 1],
                   }}
-                  whileHover={{
-                    scale: 1.02,
-                    y: -8,
-                    transition: {
-                      duration: 0.4,
-                      ease: [0.25, 0.46, 0.45, 0.94],
-                    },
-                  }}
-                  className="relative w-full max-w-[1000px] z-10"
+                  className="relative w-full max-w-[1300px] z-10"
                 >
                   <div className="relative  border border-primary/20 rounded-lg overflow-hidden">
                     <div className="absolute inset-0 bg-linear-to-br from-primary/5 to-transparent z-10 pointer-events-none"></div>

@@ -149,7 +149,7 @@ export function Features() {
                   variants={itemVariants}
                   whileHover={{ y: -5 }}
                 >
-                  <Card className="h-full bg-white rounded-lg shadow-sm transition-all border border-primary/20 hover:border-primary/40 hover:shadow-lg hover:shadow-primary/5 group">
+                  <Card className="h-full bg-transparent rounded-lg shadow-sm transition-all border border-primary/20 hover:border-primary/40 hover:shadow-lg hover:shadow-primary/5 group">
                     <CardContent className="p-6">
                       <div className="flex items-center gap-3 mb-4">
                         <motion.div
