@@ -126,10 +126,13 @@ export function Features() {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h2 className="text-2xl sm:text-3xl font-semibold mb-4 text-foreground">
+            <div className="inline-flex items-center px-4 py-1.5 bg-primary/10 text-primary text-sm font-medium rounded-full mb-4">
+              Features
+            </div>
+            <h2 className="text-5xl font-normal tracking-tight leading-tight mb-6 text-foreground">
               Comprehensive ERP Features
             </h2>
-            <p className="text-sm sm:text-base text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-base sm:text-lg lg:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
               Complete ERP solution for carpet manufacturing operations.
             </p>
           </motion.div>

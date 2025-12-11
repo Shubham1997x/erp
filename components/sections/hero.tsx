@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import {
   ArrowRight,
   CheckCircle2,
@@ -10,12 +11,28 @@ import {
   Users,
 } from "lucide-react";
 import { Globe } from "@/components/ui/features-section-demo-3";
+import { useToast } from "@/components/ui/toast";
+import { trackEvent } from "@/components/analytics";
 
 export function Hero() {
+  const { showToast } = useToast();
+
+  const handleCTAClick = () => {
+    trackEvent("cta_click", {
+      button_text: "Start Free Trial",
+      location: "hero",
+    });
+    showToast(
+      "Thank you for your interest! We'll be in touch soon.",
+      "success",
+      3000
+    );
+  };
+
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[hsl(0_0%_96%)]">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-muted">
       {/* Subtle Background Pattern - Zoho Style */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(37,99,235,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(37,99,235,0.02)_1px,transparent_1px)] bg-size-[4rem_4rem]"></div>
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--primary)/0.02)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--primary)/0.02)_1px,transparent_1px)] bg-size-[4rem_4rem]"></div>
 
       {/* Soft Gradient Orbs - Professional Blue - Smaller on mobile */}
       <div className="absolute top-0 right-0 w-[200px] h-[200px] sm:w-[400px] sm:h-[400px] lg:w-[600px] lg:h-[600px] bg-linear-to-br from-primary/10 to-transparent opacity-50 blur-3xl"></div>
@@ -77,7 +94,7 @@ export function Hero() {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-                className="text-3xl xs:text-4xl sm:text-5xl font-bold tracking-tight leading-tight text-center px-2"
+                className="text-3xl xs:text-4xl sm:text-5xl  tracking-tight leading-tight text-center px-2"
               >
                 <span className="text-foreground">Complete ERP Solution</span>
                 <br />
@@ -133,9 +150,16 @@ export function Hero() {
                 transition={{ duration: 0.6, delay: 0.7, ease: "easeOut" }}
                 className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-4 w-full justify-center items-center px-4"
               >
-                <button className="group inline-flex items-center justify-center text-sm sm:text-base font-medium px-6 sm:px-8 py-4 sm:py-6 bg-primary hover:bg-primary/90 text-white rounded-lg transition-all duration-300 w-full sm:w-auto hover:scale-105 hover:shadow-xl active:scale-100 cursor-pointer">
+                <button
+                  onClick={handleCTAClick}
+                  className="group inline-flex items-center justify-center text-sm sm:text-base font-medium px-6 sm:px-8 py-4 sm:py-6 bg-primary hover:bg-primary/90 text-white rounded-lg transition-all duration-300 w-full sm:w-auto hover:scale-105 hover:shadow-xl active:scale-100 cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+                  aria-label="Start your free trial of Carpet ERP"
+                >
                   Start Free Trial
-                  <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5 group-hover:translate-x-1 transition-transform duration-300" />
+                  <ArrowRight
+                    className="ml-2 h-4 w-4 sm:h-5 sm:w-5 group-hover:translate-x-1 transition-transform duration-300"
+                    aria-hidden="true"
+                  />
                 </button>
               </motion.div>
 
@@ -178,7 +202,7 @@ export function Hero() {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-                className="text-6xl font-bold tracking-tight leading-tight"
+                className="text-6xl font-normal tracking-tight leading-tight"
               >
                 <span className="text-foreground">Complete ERP Solution</span>
                 <br />
@@ -232,9 +256,16 @@ export function Hero() {
                 transition={{ duration: 0.6, delay: 0.7, ease: "easeOut" }}
                 className="flex flex-col sm:flex-row gap-4 pt-4"
               >
-                <button className="group inline-flex items-center justify-center text-base font-medium px-8 py-6 bg-primary hover:bg-primary/90 text-white rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-xl active:scale-100 cursor-pointer">
+                <button
+                  onClick={handleCTAClick}
+                  className="group inline-flex items-center justify-center text-base font-medium px-8 py-6 bg-primary hover:bg-primary/90 text-white rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-xl active:scale-100 cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+                  aria-label="Start your free trial of Carpet ERP"
+                >
                   Start Free Trial
-                  <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
+                  <ArrowRight
+                    className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300"
+                    aria-hidden="true"
+                  />
                 </button>
               </motion.div>
 
@@ -287,10 +318,14 @@ export function Hero() {
                       className="relative w-full flex items-center justify-center p-2"
                       transition={{ duration: 0.3, ease: "easeOut" }}
                     >
-                      <img
+                      <Image
                         src="/images/dashboard.png"
                         alt="ERP Dashboard Overview"
+                        width={1300}
+                        height={800}
                         className="w-auto h-auto max-w-full block"
+                        priority
+                        quality={90}
                       />
                     </motion.div>
                     {/* Shine effect overlay */}

@@ -77,12 +77,27 @@ A production-ready, modern landing page for Rajdhani ERP - a comprehensive ERP s
 npm install
 ```
 
-2. Run the development server:
+2. Set up environment variables:
+```bash
+# Copy the example environment file
+cp .env.example .env.local
+
+# Edit .env.local with your actual values
+# Required variables:
+# - NEXT_PUBLIC_CONTACT_EMAIL
+# - NEXT_PUBLIC_CONTACT_PHONE
+# - NEXT_PUBLIC_CONTACT_ADDRESS_LINE1
+# - NEXT_PUBLIC_CONTACT_ADDRESS_LINE2
+# - NEXT_PUBLIC_CONTACT_ADDRESS_COUNTRY
+# - NEXT_PUBLIC_SITE_URL
+```
+
+3. Run the development server:
 ```bash
 npm run dev
 ```
 
-3. Open [http://localhost:3000](http://localhost:3000) in your browser
+4. Open [http://localhost:3000](http://localhost:3000) in your browser
 
 ### Build for Production
 
@@ -90,6 +105,37 @@ npm run dev
 npm run build
 npm start
 ```
+
+## 🔧 Environment Variables
+
+Create a `.env.local` file in the root directory with the following variables:
+
+### Required Variables
+
+| Variable | Description | Example |
+|----------|-------------|---------|
+| `NEXT_PUBLIC_CONTACT_EMAIL` | Contact email address | `info@wantace.com` |
+| `NEXT_PUBLIC_CONTACT_PHONE` | Contact phone number | `+91 123 456 7890` |
+| `NEXT_PUBLIC_CONTACT_ADDRESS_LINE1` | First line of address | `123 Business Park, Industrial Area` |
+| `NEXT_PUBLIC_CONTACT_ADDRESS_LINE2` | Second line of address | `City, State 123456` |
+| `NEXT_PUBLIC_CONTACT_ADDRESS_COUNTRY` | Country name | `India` |
+| `NEXT_PUBLIC_SITE_URL` | Your site URL | `https://yourdomain.com` |
+
+### Optional Variables
+
+| Variable | Description | When to Use |
+|----------|-------------|-------------|
+| `EMAIL_SERVICE_API_KEY` | API key for email service | When integrating email sending |
+| `EMAIL_SERVICE_FROM` | From email address | When using email service |
+| `EMAIL_SERVICE_TO` | To email address | When using email service |
+| `NEXT_PUBLIC_GA_ID` | Google Analytics ID | When using Google Analytics |
+| `NEXT_PUBLIC_PLAUSIBLE_DOMAIN` | Plausible domain | When using Plausible Analytics |
+| `SENTRY_DSN` | Sentry DSN | When using Sentry for error tracking |
+| `NEXT_PUBLIC_SENTRY_ENVIRONMENT` | Sentry environment | When using Sentry |
+
+**Note:** Variables prefixed with `NEXT_PUBLIC_` are exposed to the browser. Never put sensitive data in these variables.
+
+See `.env.example` for a complete template.
 
 ## 📝 Replacing Placeholders
 

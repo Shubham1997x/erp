@@ -3,13 +3,17 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useToast } from "@/components/ui/toast";
+import { trackEvent } from "@/components/analytics";
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isMoreOpen, setIsMoreOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("");
   const [scrolled, setScrolled] = useState(false);
+  const { showToast } = useToast();
 
   const navLinks = [
     {
@@ -102,18 +106,32 @@ export function Navbar() {
       }
     };
 
+    // Close dropdown when clicking outside
+    const handleClickOutside = (event: MouseEvent) => {
+      const target = event.target as HTMLElement;
+      if (!target.closest('[aria-expanded]') && !target.closest('.absolute.top-full')) {
+        setIsMoreOpen(false);
+      }
+    };
+
     window.addEventListener("scroll", handleScroll);
+    document.addEventListener("mousedown", handleClickOutside);
 
     return () => {
       observer.disconnect();
       window.removeEventListener("scroll", handleScroll);
+      document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
 
   return (
-    <nav className="sticky top-0 z-50 w-full transition-all duration-300">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-3">
-        <div className="flex h-14 items-center justify-between border border-primary/20 rounded-lg px-2 sm:px-4 lg:px-6 bg-white overflow-hidden">
+    <nav 
+      className="sticky top-0 z-50 w-full transition-all duration-300"
+      role="navigation"
+      aria-label="Main navigation"
+    >
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-3 relative">
+        <div className="flex h-14 items-center justify-between border border-primary/20 rounded-lg px-2 sm:px-4 lg:px-6 bg-white relative">
           <Link
             href="/"
             className="flex items-center gap-2 sm:gap-3 group shrink-0 min-w-0"
@@ -176,80 +194,73 @@ export function Navbar() {
                 );
               })}
 
-            {/* Medium priority links - visible on xl+ */}
-            {navLinks
-              .filter((link) => link.priority === "medium")
-              .map((link) => {
-                const isActive = activeSection === link.id;
-                return (
-                  <motion.div
-                    key={link.name}
-                    className="relative hidden xl:block shrink-0"
-                    whileHover="hover"
-                    initial="initial"
-                  >
-                    <Link
-                      href={link.href}
-                      className={`relative inline-block text-xs lg:text-sm font-medium transition-all duration-300 group px-2 lg:px-3 xl:px-4 py-2 whitespace-nowrap ${
-                        isActive
-                          ? "text-primary"
-                          : "text-muted-foreground hover:text-foreground"
-                      }`}
-                    >
-                      <span className="relative inline-block">
-                        {link.name}
-                        <motion.span
-                          className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary origin-left"
-                          variants={{
-                            initial: { scaleX: isActive ? 1 : 0 },
-                            hover: { scaleX: 1 },
-                          }}
-                          transition={{ duration: 0.3, ease: "easeInOut" }}
-                        />
-                      </span>
-                    </Link>
-                  </motion.div>
-                );
-              })}
+            {/* More Dropdown - Groups medium and low priority links */}
+            <div className="relative hidden lg:block z-[100]">
+              <motion.button
+                onMouseEnter={() => setIsMoreOpen(true)}
+                onMouseLeave={() => setIsMoreOpen(false)}
+                className={`relative inline-flex items-center gap-1 text-xs lg:text-sm font-medium transition-all duration-300 px-2 lg:px-3 xl:px-4 py-2 whitespace-nowrap ${
+                  navLinks.some(link => (link.priority === "medium" || link.priority === "low") && activeSection === link.id)
+                    ? "text-primary"
+                    : "text-muted-foreground hover:text-foreground"
+                }`}
+                aria-label="More navigation options"
+                aria-expanded={isMoreOpen}
+              >
+                <span>More</span>
+                <ChevronDown 
+                  className={`h-3 w-3 transition-transform duration-300 ${isMoreOpen ? "rotate-180" : ""}`}
+                />
+              </motion.button>
 
-            {/* Low priority links - visible on 2xl+ */}
-            {navLinks
-              .filter((link) => link.priority === "low")
-              .map((link) => {
-                const isActive = activeSection === link.id;
-                return (
+              {/* Dropdown Menu */}
+              <AnimatePresence>
+                {isMoreOpen && (
                   <motion.div
-                    key={link.name}
-                    className="relative hidden 2xl:block shrink-0"
-                    whileHover="hover"
-                    initial="initial"
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    transition={{ duration: 0.2 }}
+                    onMouseEnter={() => setIsMoreOpen(true)}
+                    onMouseLeave={() => setIsMoreOpen(false)}
+                    className="absolute top-full right-0 mt-2 w-48 bg-white border border-primary/20 rounded-lg shadow-lg py-2 z-[100]"
                   >
-                    <Link
-                      href={link.href}
-                      className={`relative inline-block text-xs lg:text-sm font-medium transition-all duration-300 group px-2 lg:px-3 xl:px-4 py-2 whitespace-nowrap ${
-                        isActive
-                          ? "text-primary"
-                          : "text-muted-foreground hover:text-foreground"
-                      }`}
-                    >
-                      <span className="relative inline-block">
-                        {link.name}
-                        <motion.span
-                          className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary origin-left"
-                          variants={{
-                            initial: { scaleX: isActive ? 1 : 0 },
-                            hover: { scaleX: 1 },
-                          }}
-                          transition={{ duration: 0.3, ease: "easeInOut" }}
-                        />
-                      </span>
-                    </Link>
+                    {navLinks
+                      .filter((link) => link.priority === "medium" || link.priority === "low")
+                      .map((link) => {
+                        const isActive = activeSection === link.id;
+                        return (
+                          <Link
+                            key={link.name}
+                            href={link.href}
+                            className={`block px-4 py-2 text-sm transition-colors ${
+                              isActive
+                                ? "text-primary bg-primary/10 font-medium"
+                                : "text-muted-foreground hover:text-foreground hover:bg-primary/5"
+                            }`}
+                            onClick={() => setIsMoreOpen(false)}
+                          >
+                            {link.name}
+                          </Link>
+                        );
+                      })}
                   </motion.div>
-                );
-              })}
+                )}
+              </AnimatePresence>
+            </div>
 
             <div className="ml-1 xl:ml-2 2xl:ml-4 pl-1 xl:pl-2 2xl:pl-4 border-l border-primary/20 shrink-0">
-              <button className="bg-primary text-xs lg:text-sm hover:bg-primary/90 cursor-pointer text-white rounded-lg transition-all px-2 lg:px-3 xl:px-4 py-2 whitespace-nowrap">
+              <button
+                onClick={() => {
+                  trackEvent("cta_click", {
+                    button_text: "Request Demo",
+                    location: "navbar_desktop",
+                  });
+                  showToast("Thank you for your interest! We'll contact you soon.", "success", 3000);
+                }}
+                className="bg-primary text-xs lg:text-sm hover:bg-primary/90 cursor-pointer text-white rounded-lg transition-all px-2 lg:px-3 xl:px-4 py-2 whitespace-nowrap focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+                aria-label="Request a demo of Carpet ERP"
+              >
                 Request Demo
               </button>
             </div>
@@ -304,11 +315,15 @@ export function Navbar() {
             />
             {/* Sidebar */}
             <motion.div
+              id="mobile-menu"
               initial={{ x: "100%", opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               exit={{ x: "100%", opacity: 0 }}
               transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
-              className="fixed right-0 top-0 h-full w-full bg-white z-50 lg:hidden shadow-xl overflow-y-auto [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:bg-white [&::-webkit-scrollbar-thumb]:bg-gray-200 [&::-webkit-scrollbar-thumb]:rounded-full hover:[&::-webkit-scrollbar-thumb]:bg-gray-300"
+              className="fixed right-0 top-0 h-full w-full bg-white z-50 lg:hidden shadow-xl overflow-y-auto [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:bg-white [&::-webkit-scrollbar-thumb]:bg-muted-foreground/20 [&::-webkit-scrollbar-thumb]:rounded-full hover:[&::-webkit-scrollbar-thumb]:bg-muted-foreground/30"
+              role="dialog"
+              aria-modal="true"
+              aria-label="Mobile navigation menu"
             >
               {/* Header with Logo and Close Button */}
               <div className="flex items-center justify-between p-4 border-b border-primary/20">
@@ -379,7 +394,14 @@ export function Navbar() {
               {/* Request Demo Button */}
               <div className="p-4 border-t border-primary/20 mt-auto">
                 <button
-                  onClick={() => setIsOpen(false)}
+                  onClick={() => {
+                    trackEvent("cta_click", {
+                      button_text: "Request Demo",
+                      location: "navbar_mobile",
+                    });
+                    setIsOpen(false);
+                    showToast("Thank you for your interest! We'll contact you soon.", "success", 3000);
+                  }}
                   className="w-full inline-flex items-center justify-center bg-primary hover:bg-primary/90 text-white rounded-lg transition-all duration-300 px-4 py-3 font-medium cursor-pointer"
                 >
                   Request Demo
