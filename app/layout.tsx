@@ -19,7 +19,7 @@ const playfairDisplay = Playfair_Display({
 export const metadata: Metadata = {
   title: "Carpet ERP by Wantace - Weaving Operational Excellence | Carpet Manufacturing ERP",
   description:
-    "Transform your carpet manufacturing operations with Rajdhani ERP. Complete ERP solution for weaving, inventory, production, sales, accounting, and more. Streamline operations and boost productivity.",
+    "Transform your carpet manufacturing operations with Carpet ERP by Wantace. Complete ERP solution for weaving, inventory, production, sales, accounting, and more. Streamline operations and boost productivity.",
   keywords: [
     "ERP",
     "Carpet Manufacturing",
@@ -30,21 +30,21 @@ export const metadata: Metadata = {
     "Manufacturing Software",
     "Business Management",
   ],
-  authors: [{ name: "Rajdhani ERP" }],
+  authors: [{ name: "Carpet ERP by Wantace" }],
   icons: {
-    icon: "/logo.png",
-    shortcut: "/logo.png",
-    apple: "/logo.png",
+    icon: "/logo.svg",
+    shortcut: "/logo.svg",
+    apple: "/logo.svg",
   },
   openGraph: {
-    title: "Rajdhani ERP - Weaving Operational Excellence",
+    title: "Carpet ERP by Wantace - Weaving Operational Excellence",
     description:
       "Complete ERP solution for carpet manufacturing operations. Streamline production, manage inventory, and scale your business.",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Rajdhani ERP - Weaving Operational Excellence",
+    title: "Carpet ERP by Wantace - Weaving Operational Excellence",
     description:
       "Complete ERP solution for carpet manufacturing operations.",
   },
