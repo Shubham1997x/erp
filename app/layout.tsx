@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import { Space_Grotesk, Playfair_Display } from "next/font/google";
 import { ErrorBoundary } from "@/components/error-boundary";
 import { ToastProvider } from "@/components/ui/toast";
@@ -99,7 +100,9 @@ export default function RootLayout({
     <html lang="en" className={`${spaceGrotesk.variable} ${playfairDisplay.variable}`}>
       <body className="antialiased font-sans" suppressHydrationWarning>
         <StructuredData />
-        <Analytics />
+        <Suspense fallback={null}>
+          <Analytics />
+        </Suspense>
         <ErrorBoundary>
           <ToastProvider>
             {children}

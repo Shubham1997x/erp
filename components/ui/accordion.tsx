@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils";
 
 interface AccordionContextValue {
   value: string[];
-  onValueChange: (value: string[]) => void;
+  onValueChange: (itemValue: string) => void;
   type: "single" | "multiple";
 }
 
@@ -76,7 +76,7 @@ const AccordionItem = React.forwardRef<HTMLDivElement, AccordionItemProps>(
         {React.Children.map(children, (child) => {
           if (React.isValidElement(child)) {
             return React.cloneElement(child, {
-              ...child.props,
+              ...(child.props as Record<string, unknown>),
               "data-item-value": value,
               "data-state": isOpen ? "open" : "closed",
             } as any);

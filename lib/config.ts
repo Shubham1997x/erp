@@ -47,22 +47,9 @@ export const errorTrackingConfig = {
   sentryEnvironment: process.env.NEXT_PUBLIC_SENTRY_ENVIRONMENT || "development",
 };
 
-// Validation
-if (process.env.NODE_ENV === "production") {
-  const requiredVars = [
-    "NEXT_PUBLIC_CONTACT_EMAIL",
-    "NEXT_PUBLIC_CONTACT_PHONE",
-    "NEXT_PUBLIC_SITE_URL",
-  ];
-
-  const missingVars = requiredVars.filter(
-    (varName) => !process.env[varName]
-  );
-
-  if (missingVars.length > 0) {
-    console.warn(
-      `⚠️  Missing required environment variables: ${missingVars.join(", ")}`
-    );
-  }
-}
+// Note: Environment variables are optional and have fallback values
+// Set these in your .env.local file for production:
+// - NEXT_PUBLIC_CONTACT_EMAIL
+// - NEXT_PUBLIC_CONTACT_PHONE
+// - NEXT_PUBLIC_SITE_URL
 
