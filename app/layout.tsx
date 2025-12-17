@@ -1,5 +1,10 @@
 import type { Metadata } from "next";
 import { Space_Grotesk, Playfair_Display } from "next/font/google";
+import { ErrorBoundary } from "@/components/error-boundary";
+import { ToastProvider } from "@/components/ui/toast";
+import { StructuredData } from "@/components/structured-data";
+import { Analytics } from "@/components/analytics";
+import { siteConfig } from "@/lib/config";
 import "./globals.css";
 
 const spaceGrotesk = Space_Grotesk({
@@ -17,9 +22,10 @@ const playfairDisplay = Playfair_Display({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(siteConfig.url),
   title: "Carpet ERP by Wantace - Weaving Operational Excellence | Carpet Manufacturing ERP",
   description:
-    "Transform your carpet manufacturing operations with Rajdhani ERP. Complete ERP solution for weaving, inventory, production, sales, accounting, and more. Streamline operations and boost productivity.",
+    "Transform your carpet manufacturing operations with Carpet ERP by Wantace. Complete ERP solution for weaving, inventory, production, sales, accounting, and more. Streamline operations and boost productivity.",
   keywords: [
     "ERP",
     "Carpet Manufacturing",
@@ -30,27 +36,57 @@ export const metadata: Metadata = {
     "Manufacturing Software",
     "Business Management",
   ],
-  authors: [{ name: "Rajdhani ERP" }],
+  authors: [{ name: "Carpet ERP by Wantace" }],
+  creator: "Wantace",
+  publisher: "Wantace",
   icons: {
-    icon: "/logo.png",
-    shortcut: "/logo.png",
-    apple: "/logo.png",
+    icon: "/logo.svg",
+    shortcut: "/logo.svg",
+    apple: "/logo.svg",
   },
   openGraph: {
-    title: "Rajdhani ERP - Weaving Operational Excellence",
+    title: "Carpet ERP by Wantace - Weaving Operational Excellence",
     description:
       "Complete ERP solution for carpet manufacturing operations. Streamline production, manage inventory, and scale your business.",
+    url: siteConfig.url,
+    siteName: siteConfig.name,
     type: "website",
+    locale: "en_US",
+    images: [
+      {
+        url: `${siteConfig.url}/images/dashboard.png`,
+        width: 1200,
+        height: 630,
+        alt: "Carpet ERP Dashboard",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Rajdhani ERP - Weaving Operational Excellence",
+    title: "Carpet ERP by Wantace - Weaving Operational Excellence",
     description:
       "Complete ERP solution for carpet manufacturing operations.",
+    images: [`${siteConfig.url}/images/dashboard.png`],
   },
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  alternates: {
+    canonical: siteConfig.url,
+  },
+  verification: {
+    // Add your verification codes when available
+    // google: "your-google-verification-code",
+    // yandex: "your-yandex-verification-code",
+    // yahoo: "your-yahoo-verification-code",
   },
 };
 
@@ -62,7 +98,13 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${spaceGrotesk.variable} ${playfairDisplay.variable}`}>
       <body className="antialiased font-sans" suppressHydrationWarning>
-        {children}
+        <StructuredData />
+        <Analytics />
+        <ErrorBoundary>
+          <ToastProvider>
+            {children}
+          </ToastProvider>
+        </ErrorBoundary>
       </body>
     </html>
   );

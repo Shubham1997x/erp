@@ -16,26 +16,30 @@ export function Loader() {
           >
             <path
               strokeWidth={3}
-              stroke="#282828"
-              fill="#F83D3D"
+              stroke="currentColor"
+              fill="currentColor"
+              className="stroke-slate-800 fill-primary"
               d="M135 22.5H177.264C178.295 22.5 179.22 23.133 179.594 24.0939L192.33 56.8443C192.442 57.1332 192.5 57.4404 192.5 57.7504V89C192.5 90.3807 191.381 91.5 190 91.5H135C133.619 91.5 132.5 90.3807 132.5 89V25C132.5 23.6193 133.619 22.5 135 22.5Z"
             />
             <path
               strokeWidth={3}
-              stroke="#282828"
-              fill="#7D7C7C"
+              stroke="currentColor"
+              fill="currentColor"
+              className="stroke-slate-800 fill-muted-foreground"
               d="M146 33.5H181.741C182.779 33.5 183.709 34.1415 184.078 35.112L190.538 52.112C191.16 53.748 189.951 55.5 188.201 55.5H146C144.619 55.5 143.5 54.3807 143.5 53V36C143.5 34.6193 144.619 33.5 146 33.5Z"
             />
             <path
               strokeWidth={2}
-              stroke="#282828"
-              fill="#282828"
+              stroke="currentColor"
+              fill="currentColor"
+              className="stroke-slate-800 fill-slate-800"
               d="M150 65C150 65.39 149.763 65.8656 149.127 66.2893C148.499 66.7083 147.573 67 146.5 67C145.427 67 144.501 66.7083 143.873 66.2893C143.237 65.8656 143 65.39 143 65C143 64.61 143.237 64.1344 143.873 63.7107C144.501 63.2917 145.427 63 146.5 63C147.573 63 148.499 63.2917 149.127 63.7107C149.763 64.1344 150 64.61 150 65Z"
             />
             <rect
               strokeWidth={2}
-              stroke="#282828"
-              fill="#FFFCAB"
+              stroke="currentColor"
+              fill="currentColor"
+              className="stroke-slate-800 fill-amber-100"
               rx={1}
               height={7}
               width={5}
@@ -44,8 +48,9 @@ export function Loader() {
             />
             <rect
               strokeWidth={2}
-              stroke="#282828"
-              fill="#282828"
+              stroke="currentColor"
+              fill="currentColor"
+              className="stroke-slate-800 fill-slate-800"
               rx={1}
               height={11}
               width={4}
@@ -54,8 +59,9 @@ export function Loader() {
             />
             <rect
               strokeWidth={3}
-              stroke="#282828"
-              fill="#DFDFDF"
+              stroke="currentColor"
+              fill="currentColor"
+              className="stroke-slate-800 fill-slate-200"
               rx="2.5"
               height={90}
               width={121}
@@ -64,8 +70,9 @@ export function Loader() {
             />
             <rect
               strokeWidth={2}
-              stroke="#282828"
-              fill="#DFDFDF"
+              stroke="currentColor"
+              fill="currentColor"
+              className="stroke-slate-800 fill-slate-200"
               rx={2}
               height={4}
               width={6}
@@ -85,13 +92,14 @@ export function Loader() {
           >
             <circle
               strokeWidth={3}
-              stroke="#282828"
-              fill="#282828"
+              stroke="currentColor"
+              fill="currentColor"
+              className="stroke-slate-800 fill-slate-800"
               r="13.5"
               cy={15}
               cx={15}
             />
-            <circle fill="#DFDFDF" r={7} cy={15} cx={15} />
+            <circle className="fill-slate-200" fill="currentColor" r={7} cy={15} cx={15} />
           </svg>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -101,18 +109,19 @@ export function Loader() {
           >
             <circle
               strokeWidth={3}
-              stroke="#282828"
-              fill="#282828"
+              stroke="currentColor"
+              fill="currentColor"
+              className="stroke-slate-800 fill-slate-800"
               r="13.5"
               cy={15}
               cx={15}
             />
-            <circle fill="#DFDFDF" r={7} cy={15} cx={15} />
+            <circle className="fill-slate-200" fill="currentColor" r={7} cy={15} cx={15} />
           </svg>
         </div>
 
         {/* Road */}
-        <div className="w-full h-[1.5px] bg-[#282828] relative bottom-0 self-end rounded-sm before:content-[''] before:absolute before:w-5 before:h-full before:bg-[#282828] before:-right-[50%] before:rounded-sm before:border-l-[10px] before:border-white before:animate-road-move after:content-[''] after:absolute after:w-2.5 after:h-full after:bg-[#282828] after:-right-[65%] after:rounded-sm after:border-l after:border-white after:animate-road-move"></div>
+        <div className="w-full h-[1.5px] bg-slate-800 relative bottom-0 self-end rounded-sm before:content-[''] before:absolute before:w-5 before:h-full before:bg-slate-800 before:-right-[50%] before:rounded-sm before:border-l-[10px] before:border-white before:animate-road-move after:content-[''] after:absolute after:w-2.5 after:h-full after:bg-slate-800 after:-right-[65%] after:rounded-sm after:border-l after:border-white after:animate-road-move"></div>
 
         {/* Lamp Post */}
         <svg

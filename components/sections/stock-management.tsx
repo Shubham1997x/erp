@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import {
   Warehouse,
   AlertTriangle,
@@ -20,7 +21,10 @@ export function StockManagement() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-primary">
+          <div className="inline-flex items-center px-4 py-1.5 bg-primary/10 text-primary text-sm font-medium rounded-full mb-4">
+            Inventory
+          </div>
+          <h2 className="text-5xl font-normal tracking-tight leading-tight mb-6 text-primary">
             Stock Management
           </h2>
           <p className="text-base text-muted-foreground max-w-3xl mx-auto">
@@ -28,96 +32,145 @@ export function StockManagement() {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center">
-          {/* Features */}
+        <div className="grid grid-cols-1 lg:grid-cols-[45%_55%] gap-8 lg:gap-12 items-start">
+          {/* Left: Enhanced Feature Cards */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="space-y-8 w-full lg:w-auto"
+            className="w-full"
           >
-            <div className="space-y-6">
-              <div className="flex items-start gap-5 justify-center lg:justify-start">
-                <div className="w-14 h-14 rounded-lg bg-primary/10 flex items-center justify-center shrink-0 border border-primary/20">
-                  <Warehouse className="h-7 w-7 text-primary" />
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-4">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.1 }}
+                className="bg-white border border-primary/20 rounded-xl p-5 hover:border-primary/40 hover:shadow-lg transition-all group"
+              >
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center shrink-0 border border-primary/20 group-hover:bg-primary/20 transition-colors">
+                    <Warehouse className="h-6 w-6 text-primary" />
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="font-semibold text-base mb-2 text-foreground">
+                      Real-time Stock Levels
+                    </h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      Monitor stock levels with instant updates as transactions occur.
+                    </p>
+                  </div>
                 </div>
-                <div>
-                  <h3 className="font-semibold text-base mb-2 text-foreground">
-                    Real-time Stock Levels
-                  </h3>
-                  <p className="text-sm text-muted-foreground">
-                    Monitor stock levels with instant updates as transactions occur.
-                  </p>
-                </div>
-              </div>
+              </motion.div>
 
-              <div className="flex items-start gap-5">
-                <div className="w-14 h-14 rounded-lg bg-primary/10 flex items-center justify-center shrink-0 border border-primary/20">
-                  <AlertTriangle className="h-7 w-7 text-primary" />
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                className="bg-white border border-primary/20 rounded-xl p-5 hover:border-primary/40 hover:shadow-lg transition-all group"
+              >
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center shrink-0 border border-primary/20 group-hover:bg-primary/20 transition-colors">
+                    <AlertTriangle className="h-6 w-6 text-primary" />
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="font-semibold text-base mb-2 text-foreground">
+                      Low Stock Alerts
+                    </h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      Automatic notifications when stock falls below minimum thresholds.
+                    </p>
+                  </div>
                 </div>
-                <div>
-                  <h3 className="font-semibold text-base mb-2 text-foreground">
-                    Low Stock Alerts
-                  </h3>
-                  <p className="text-sm text-muted-foreground">
-                    Automatic notifications when stock falls below minimum thresholds.
-                  </p>
-                </div>
-              </div>
+              </motion.div>
 
-              <div className="flex items-start gap-5">
-                <div className="w-14 h-14 rounded-lg bg-primary/10 flex items-center justify-center shrink-0 border border-primary/20">
-                  <TrendingDown className="h-7 w-7 text-primary" />
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.3 }}
+                className="bg-white border border-primary/20 rounded-xl p-5 hover:border-primary/40 hover:shadow-lg transition-all group"
+              >
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center shrink-0 border border-primary/20 group-hover:bg-primary/20 transition-colors">
+                    <TrendingDown className="h-6 w-6 text-primary" />
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="font-semibold text-base mb-2 text-foreground">Stock History</h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      Complete audit trail of all stock movements and adjustments.
+                    </p>
+                  </div>
                 </div>
-                <div>
-                  <h3 className="font-semibold text-base mb-2 text-foreground">Stock History</h3>
-                  <p className="text-sm text-muted-foreground">
-                    Complete audit trail of all stock movements and adjustments.
-                  </p>
-                </div>
-              </div>
+              </motion.div>
 
-              <div className="flex items-start gap-5">
-                <div className="w-14 h-14 rounded-lg bg-primary/10 flex items-center justify-center shrink-0 border border-primary/20">
-                  <BarChart3 className="h-7 w-7 text-primary" />
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.4 }}
+                className="bg-white border border-primary/20 rounded-xl p-5 hover:border-primary/40 hover:shadow-lg transition-all group"
+              >
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center shrink-0 border border-primary/20 group-hover:bg-primary/20 transition-colors">
+                    <BarChart3 className="h-6 w-6 text-primary" />
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="font-semibold text-base mb-2 text-foreground">
+                      Stock Valuation
+                    </h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      Track inventory value with multiple costing methods and valuation reports.
+                    </p>
+                  </div>
                 </div>
-                <div>
-                  <h3 className="font-semibold text-base mb-2 text-foreground">
-                    Stock Valuation
-                  </h3>
-                  <p className="text-sm text-muted-foreground">
-                    Track inventory value with multiple costing methods and valuation reports.
-                  </p>
-                </div>
-              </div>
+              </motion.div>
             </div>
           </motion.div>
 
-          {/* Stock Management Image - SaaS Style */}
+          {/* Right: Large Featured Image */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="relative"
+            className="relative w-full"
           >
-            <motion.div 
-              className="relative  border border-primary/20 rounded-lg overflow-hidden"
-              transition={{ duration: 0.3, ease: "easeOut" }}
-            >
-              <div className="absolute inset-0 bg-linear-to-br from-primary/5 to-transparent z-10 pointer-events-none"></div>
-              <div className="relative w-full flex items-center justify-center p-1">
-                <img
-                  src="/images/stock.png"
-                  alt="Stock Management"
-                  className="w-auto h-auto max-w-full block"
-                />
+            <div className="relative bg-white rounded-2xl shadow-2xl shadow-primary/10 border border-primary/10 overflow-hidden">
+              <div className="relative bg-muted overflow-hidden">
+                <div className="absolute inset-0 bg-linear-to-br from-primary/5 via-transparent to-transparent z-10 pointer-events-none" />
+                <div className="relative w-full h-full flex items-center justify-center aspect-4/3">
+                  <Image
+                    src="/images/stock.png"
+                    alt="Stock Management"
+                    width={1200}
+                    height={700}
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 60vw, 1200px"
+                    className="w-full h-full rounded-lg object-contain"
+                    quality={85}
+                    unoptimized
+                  />
+                </div>
               </div>
-            </motion.div>
-            {/* Decorative accents */}
-            <div className="absolute -top-2 -right-2 w-24 h-24 bg-primary/10 border border-primary/20 -z-10"></div>
-            <div className="absolute -bottom-2 -left-2 w-16 h-16 bg-primary/5 border border-primary/20 -z-10"></div>
+            </div>
+
+            {/* Decorative Elements */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="absolute -top-4 -right-4 w-20 h-20 bg-primary/10 border border-primary/20 rounded-xl blur-sm -z-10"
+            />
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              className="absolute -bottom-4 -left-4 w-16 h-16 bg-primary/5 border border-primary/20 rounded-xl blur-sm -z-10"
+            />
           </motion.div>
         </div>
       </div>

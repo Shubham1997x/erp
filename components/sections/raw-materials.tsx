@@ -101,7 +101,10 @@ export function RawMaterials() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-primary">
+          <div className="inline-flex items-center px-4 py-1.5 bg-primary/10 text-primary text-sm font-medium rounded-full mb-4">
+            Raw Materials
+          </div>
+          <h2 className="text-5xl font-normal tracking-tight leading-tight mb-6 text-primary">
             Raw Materials Management
           </h2>
           <p className="text-base text-muted-foreground max-w-3xl mx-auto">
@@ -127,7 +130,7 @@ export function RawMaterials() {
               transition={{ duration: 0.5 }}
               className="flex justify-center mb-8"
             >
-              <div className="bg-[hsl(0_0%_98%)] border border-amber-400/30 rounded-lg p-4 sm:p-6 max-w-md">
+              <div className="bg-muted border border-amber-400/30 rounded-lg p-4 sm:p-6 max-w-md">
                 <h3 className="text-xl font-semibold mb-4 text-center text-foreground">
                   Dashboard & Analytics
                 </h3>
@@ -156,7 +159,7 @@ export function RawMaterials() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5 }}
-                className="bg-[hsl(0_0%_98%)] border border-primary/20 rounded-lg p-4 sm:p-6 relative"
+                className="bg-muted border border-primary/20 rounded-lg p-4 sm:p-6 relative"
               >
                 <h3 className="text-xl font-semibold mb-4 text-foreground">
                   Procurement
@@ -187,7 +190,7 @@ export function RawMaterials() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.1 }}
-                className="bg-[hsl(0_0%_98%)] border border-primary/30 rounded-lg p-6 relative"
+                className="bg-muted border border-primary/30 rounded-lg p-6 relative"
               >
                 <h3 className="text-xl font-semibold mb-4 text-foreground">
                   Raw Materials Inventory
@@ -234,7 +237,7 @@ export function RawMaterials() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.2 }}
-                className="bg-[hsl(0_0%_98%)] border border-primary/20 rounded-lg p-6"
+                className="bg-muted border border-primary/20 rounded-lg p-6"
               >
                 <h3 className="text-xl font-semibold mb-4 text-foreground">
                   Production Ready
@@ -256,7 +259,7 @@ export function RawMaterials() {
               transition={{ duration: 0.5, delay: 0.3 }}
               className="flex justify-center"
             >
-              <div className="bg-[hsl(0_0%_98%)] border border-primary/30 rounded-lg p-6 max-w-md">
+              <div className="bg-muted border border-primary/30 rounded-lg p-6 max-w-md">
                 <div className="flex items-center justify-center gap-4">
                   <Factory className="h-10 w-10 text-primary" />
                   <div>
@@ -288,7 +291,7 @@ export function RawMaterials() {
             transition={{ duration: 0.6 }}
             className="text-center mb-12 sm:mb-16"
           >
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-primary">
+            <h2 className="text-5xl font-normal tracking-tight leading-tight mb-6 text-primary">
               Procurement Workflow
             </h2>
             <p className="text-base text-muted-foreground max-w-3xl mx-auto px-4">

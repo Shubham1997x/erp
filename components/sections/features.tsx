@@ -13,14 +13,11 @@ import {
   Factory,
   ShoppingCart,
   Calculator,
-  Users,
   BarChart3,
   Settings,
-  Shield,
   Zap,
   Target,
   TrendingUp,
-  Clock,
 } from "lucide-react";
 
 const features = [
@@ -48,11 +45,6 @@ const features = [
       "Financial management with invoicing, payments, and reporting.",
   },
   {
-    icon: Users,
-    title: "HR & Payroll",
-    description: "Employee management, attendance, and payroll processing.",
-  },
-  {
     icon: BarChart3,
     title: "Analytics & Reporting",
     description:
@@ -62,11 +54,6 @@ const features = [
     icon: Settings,
     title: "Quality Control",
     description: "QC processes with inspection workflows and defect tracking.",
-  },
-  {
-    icon: Shield,
-    title: "Security & Compliance",
-    description: "Enterprise security with role-based access and audit trails.",
   },
   {
     icon: Zap,
@@ -84,12 +71,6 @@ const features = [
     title: "Cost Management",
     description:
       "Track costs, material usage, and profitability by product line.",
-  },
-  {
-    icon: Clock,
-    title: "Time Tracking",
-    description:
-      "Time tracking for production processes and machine utilization.",
   },
 ];
 
@@ -116,7 +97,7 @@ const itemVariants = {
 
 export function Features() {
   return (
-    <section className="section-padding section-gray relative isolation-isolate">
+    <section id="features" className="section-padding section-gray relative isolation-isolate">
       <div className="relative z-10">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
           <motion.div
@@ -126,10 +107,13 @@ export function Features() {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h2 className="text-2xl sm:text-3xl font-semibold mb-4 text-foreground">
+            <div className="inline-flex items-center px-4 py-1.5 bg-primary/10 text-primary text-sm font-medium rounded-full mb-4">
+              Features
+            </div>
+            <h2 className="text-5xl font-normal tracking-tight leading-tight mb-6 text-foreground">
               Comprehensive ERP Features
             </h2>
-            <p className="text-sm sm:text-base text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-base sm:text-lg lg:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
               Complete ERP solution for carpet manufacturing operations.
             </p>
           </motion.div>

@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import {
   ArrowRight,
   CheckCircle2,
@@ -10,12 +11,31 @@ import {
   Users,
 } from "lucide-react";
 import { Globe } from "@/components/ui/features-section-demo-3";
+import { useToast } from "@/components/ui/toast";
+import { trackEvent } from "@/components/analytics";
 
 export function Hero() {
+  const { showToast } = useToast();
+
+  const handleCTAClick = () => {
+    trackEvent("cta_click", {
+      button_text: "Book Free Demo Call",
+      location: "hero",
+    });
+    window.open(
+      "https://calendly.com/wantace-ai/discovery-call",
+      "_blank",
+      "noopener,noreferrer"
+    );
+  };
+
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[hsl(0_0%_96%)]">
+    <section
+      id="overview"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-muted"
+    >
       {/* Subtle Background Pattern - Zoho Style */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(37,99,235,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(37,99,235,0.02)_1px,transparent_1px)] bg-size-[4rem_4rem]"></div>
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--primary)/0.02)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--primary)/0.02)_1px,transparent_1px)] bg-size-[4rem_4rem]"></div>
 
       {/* Soft Gradient Orbs - Professional Blue - Smaller on mobile */}
       <div className="absolute top-0 right-0 w-[200px] h-[200px] sm:w-[400px] sm:h-[400px] lg:w-[600px] lg:h-[600px] bg-linear-to-br from-primary/10 to-transparent opacity-50 blur-3xl"></div>
@@ -48,7 +68,7 @@ export function Hero() {
       </div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-12 sm:py-16 lg:py-20">
-        <div className="max-w-[2500px] mx-auto">
+        <div className="max-w-screen-2xl mx-auto">
           {/* Badge - Centered */}
           <motion.div
             initial={{ opacity: 0, y: -20 }}
@@ -56,28 +76,28 @@ export function Hero() {
             transition={{ duration: 0.6, ease: "easeOut" }}
             className="flex justify-center mb-8 sm:mb-10 lg:mb-12"
           >
-            <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 border border-primary/20 rounded-lg max-w-[90%] sm:max-w-none">
-              <Shield className="h-3 w-3 sm:h-4 sm:w-4 text-primary shrink-0" />
-              <span className="text-[10px] xs:text-xs sm:text-sm font-medium text-primary text-center leading-tight">
+            <div className="inline-flex items-center gap-2 backdrop-blur-md px-4 py-2 rounded-full shadow-lg border border-primary/20 bg-white/80 max-w-[90%] sm:max-w-none">
+              <div className="w-2 h-2 bg-primary rounded-full animate-pulse shrink-0" />
+              <span className="text-sm text-foreground font-medium">
                 Trusted by 500+ Manufacturing Companies
               </span>
             </div>
           </motion.div>
 
-          {/* Mobile Layout - Centered Column */}
-          <div className="flex flex-col items-center lg:hidden w-full">
+          <div className="flex flex-col lg:flex-row items-start gap-10 sm:gap-12 lg:gap-16 w-full">
+            {/* Left Column - Content */}
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, x: -40 }}
+              animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
-              className="w-full max-w-2xl mx-auto flex flex-col items-center space-y-4 sm:space-y-6 lg:space-y-8"
+              className="flex-1 w-full space-y-6 sm:space-y-7 lg:space-y-8 text-center lg:text-left"
             >
               {/* Main Heading */}
               <motion.h1
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-                className="text-3xl xs:text-4xl sm:text-5xl font-bold tracking-tight leading-tight text-center px-2"
+                className="text-3xl xs:text-4xl sm:text-5xl lg:text-6xl font-normal tracking-tight leading-tight"
               >
                 <span className="text-foreground">Complete ERP Solution</span>
                 <br />
@@ -89,19 +109,19 @@ export function Hero() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
-                className="text-sm sm:text-base lg:text-lg text-muted-foreground leading-relaxed text-center px-4 sm:px-6"
+                className="text-sm sm:text-base lg:text-lg text-muted-foreground leading-relaxed max-w-3xl mx-auto lg:mx-0"
               >
                 Streamline your entire manufacturing workflow—from raw materials
                 to finished products—with real-time insights, automated
                 processes, and comprehensive business management.
               </motion.p>
 
-              {/* Key Features List - Hidden on mobile */}
+              {/* Key Features List */}
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.6, delay: 0.4 }}
-                className="hidden"
+                className="space-y-3 sm:space-y-4 max-w-2xl mx-auto lg:mx-0"
               >
                 {[
                   "Real-time inventory & stock management",
@@ -116,12 +136,10 @@ export function Hero() {
                       delay: 0.5 + index * 0.1,
                       ease: "easeOut",
                     }}
-                    className="flex items-center gap-3 justify-center w-full max-w-md mx-auto"
+                    className="flex items-center gap-3 justify-center lg:justify-start"
                   >
                     <CheckCircle2 className="h-6 w-6 text-primary shrink-0" />
-                    <span className="text-base text-foreground text-center flex-1">
-                      {feature}
-                    </span>
+                    <span className="text-base text-foreground">{feature}</span>
                   </motion.div>
                 ))}
               </motion.div>
@@ -131,11 +149,18 @@ export function Hero() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.7, ease: "easeOut" }}
-                className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-4 w-full justify-center items-center px-4"
+                className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-2 sm:pt-4 justify-center lg:justify-start items-center"
               >
-                <button className="group inline-flex items-center justify-center text-sm sm:text-base font-medium px-6 sm:px-8 py-4 sm:py-6 bg-primary hover:bg-primary/90 text-white rounded-lg transition-all duration-300 w-full sm:w-auto hover:scale-105 hover:shadow-xl active:scale-100 cursor-pointer">
-                  Start Free Trial
-                  <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5 group-hover:translate-x-1 transition-transform duration-300" />
+                <button
+                  onClick={handleCTAClick}
+                  className="group inline-flex items-center justify-center text-sm sm:text-base lg:text-lg font-light px-6 sm:px-8 lg:px-9 py-4 sm:py-4 lg:py-4 bg-primary hover:bg-primary/90 text-white rounded-lg transition-all duration-300 w-full sm:w-auto hover:scale-105 hover:shadow-xl active:scale-100 cursor-pointer "
+                  aria-label="Start your free trial of Carpet ERP"
+                >
+                  Book Free Demo Call
+                  <ArrowRight
+                    className="ml-2 h-4 w-4 sm:h-5 sm:w-5 group-hover:translate-x-1 transition-transform duration-300"
+                    aria-hidden="true"
+                  />
                 </button>
               </motion.div>
 
@@ -144,9 +169,9 @@ export function Hero() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.9, ease: "easeOut" }}
-                className="pt-4 sm:pt-6 border-t-2 border-primary/10 w-full px-4"
+                className="pt-4 sm:pt-6 border-t-2 border-primary/10 max-w-3xl mx-auto lg:mx-0"
               >
-                <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 lg:gap-6 text-[10px] xs:text-xs sm:text-sm text-muted-foreground">
+                <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3 sm:gap-4 lg:gap-6 text-[10px] xs:text-xs sm:text-sm lg:text-base text-muted-foreground">
                   <div className="flex items-center gap-1.5 sm:gap-2">
                     <Shield className="h-3 w-3 sm:h-4 sm:w-4 lg:h-5 lg:w-5 text-primary shrink-0" />
                     <span className="font-medium">99.9% Uptime</span>
@@ -162,197 +187,73 @@ export function Hero() {
                 </div>
               </motion.div>
             </motion.div>
-          </div>
-
-          {/* Desktop Layout - Grid */}
-          <div className="hidden lg:grid lg:grid-cols-2 gap-16 items-center">
-            {/* Left Column - Content */}
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
-              className="space-y-8 text-left"
-            >
-              {/* Main Heading */}
-              <motion.h1
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-                className="text-6xl font-bold tracking-tight leading-tight"
-              >
-                <span className="text-foreground">Complete ERP Solution</span>
-                <br />
-                <span className="text-primary">for Carpet Manufacturing</span>
-              </motion.h1>
-
-              {/* Description */}
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
-                className="text-lg text-muted-foreground leading-relaxed max-w-2xl"
-              >
-                Streamline your entire manufacturing workflow—from raw materials
-                to finished products—with real-time insights, automated
-                processes, and comprehensive business management.
-              </motion.p>
-
-              {/* Key Features List */}
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.6, delay: 0.4 }}
-                className="space-y-4"
-              >
-                {[
-                  "Real-time inventory & stock management",
-                  "Automated production planning & scheduling",
-                ].map((feature, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{
-                      duration: 0.6,
-                      delay: 0.5 + index * 0.1,
-                      ease: "easeOut",
-                    }}
-                    className="flex items-center gap-3"
-                  >
-                    <CheckCircle2 className="h-6 w-6 text-primary shrink-0" />
-                    <span className="text-base text-foreground">{feature}</span>
-                  </motion.div>
-                ))}
-              </motion.div>
-
-              {/* CTA Buttons */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.7, ease: "easeOut" }}
-                className="flex flex-col sm:flex-row gap-4 pt-4"
-              >
-                <button className="group inline-flex items-center justify-center text-base font-medium px-8 py-6 bg-primary hover:bg-primary/90 text-white rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-xl active:scale-100 cursor-pointer">
-                  Start Free Trial
-                  <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
-                </button>
-              </motion.div>
-
-              {/* Trust Indicators */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.9, ease: "easeOut" }}
-                className="pt-6 border-t-2 border-primary/10"
-              >
-                <div className="flex flex-wrap items-center gap-8 text-sm text-muted-foreground">
-                  <div className="flex items-center gap-2">
-                    <Shield className="h-5 w-5 text-primary shrink-0" />
-                    <span className="font-medium">99.9% Uptime</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Users className="h-5 w-5 text-primary shrink-0" />
-                    <span className="font-medium">500+ Active Users</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <TrendingUp className="h-5 w-5 text-primary shrink-0" />
-                    <span className="font-medium">40% Efficiency Gain</span>
-                  </div>
-                </div>
-              </motion.div>
-            </motion.div>
 
             {/* Right Column - Dashboard Image with Animations */}
             <motion.div
-              initial={{ opacity: 0, x: 50, scale: 0.9 }}
+              initial={{ opacity: 0, x: 40, scale: 0.95 }}
               animate={{ opacity: 1, x: 0, scale: 1 }}
               transition={{ duration: 1, delay: 0.3, ease: "easeOut" }}
-              className="relative hidden lg:block overflow-visible"
+              className="relative flex-1 w-full max-w-full lg:max-w-[980px] xl:max-w-[1140px] overflow-visible self-start"
             >
-              <div className="relative flex items-center justify-center w-full">
-                {/* Dashboard Image - SaaS Style */}
-                <motion.div
-                  initial={{ opacity: 0, scale: 1, y: 30 }}
-                  animate={{ opacity: 1, scale: 1, y: 0 }}
-                  transition={{
-                    duration: 1,
-                    delay: 0.5,
-                    ease: [0.16, 1, 0.3, 1],
-                  }}
-                  className="relative w-full max-w-[1300px] z-10"
-                >
-                  <div className="relative  border border-primary/20 rounded-lg overflow-hidden">
-                    <div className="absolute inset-0 bg-linear-to-br from-primary/5 to-transparent z-10 pointer-events-none"></div>
+              <div className="relative w-full flex flex-col gap-4 lg:gap-6">
+                {/* KPI tiles */}
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                  {[
+                    { label: "Orders today", value: "182", trend: "+14%" },
+                    { label: "On-time", value: "98.4%", trend: "+3%" },
+                    {
+                      label: "Inventory turns",
+                      value: "11.2x",
+                      trend: "+0.6x",
+                    },
+                  ].map((item, idx) => (
                     <motion.div
-                      className="relative w-full flex items-center justify-center p-2"
-                      transition={{ duration: 0.3, ease: "easeOut" }}
+                      key={item.label}
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.15 * idx }}
+                      className="rounded-xl border border-primary/15 bg-white/80 backdrop-blur p-4 shadow-sm shadow-primary/10"
                     >
-                      <img
-                        src="/images/dashboard.png"
-                        alt="ERP Dashboard Overview"
-                        className="w-auto h-auto max-w-full block"
-                      />
+                      <div className="text-xs text-muted-foreground">
+                        {item.label}
+                      </div>
+                      <div className="text-xl font-semibold text-foreground mt-1">
+                        {item.value}
+                      </div>
+                      <div className="text-xs text-primary font-medium mt-1">
+                        {item.trend} vs last week
+                      </div>
                     </motion.div>
-                    {/* Shine effect overlay */}
-                    <motion.div
-                      className="absolute inset-0 bg-linear-to-r from-transparent via-white/20 to-transparent -skew-x-12 z-20 pointer-events-none"
-                      animate={{ x: "200%" }}
-                      transition={{
-                        duration: 3,
-                        repeat: Infinity,
-                        repeatDelay: 2,
-                        ease: "easeInOut",
-                      }}
+                  ))}
+                </div>
+
+                {/* Main visual */}
+                <div className="relative bg-white/80 backdrop-blur border border-primary/15 rounded-2xl shadow-[0_20px_80px_-40px_rgba(0,0,0,0.35)] overflow-hidden p-4 sm:p-6">
+                  <div className="absolute inset-0 bg-linear-to-br from-primary/5 via-transparent to-transparent pointer-events-none" />
+                  <div className="absolute -inset-8 bg-[radial-gradient(circle_at_top,rgba(59,130,246,0.12),transparent_35%),radial-gradient(circle_at_bottom_right,rgba(59,130,246,0.12),transparent_32%)] pointer-events-none" />
+                  <motion.div
+                    className="absolute inset-0 bg-linear-to-r from-transparent via-white/25 to-transparent -skew-x-12 z-20 pointer-events-none"
+                    animate={{ x: "160%" }}
+                    transition={{
+                      duration: 3,
+                      repeat: Infinity,
+                      repeatDelay: 2,
+                      ease: "easeInOut",
+                    }}
+                  />
+                  <div className="relative w-full max-w-[1080px] mx-auto rounded-xl overflow-hidden border border-primary/20 bg-white shadow-inner p-3 sm:p-4">
+                    <Image
+                      src="/images/dashboard.png"
+                      alt="ERP Dashboard Overview"
+                      width={1300}
+                      height={800}
+                      className="w-full h-auto object-contain"
+                      priority
+                      quality={90}
                     />
                   </div>
-
-                  {/* Floating badge */}
-                  <motion.div
-                    initial={{ opacity: 0, scale: 0, y: -20 }}
-                    animate={{ opacity: 1, scale: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: 1, ease: "easeOut" }}
-                    whileHover={{ scale: 1.05, y: -5 }}
-                    className="absolute -top-4 -right-4 bg-primary text-white px-5 py-2.5 rounded-lg z-20 border border-primary/30"
-                  >
-                    <div className="flex items-center gap-2">
-                      <TrendingUp className="h-4 w-4" />
-                      <span className="text-sm font-semibold">
-                        Live Dashboard
-                      </span>
-                    </div>
-                  </motion.div>
-
-                  {/* Decorative corner accents */}
-                  <div className="absolute -top-2 -right-2 w-24 h-24  border border-primary/20 -z-10"></div>
-                  <div className="absolute -bottom-2 -left-2 w-16 h-16  border border-primary/20 -z-10"></div>
-                </motion.div>
-
-                {/* Decorative floating elements */}
-                <motion.div
-                  className="absolute top-20 -right-8 w-32 h-32  blur-3xl z-0"
-                  animate={{
-                    y: [0, -20, 0],
-                    scale: [1, 1.1, 1],
-                  }}
-                  transition={{
-                    duration: 4,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                  }}
-                />
-                <motion.div
-                  className="absolute bottom-20 -left-8 w-40 h-40  blur-3xl z-0"
-                  animate={{
-                    y: [0, 20, 0],
-                    scale: [1, 1.15, 1],
-                  }}
-                  transition={{
-                    duration: 5,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                    delay: 1,
-                  }}
-                />
+                  {/* Floating mini cards */}
+                </div>
               </div>
             </motion.div>
           </div>

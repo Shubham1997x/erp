@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { Facebook, Twitter, Linkedin, Instagram, Mail } from "lucide-react";
+import { contactConfig, siteConfig } from "@/lib/config";
 
 const footerLinks = {
   product: [
@@ -32,40 +33,44 @@ const footerLinks = {
 
 export function Footer() {
   return (
-    <footer className="bg-[hsl(222_47%_11%)] border-t border-white/10">
+    <footer 
+      className="bg-foreground border-t border-white/10"
+      role="contentinfo"
+      aria-label="Site footer"
+    >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8 mb-8">
           <div className="lg:col-span-2">
             <h3 className="text-2xl font-bold mb-4 text-white">Carpet ERP by Wantace</h3>
-            <p className="text-gray-300 mb-4">
+            <p className="text-white/80 mb-4">
               Empowering carpet manufacturers with intelligent ERP solutions
               for operational excellence.
             </p>
             <div className="flex gap-4">
               <a
                 href="#"
-                className="w-10 h-10 border border-white/20 bg-white/5 flex items-center justify-center hover:bg-primary hover:border-primary hover:text-white transition-colors text-gray-300"
+                className="w-10 h-10 border border-white/20 bg-white/5 flex items-center justify-center hover:bg-primary hover:border-primary hover:text-white transition-colors text-white/70"
                 aria-label="Facebook"
               >
                 <Facebook className="h-5 w-5" />
               </a>
               <a
                 href="#"
-                className="w-10 h-10 border border-white/20 bg-white/5 flex items-center justify-center hover:bg-primary hover:border-primary hover:text-white transition-colors text-gray-300"
+                className="w-10 h-10 border border-white/20 bg-white/5 flex items-center justify-center hover:bg-primary hover:border-primary hover:text-white transition-colors text-white/70"
                 aria-label="Twitter"
               >
                 <Twitter className="h-5 w-5" />
               </a>
               <a
                 href="#"
-                className="w-10 h-10 border border-white/20 bg-white/5 flex items-center justify-center hover:bg-primary hover:border-primary hover:text-white transition-colors text-gray-300"
+                className="w-10 h-10 border border-white/20 bg-white/5 flex items-center justify-center hover:bg-primary hover:border-primary hover:text-white transition-colors text-white/70"
                 aria-label="LinkedIn"
               >
                 <Linkedin className="h-5 w-5" />
               </a>
               <a
                 href="#"
-                className="w-10 h-10 border border-white/20 bg-white/5 flex items-center justify-center hover:bg-primary hover:border-primary hover:text-white transition-colors text-gray-300"
+                className="w-10 h-10 border border-white/20 bg-white/5 flex items-center justify-center hover:bg-primary hover:border-primary hover:text-white transition-colors text-white/70"
                 aria-label="Instagram"
               >
                 <Instagram className="h-5 w-5" />
@@ -80,7 +85,7 @@ export function Footer() {
                 <li key={link.name}>
                   <Link
                     href={link.href}
-                    className="text-gray-400 hover:text-white transition-colors text-sm"
+                    className="text-white/60 hover:text-white transition-colors text-sm"
                   >
                     {link.name}
                   </Link>
@@ -96,7 +101,7 @@ export function Footer() {
                 <li key={link.name}>
                   <Link
                     href={link.href}
-                    className="text-gray-400 hover:text-white transition-colors text-sm"
+                    className="text-white/60 hover:text-white transition-colors text-sm"
                   >
                     {link.name}
                   </Link>
@@ -112,7 +117,7 @@ export function Footer() {
                 <li key={link.name}>
                   <Link
                     href={link.href}
-                    className="text-gray-400 hover:text-white transition-colors text-sm"
+                    className="text-white/60 hover:text-white transition-colors text-sm"
                   >
                     {link.name}
                   </Link>
@@ -128,7 +133,7 @@ export function Footer() {
                 <li key={link.name}>
                   <Link
                     href={link.href}
-                    className="text-gray-400 hover:text-white transition-colors text-sm"
+                    className="text-white/60 hover:text-white transition-colors text-sm"
                   >
                     {link.name}
                   </Link>
@@ -138,17 +143,17 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-white/10 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
-          <p className="text-sm text-gray-400">
-            © {new Date().getFullYear()} Carpet ERP by Wantace. All rights reserved.
+        <div className=" pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
+          <p className="text-sm text-white/60">
+            © {new Date().getFullYear()} {siteConfig.name}. All rights reserved.
           </p>
-          <div className="flex items-center gap-2 text-sm text-gray-400">
+          <div className="flex items-center gap-2 text-sm text-white/60">
             <Mail className="h-4 w-4" />
             <a
-              href="mailto:info@wantace.com"
+              href={`mailto:${contactConfig.email}`}
               className="hover:text-white transition-colors"
             >
-              info@wantace.com
+              {contactConfig.email}
             </a>
           </div>
         </div>

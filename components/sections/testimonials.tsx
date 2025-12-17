@@ -1,135 +1,121 @@
-"use client";
-
+ "use client";
+ 
+import Image from "next/image";
 import { motion } from "framer-motion";
-import { Card, CardContent } from "@/components/ui/card";
-import { Star, Quote } from "lucide-react";
+import { Quote, Star } from "lucide-react";
+ 
+ const testimonials = [
+   {
+     name: "David Martinez",
+     handle: "@davidmartinez",
+     company: "Solar Pro Inc.",
+     companyUrl: "#",
+     text: "Solar by Wantace increased our close rate by 40%. Being able to show homeowners instant visualizations is a game-changer for our sales team.",
+     avatar:
+       "https://images.unsplash.com/photo-1527980965255-d3b416303d12?w=200&h=200&fit=crop&crop=faces",
+     hashtags: ["#solar", "#AI"],
+   },
+   {
+     name: "Jennifer Wong",
+     handle: "@jenniferw",
+     company: "Premier Realty",
+     companyUrl: "#",
+     text: "We integrated the API into our real estate platform. Now every property listing shows solar potential. Our agents love it and so do buyers.",
+     avatar:
+       "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&h=200&fit=crop&crop=faces",
+     hashtags: ["#realestate", "#solar"],
+   },
+   {
+     name: "Robert Thompson",
+     handle: "@robertthompson",
+     company: "Green Energy Solutions",
+     companyUrl: "#",
+     text: "The white-label solution pays for itself. We’re converting leads 3x faster and our team can handle twice as many consultations per week.",
+     avatar:
+       "https://images.unsplash.com/photo-1603415526960-f7e0328c63b1?w=200&h=200&fit=crop&crop=faces",
+     hashtags: ["#solar", "#business"],
+   },
+   {
+     name: "Sarah Johnson",
+     handle: "@sarahj",
+     company: "Solar Innovations",
+     companyUrl: "#",
+     text: "Simply the best. Better than all the rest. I’d recommend this product to beginners and advanced users. It’s transformed our workflow.",
+     avatar:
+       "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=200&h=200&fit=crop&crop=faces",
+     hashtags: ["#recommended"],
+   },
+ ];
+ 
+ export function Testimonials() {
+   return (
+     <section id="testimonials" className="py-16 sm:py-20 bg-white">
+       <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+         {/* Heading Section */}
+         <motion.div
+           initial={{ opacity: 0, y: 20 }}
+           whileInView={{ opacity: 1, y: 0 }}
+           viewport={{ once: true }}
+           transition={{ duration: 0.6 }}
+           className="text-center mb-16"
+         >
+           <div className="inline-flex items-center px-4 py-1.5 bg-primary/10 text-primary text-sm font-medium rounded-full mb-4">
+             Testimonials
+           </div>
+           <h2 className="text-5xl font-normal tracking-tight leading-tight mb-6 text-foreground">
+             What Our Customers Say
+           </h2>
+           <p className="text-base sm:text-lg lg:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+             Trusted by manufacturing companies worldwide
+           </p>
+         </motion.div>
 
-const testimonials = [
-  {
-    name: "Rajesh Kumar",
-    role: "CEO, Premium Carpets Ltd.",
-    company: "Premium Carpets",
-    content:
-      "Carpet ERP has transformed our operations. Production efficiency increased by 35%, and we now have complete visibility into our entire supply chain.",
-    rating: 5,
-    image: "/placeholder-avatar-1.png",
-  },
-  {
-    name: "Priya Sharma",
-    role: "Operations Manager, Artisan Weavers",
-    company: "Artisan Weavers",
-    content:
-      "The real-time monitoring and analytics features have been game-changers. We can now make data-driven decisions and respond to issues instantly.",
-    rating: 5,
-    image: "/placeholder-avatar-2.png",
-  },
-  {
-    name: "Amit Patel",
-    role: "Director, Heritage Carpets",
-    company: "Heritage Carpets",
-    content:
-      "Implementation was smooth, and the support team is excellent. The system has helped us reduce inventory costs by 25% while improving customer satisfaction.",
-    rating: 5,
-    image: "/placeholder-avatar-3.png",
-  },
-  {
-    name: "Sneha Reddy",
-    role: "CFO, Modern Textiles Inc.",
-    company: "Modern Textiles",
-    content:
-      "The financial management module is comprehensive and easy to use. We've streamlined our accounting processes and improved cash flow management significantly.",
-    rating: 5,
-    image: "/placeholder-avatar-4.png",
-  },
-  {
-    name: "Vikram Singh",
-    role: "Production Head, Quality Carpets",
-    company: "Quality Carpets",
-    content:
-      "Production planning and scheduling have never been easier. The system optimizes our machine utilization and has reduced downtime by 40%.",
-    rating: 5,
-    image: "/placeholder-avatar-5.png",
-  },
-  {
-    name: "Anjali Mehta",
-    role: "Founder, Craft Weavers",
-    company: "Craft Weavers",
-    content:
-      "As a growing business, we needed a scalable solution. Carpet ERP has grown with us and continues to add value as we expand our operations.",
-    rating: 5,
-    image: "/placeholder-avatar-6.png",
-  },
-];
+         <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+           {testimonials.map((item, index) => (
+             <motion.article
+               key={item.name}
+               initial={{ opacity: 0, y: 20 }}
+               whileInView={{ opacity: 1, y: 0 }}
+               viewport={{ once: true }}
+               transition={{ duration: 0.4, delay: index * 0.05 }}
+               whileHover={{ 
+                 y: -6, 
+                 scale: 1.01,
+                 transition: { 
+                   duration: 0.3, 
+                   ease: [0.4, 0, 0.2, 1] 
+                 }
+               }}
+               className="relative h-full rounded-2xl border border-primary/20 bg-white p-6 shadow-sm hover:shadow-lg hover:border-primary/40 transition-all duration-300 ease-out cursor-pointer group"
+             >
+              <Quote className="absolute right-4 top-4 h-8 w-8 text-primary/20 group-hover:text-primary/40 transition-colors duration-300" />
+              <div className="flex items-center gap-3">
+                <div className="relative h-12 w-12 overflow-hidden rounded-full bg-slate-100">
+                  <Image
+                    src={item.avatar}
+                    alt={item.name}
+                    fill
+                    sizes="48px"
+                    className="object-cover"
+                  />
+                </div>
+                <div className="min-w-0">
+                  <p className="text-sm font-semibold text-foreground group-hover:text-primary transition-colors duration-300">{item.name}</p>
+                </div>
+              </div>
 
-export function Testimonials() {
-  return (
-    <section className="py-24 bg-background">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          className="text-center mb-16"
-        >
-          <h2 className="text-3xl sm:text-4xl font-bold mb-4">
-            What Our Customers Say
-          </h2>
-          <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto">
-            Join hundreds of satisfied customers who have transformed their
-            operations with Carpet ERP.
-          </p>
-        </motion.div>
+              <div className="mt-3 flex items-center gap-1 text-amber-500">
+                {Array.from({ length: 5 }).map((_, starIndex) => (
+                  <Star key={starIndex} className="h-4 w-4 fill-amber-400 text-amber-400" />
+                ))}
+              </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {testimonials.map((testimonial, index) => (
-            <motion.div
-              key={index}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-            >
-              <Card className="h-full rounded-lg shadow-none transition-all border border-primary/20">
-                <CardContent className="p-6">
-                  <div className="flex items-center gap-1 mb-4">
-                    {[...Array(testimonial.rating)].map((_, i) => (
-                      <Star
-                        key={i}
-                        className="h-4 w-4 fill-yellow-400 text-yellow-400"
-                      />
-                    ))}
-                  </div>
-                  <Quote className="h-8 w-8 text-primary/30 mb-4" />
-                  <p className="text-muted-foreground mb-6 italic">
-                    "{testimonial.content}"
-                  </p>
-                  <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
-                      <span className="text-primary font-semibold">
-                        {testimonial.name.charAt(0)}
-                      </span>
-                    </div>
-                    <div>
-                      <div className="font-semibold">{testimonial.name}</div>
-                      <div className="text-sm text-muted-foreground">
-                        {testimonial.role}
-                      </div>
-                      <div className="text-xs text-muted-foreground/70">
-                        {testimonial.company}
-                      </div>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </motion.div>
-          ))}
-        </div>
-
-        <motion.div
-          className="text-center mt-12"
-        >
-          <p className="text-sm text-muted-foreground">
-            <strong>Note:</strong> Replace placeholder avatars with actual customer
-            photos or company logos. Consider adding video testimonials for more
-            impact.
-          </p>
-        </motion.div>
-      </div>
-    </section>
-  );
-}
-
+              <p className="mt-4 text-sm leading-relaxed text-muted-foreground group-hover:text-foreground transition-colors duration-300">{item.text}</p>
+             </motion.article>
+           ))}
+         </div>
+       </div>
+     </section>
+   );
+ }
+ 

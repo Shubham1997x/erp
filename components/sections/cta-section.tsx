@@ -2,10 +2,38 @@
 
 import { motion } from "framer-motion";
 import { ArrowRight, Sparkles } from "lucide-react";
+import { useToast } from "@/components/ui/toast";
+import { trackEvent } from "@/components/analytics";
 
 export function CTASection() {
+  const { showToast } = useToast();
+
+  const handleStartTrial = () => {
+    trackEvent("cta_click", {
+      button_text: "Start Free Trial",
+      location: "cta_section",
+    });
+    window.open(
+      "https://calendly.com/wantace-ai/discovery-call",
+      "_blank",
+      "noopener,noreferrer"
+    );
+  };
+
+  const handleScheduleDemo = () => {
+    trackEvent("cta_click", {
+      button_text: "Schedule Demo",
+      location: "cta_section",
+    });
+    window.open(
+      "https://calendly.com/wantace-ai/discovery-call",
+      "_blank",
+      "noopener,noreferrer"
+    );
+  };
+
   return (
-    <section className="section-padding relative overflow-hidden" style={{ backgroundColor: 'hsl(222 47% 11%)' }}>
+    <section className="section-padding relative overflow-hidden bg-foreground">
       {/* Blue Gradient Circle in Center */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
         <motion.div
@@ -39,8 +67,10 @@ export function CTASection() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="inline-flex items-center gap-2 px-4 py-2 bg-primary/20 border border-primary/40 mb-6 rounded-md"
           >
-            <Sparkles className="h-4 w-4 text-primary brightness-125" />
-            <span className="text-sm font-medium text-primary brightness-125">Transform Your Manufacturing</span>
+            <Sparkles className="h-4 w-4 text-white" />
+            <span className="text-sm font-medium text-white">
+              Transform Your Manufacturing
+            </span>
           </motion.div>
 
           <motion.h2
@@ -57,9 +87,10 @@ export function CTASection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-lg sm:text-xl text-gray-200 max-w-2xl mx-auto mb-10"
+            className="text-lg sm:text-xl text-white/90 max-w-2xl mx-auto mb-10"
           >
-            Join hundreds of manufacturers who have transformed their business with our comprehensive ERP solution.
+            Join hundreds of manufacturers who have transformed their business
+            with our comprehensive ERP solution.
           </motion.p>
 
           <motion.div
@@ -70,25 +101,32 @@ export function CTASection() {
             className="flex flex-col sm:flex-row gap-4 justify-center items-center"
           >
             <motion.button
+              onClick={handleStartTrial}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="group relative inline-flex items-center justify-center text-base font-medium px-8 py-6 bg-primary hover:bg-primary/90 text-white rounded-lg transition-all duration-300 cursor-pointer overflow-hidden shadow-lg shadow-primary/30"
+              className="group relative inline-flex items-center justify-center text-base font-medium px-8 py-6 bg-primary hover:bg-primary/90 text-white rounded-lg transition-all duration-300 cursor-pointer overflow-hidden shadow-lg shadow-primary/30 "
             >
               <span className="relative z-10 flex items-center">
                 Start Free Trial
-                <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                <ArrowRight
+                  className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform"
+                  aria-hidden="true"
+                />
               </span>
               <motion.div
                 className="absolute inset-0 bg-linear-to-r from-primary via-white/20 to-primary"
                 initial={{ x: "-100%" }}
                 whileHover={{ x: "100%" }}
                 transition={{ duration: 0.6 }}
+                aria-hidden="true"
               />
             </motion.button>
             <motion.button
+              onClick={handleScheduleDemo}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="inline-flex items-center justify-center text-base font-medium px-8 py-6 border-2 border-white/30 bg-transparent text-white hover:bg-white/10 hover:border-white/50 hover:text-white rounded-lg transition-all duration-300 cursor-pointer backdrop-blur-sm"
+              aria-label="Schedule a demo of Carpet ERP"
             >
               Schedule Demo
             </motion.button>
@@ -99,7 +137,7 @@ export function CTASection() {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.7 }}
-            className="mt-12 flex flex-wrap justify-center items-center gap-8 text-sm text-gray-300"
+            className="mt-12 flex flex-wrap justify-center items-center gap-8 text-sm text-white/80"
           >
             {[
               "No Credit Card Required",
@@ -133,4 +171,3 @@ export function CTASection() {
     </section>
   );
 }
-

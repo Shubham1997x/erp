@@ -1,6 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useState, FormEvent } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   Card,
   CardContent,
@@ -10,9 +11,257 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Mail, Phone, MapPin, Send } from "lucide-react";
+import {
+  Mail,
+  Phone,
+  Send,
+  Loader2,
+  CheckCircle2,
+  AlertCircle,
+  PhoneCall,
+} from "lucide-react";
+import { contactConfig } from "@/lib/config";
+import { trackEvent } from "@/components/analytics";
+import { useToast } from "@/components/ui/toast";
+
+interface FormData {
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone: string;
+  company: string;
+  message: string;
+}
+
+interface FormErrors {
+  firstName?: string;
+  lastName?: string;
+  email?: string;
+  phone?: string;
+  company?: string;
+  message?: string;
+}
 
 export function Contact() {
+  const { showToast } = useToast();
+  const [formData, setFormData] = useState<FormData>({
+    firstName: "",
+    lastName: "",
+    email: "",
+    phone: "",
+    company: "",
+    message: "",
+  });
+
+  const [errors, setErrors] = useState<FormErrors>({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<
+    "idle" | "success" | "error"
+  >("idle");
+  const [submitMessage, setSubmitMessage] = useState("");
+
+  const validateForm = (): boolean => {
+    const newErrors: FormErrors = {};
+
+    if (!formData.firstName.trim()) {
+      newErrors.firstName = "First name is required";
+    }
+
+    if (!formData.lastName.trim()) {
+      newErrors.lastName = "Last name is required";
+    }
+
+    if (!formData.email.trim()) {
+      newErrors.email = "Email is required";
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      newErrors.email = "Please enter a valid email address";
+    }
+
+    if (!formData.phone.trim()) {
+      newErrors.phone = "Phone number is required";
+    }
+
+    if (!formData.company.trim()) {
+      newErrors.company = "Company name is required";
+    }
+
+    if (!formData.message.trim()) {
+      newErrors.message = "Message is required";
+    } else if (formData.message.trim().length < 10) {
+      newErrors.message = "Message must be at least 10 characters";
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const formatPhoneNumber = (value: string): string => {
+    // Remove all non-digits
+    const phoneNumber = value.replace(/\D/g, "");
+
+    // Format as (XXX) XXX-XXXX
+    if (phoneNumber.length <= 3) {
+      return phoneNumber;
+    } else if (phoneNumber.length <= 6) {
+      return `(${phoneNumber.slice(0, 3)}) ${phoneNumber.slice(3)}`;
+    } else {
+      return `(${phoneNumber.slice(0, 3)}) ${phoneNumber.slice(
+        3,
+        6
+      )}-${phoneNumber.slice(6, 10)}`;
+    }
+  };
+
+  const validateField = (
+    name: keyof FormErrors,
+    value: string
+  ): string | undefined => {
+    switch (name) {
+      case "firstName":
+        if (!value.trim()) return "First name is required";
+        if (value.trim().length < 2)
+          return "First name must be at least 2 characters";
+        return undefined;
+      case "lastName":
+        if (!value.trim()) return "Last name is required";
+        if (value.trim().length < 2)
+          return "Last name must be at least 2 characters";
+        return undefined;
+      case "email":
+        if (!value.trim()) return "Email is required";
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value))
+          return "Please enter a valid email address";
+        return undefined;
+      case "phone":
+        if (!value.trim()) return "Phone number is required";
+        const digitsOnly = value.replace(/\D/g, "");
+        if (digitsOnly.length < 10) return "Please enter a valid phone number";
+        return undefined;
+      case "company":
+        if (!value.trim()) return "Company name is required";
+        return undefined;
+      case "message":
+        if (!value.trim()) return "Message is required";
+        if (value.trim().length < 10)
+          return "Message must be at least 10 characters";
+        return undefined;
+      default:
+        return undefined;
+    }
+  };
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { id, value } = e.target;
+    const fieldName = id as keyof FormData;
+
+    // Format phone number
+    let processedValue = value;
+    if (fieldName === "phone") {
+      processedValue = formatPhoneNumber(value);
+    }
+
+    setFormData((prev) => ({ ...prev, [fieldName]: processedValue }));
+
+    // Real-time validation
+    const error = validateField(fieldName as keyof FormErrors, processedValue);
+    if (error) {
+      setErrors((prev) => ({ ...prev, [fieldName]: error }));
+    } else {
+      setErrors((prev) => {
+        const newErrors = { ...prev };
+        delete newErrors[fieldName as keyof FormErrors];
+        return newErrors;
+      });
+    }
+  };
+
+  const handleBlur = (
+    e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { id, value } = e.target;
+    const fieldName = id as keyof FormData;
+    const error = validateField(fieldName as keyof FormErrors, value);
+    if (error) {
+      setErrors((prev) => ({ ...prev, [fieldName]: error }));
+    }
+  };
+
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    if (!validateForm()) {
+      return;
+    }
+
+    setIsSubmitting(true);
+    setSubmitStatus("idle");
+    setSubmitMessage("");
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setSubmitStatus("success");
+        setSubmitMessage(
+          data.message || "Thank you! We'll get back to you within 24 hours."
+        );
+
+        // Track successful form submission
+        trackEvent("form_submission", {
+          form_type: "contact",
+          status: "success",
+        });
+
+        // Reset form
+        setFormData({
+          firstName: "",
+          lastName: "",
+          email: "",
+          phone: "",
+          company: "",
+          message: "",
+        });
+      } else {
+        setSubmitStatus("error");
+        setSubmitMessage(
+          data.error || "Failed to send message. Please try again."
+        );
+
+        // Track failed form submission
+        trackEvent("form_submission", {
+          form_type: "contact",
+          status: "error",
+          error_message: data.error,
+        });
+      }
+    } catch (error) {
+      console.error("Form submission error:", error);
+      setSubmitStatus("error");
+      setSubmitMessage(
+        "Network error. Please check your connection and try again."
+      );
+
+      // Track network error
+      trackEvent("form_submission", {
+        form_type: "contact",
+        status: "error",
+        error_type: "network_error",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <section id="contact" className="section-padding section-light">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
@@ -23,10 +272,13 @@ export function Contact() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-2xl sm:text-3xl font-semibold mb-4 text-primary">
+          <div className="inline-flex items-center px-4 py-1.5 bg-primary/10 text-primary text-sm font-medium rounded-full mb-4">
+            Contact
+          </div>
+          <h2 className="text-5xl font-normal tracking-tight leading-tight mb-6 text-primary">
             Request a Demo
           </h2>
-          <p className="text-sm sm:text-base text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg lg:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
             Schedule a personalized demo today.
           </p>
         </motion.div>
@@ -46,7 +298,7 @@ export function Contact() {
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                <form className="space-y-4">
+                <form onSubmit={handleSubmit} className="space-y-4">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                       <label
@@ -55,7 +307,29 @@ export function Contact() {
                       >
                         First Name
                       </label>
-                      <Input id="firstName" placeholder="John" required />
+                      <Input
+                        id="firstName"
+                        placeholder="John"
+                        value={formData.firstName}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        className={`${
+                          errors.firstName
+                            ? "border-destructive focus:border-destructive focus:ring-destructive"
+                            : "border-primary/20"
+                        } transition-colors`}
+                        disabled={isSubmitting}
+                      />
+                      {errors.firstName && (
+                        <motion.p
+                          initial={{ opacity: 0, y: -5 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          className="text-xs text-destructive mt-1 flex items-center gap-1"
+                        >
+                          <AlertCircle className="h-3 w-3" />
+                          {errors.firstName}
+                        </motion.p>
+                      )}
                     </div>
                     <div>
                       <label
@@ -64,7 +338,29 @@ export function Contact() {
                       >
                         Last Name
                       </label>
-                      <Input id="lastName" placeholder="Doe" required />
+                      <Input
+                        id="lastName"
+                        placeholder="Doe"
+                        value={formData.lastName}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        className={`${
+                          errors.lastName
+                            ? "border-destructive focus:border-destructive focus:ring-destructive"
+                            : "border-primary/20"
+                        } transition-colors`}
+                        disabled={isSubmitting}
+                      />
+                      {errors.lastName && (
+                        <motion.p
+                          initial={{ opacity: 0, y: -5 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          className="text-xs text-destructive mt-1 flex items-center gap-1"
+                        >
+                          <AlertCircle className="h-3 w-3" />
+                          {errors.lastName}
+                        </motion.p>
+                      )}
                     </div>
                   </div>
                   <div>
@@ -78,8 +374,26 @@ export function Contact() {
                       id="email"
                       type="email"
                       placeholder="john@example.com"
-                      required
+                      value={formData.email}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      className={`${
+                        errors.email
+                          ? "border-destructive focus:border-destructive focus:ring-destructive"
+                          : "border-primary/20"
+                      } transition-colors`}
+                      disabled={isSubmitting}
                     />
+                    {errors.email && (
+                      <motion.p
+                        initial={{ opacity: 0, y: -5 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className="text-xs text-destructive mt-1 flex items-center gap-1"
+                      >
+                        <AlertCircle className="h-3 w-3" />
+                        {errors.email}
+                      </motion.p>
+                    )}
                   </div>
                   <div>
                     <label
@@ -91,9 +405,28 @@ export function Contact() {
                     <Input
                       id="phone"
                       type="tel"
-                      placeholder="+1 (555) 000-0000"
-                      required
+                      placeholder="(555) 000-0000"
+                      value={formData.phone}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      maxLength={14}
+                      className={`${
+                        errors.phone
+                          ? "border-destructive focus:border-destructive focus:ring-destructive"
+                          : "border-primary/20"
+                      } transition-colors`}
+                      disabled={isSubmitting}
                     />
+                    {errors.phone && (
+                      <motion.p
+                        initial={{ opacity: 0, y: -5 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className="text-xs text-destructive mt-1 flex items-center gap-1"
+                      >
+                        <AlertCircle className="h-3 w-3" />
+                        {errors.phone}
+                      </motion.p>
+                    )}
                   </div>
                   <div>
                     <label
@@ -102,7 +435,29 @@ export function Contact() {
                     >
                       Company Name
                     </label>
-                    <Input id="company" placeholder="Your Company" required />
+                    <Input
+                      id="company"
+                      placeholder="Your Company"
+                      value={formData.company}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      className={`${
+                        errors.company
+                          ? "border-destructive focus:border-destructive focus:ring-destructive"
+                          : "border-primary/20"
+                      } transition-colors`}
+                      disabled={isSubmitting}
+                    />
+                    {errors.company && (
+                      <motion.p
+                        initial={{ opacity: 0, y: -5 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className="text-xs text-destructive mt-1 flex items-center gap-1"
+                      >
+                        <AlertCircle className="h-3 w-3" />
+                        {errors.company}
+                      </motion.p>
+                    )}
                   </div>
                   <div>
                     <label
@@ -111,16 +466,94 @@ export function Contact() {
                     >
                       Message
                     </label>
-                    <Textarea
-                      id="message"
-                      placeholder="Tell us about your requirements..."
-                      rows={5}
-                      required
-                    />
+                    <div className="relative">
+                      <Textarea
+                        id="message"
+                        placeholder="Tell us about your requirements..."
+                        rows={5}
+                        value={formData.message}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        maxLength={1000}
+                        className={`${
+                          errors.message
+                            ? "border-destructive focus:border-destructive focus:ring-destructive"
+                            : "border-primary/20"
+                        } transition-colors pr-16`}
+                        disabled={isSubmitting}
+                      />
+                      <div className="absolute bottom-3 right-3 text-xs text-muted-foreground">
+                        {formData.message.length}/1000
+                      </div>
+                    </div>
+                    {errors.message && (
+                      <motion.p
+                        initial={{ opacity: 0, y: -5 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className="text-xs text-destructive mt-1 flex items-center gap-1"
+                      >
+                        <AlertCircle className="h-3 w-3" />
+                        {errors.message}
+                      </motion.p>
+                    )}
                   </div>
-                  <button type="submit" className="w-full group inline-flex items-center justify-center bg-primary hover:bg-primary/90 text-white rounded-lg transition-all duration-300 px-4 py-2 font-medium cursor-pointer">
-                    Send Message
-                    <Send className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+
+                  {/* Status Messages */}
+                  <AnimatePresence mode="wait">
+                    {submitStatus === "success" && (
+                      <motion.div
+                        initial={{ opacity: 0, y: -10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -10 }}
+                        className="p-3 bg-green-50 border border-green-200 rounded-lg flex items-start gap-2"
+                      >
+                        <CheckCircle2 className="h-5 w-5 text-green-600 shrink-0 mt-0.5" />
+                        <p className="text-sm text-green-800">
+                          {submitMessage}
+                        </p>
+                      </motion.div>
+                    )}
+                    {submitStatus === "error" && (
+                      <motion.div
+                        initial={{ opacity: 0, y: -10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -10 }}
+                        className="p-3 bg-red-50 border border-red-200 rounded-lg flex items-start gap-2"
+                      >
+                        <AlertCircle className="h-5 w-5 text-red-600 shrink-0 mt-0.5" />
+                        <p className="text-sm text-red-800">{submitMessage}</p>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="w-full group inline-flex items-center justify-center bg-primary hover:bg-primary/90 disabled:bg-primary/50 disabled:cursor-not-allowed text-white rounded-lg transition-all duration-300 px-4 py-2 font-medium cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+                    aria-label={
+                      isSubmitting
+                        ? "Sending your message"
+                        : "Submit contact form"
+                    }
+                    aria-busy={isSubmitting}
+                  >
+                    {isSubmitting ? (
+                      <>
+                        <Loader2
+                          className="mr-2 h-4 w-4 animate-spin"
+                          aria-hidden="true"
+                        />
+                        <span>Sending...</span>
+                      </>
+                    ) : (
+                      <>
+                        <span>Send Message</span>
+                        <Send
+                          className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform"
+                          aria-hidden="true"
+                        />
+                      </>
+                    )}
                   </button>
                 </form>
               </CardContent>
@@ -153,10 +586,10 @@ export function Contact() {
                       Email
                     </div>
                     <a
-                      href="mailto:info@wantace.com"
+                      href={`mailto:${contactConfig.email}`}
                       className="text-primary hover:underline"
                     >
-                      info@wantace.com
+                      {contactConfig.email}
                     </a>
                   </div>
                 </div>
@@ -169,28 +602,11 @@ export function Contact() {
                       Phone
                     </div>
                     <a
-                      href="tel:+911234567890"
+                      href={`tel:${contactConfig.phone.replace(/\s/g, "")}`}
                       className="text-primary hover:underline"
                     >
-                      +91 123 456 7890
+                      {contactConfig.phone}
                     </a>
-                  </div>
-                </div>
-                <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-lg  flex items-center justify-center shrink-0 border border-primary/30">
-                    <MapPin className="h-5 w-5 text-primary" />
-                  </div>
-                  <div>
-                    <div className="font-semibold mb-1 text-foreground">
-                      Address
-                    </div>
-                    <p className="text-muted-foreground">
-                      123 Business Park, Industrial Area
-                      <br />
-                      City, State 123456
-                      <br />
-                      India
-                    </p>
                   </div>
                 </div>
               </CardContent>
@@ -201,7 +617,7 @@ export function Contact() {
                 <h3 className="font-semibold text-lg mb-2 text-foreground">
                   Why Schedule a Demo?
                 </h3>
-                <ul className="space-y-2 text-sm text-muted-foreground">
+                <ul className="space-y-2 text-sm text-muted-foreground mb-6">
                   <li className="flex items-start gap-2">
                     <span className="text-primary mt-1">✓</span>
                     <span>See the system in action with your data</span>
@@ -219,6 +635,27 @@ export function Contact() {
                     <span>Receive a customized pricing quote</span>
                   </li>
                 </ul>
+                <button
+                  onClick={() => {
+                    trackEvent("cta_click", {
+                      button_text: "Book a Call with Team",
+                      location: "why_schedule_demo_section",
+                    });
+                    window.open(
+                      "https://calendly.com/wantace-ai/discovery-call",
+                      "_blank",
+                      "noopener,noreferrer"
+                    );
+                  }}
+                  className="w-full group inline-flex items-center justify-center bg-primary hover:bg-primary/90 text-white rounded-lg transition-all duration-300 px-4 py-2 font-medium cursor-pointer "
+                  aria-label="Book a call with team"
+                >
+                  <span>Book a Call with Team</span>
+                  <PhoneCall
+                    className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform"
+                    aria-hidden="true"
+                  />
+                </button>
               </CardContent>
             </Card>
           </motion.div>
