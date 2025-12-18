@@ -1,40 +1,24 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Link from "next/link";
 import Image from "next/image";
-import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import { useToast } from "@/components/ui/toast";
-import { trackEvent } from "@/components/analytics";
+import { Menu, X } from "lucide-react";
+
+const navItems = [
+  { label: "Overview", href: "#overview" },
+  { label: "Products & Recipes", href: "#products-recipes" },
+  { label: "Inventory & Stock", href: "#inventory" },
+  { label: "Orders & Production", href: "#operations" },
+  { label: "Customers", href: "#customers" },
+  { label: "Testimonials", href: "#testimonials" },
+  // { label: "Pricing", href: "#pricing" },
+];
 
 export function Navbar() {
-  const [isOpen, setIsOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState("");
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [showRectangle, setShowRectangle] = useState(false);
-  const { showToast } = useToast();
-
-  const navLinks = [
-    { name: "Overview", href: "#overview", id: "overview" },
-    {
-      name: "Products & Recipes",
-      href: "#products-recipes",
-      id: "products-recipes",
-    },
-    {
-      name: "Inventory & Stock",
-      href: "#inventory",
-      id: "inventory",
-    },
-    {
-      name: "Orders & Production",
-      href: "#operations",
-      id: "operations",
-    },
-    { name: "Customers", href: "#customers", id: "customers" },
-    { name: "Testimonials", href: "#testimonials", id: "testimonials" },
-    // { name: "Pricing", href: "#pricing", id: "pricing" },
-  ];
+  const [activeSection, setActiveSection] = useState("");
 
   const handleNavClick = (
     e: React.MouseEvent<HTMLAnchorElement>,
@@ -42,10 +26,30 @@ export function Navbar() {
   ) => {
     e.preventDefault();
     const element = document.querySelector(href);
-    if (!element) return;
-    const offsetTop = (element as HTMLElement).offsetTop - 80;
-    window.scrollTo({ top: offsetTop, behavior: "smooth" });
-    setIsOpen(false);
+    if (element) {
+      const offset = 80;
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth",
+      });
+    }
+  };
+
+  const handleContact = () => {
+    const contactSection = document.querySelector("#contact");
+    if (contactSection) {
+      const offset = 80;
+      const elementPosition = contactSection.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth",
+      });
+    }
   };
 
   useEffect(() => {
@@ -53,175 +57,188 @@ export function Navbar() {
       const scrollY = window.scrollY;
       const viewportHeight = window.innerHeight;
 
-      setShowRectangle(scrollY > viewportHeight * 0.7);
+      setShowRectangle(scrollY > viewportHeight * 0.8);
 
-      let current = "";
-      for (let i = navLinks.length - 1; i >= 0; i -= 1) {
-        const item = navLinks[i];
-        const el = document.querySelector(item.href);
-        if (el) {
-          const rect = (el as HTMLElement).getBoundingClientRect();
+      let currentSection = "";
+      for (let i = navItems.length - 1; i >= 0; i--) {
+        const item = navItems[i];
+        const element = document.querySelector(item.href);
+        if (element) {
+          const rect = element.getBoundingClientRect();
           const offset = 150;
           if (rect.top <= offset) {
-            current = item.id;
+            currentSection = item.href.replace("#", "");
             break;
           }
         }
       }
-      if (scrollY < 100) current = "";
-      setActiveSection(current);
+
+      if (scrollY < 100) {
+        currentSection = "";
+      }
+
+      setActiveSection(currentSection);
     };
 
     handleScroll();
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [navLinks]);
+  }, []);
 
   return (
-    <nav
+    <motion.nav
+      initial={{ y: 0 }}
       className={`${
-        showRectangle
-          ? "fixed top-0 left-0 right-0 bg-transparent"
-          : "absolute top-0 left-0 right-0 bg-transparent"
-      } z-50 w-full transition-all duration-300`}
-      role="navigation"
-      aria-label="Main navigation"
+        showRectangle ? "fixed" : "absolute"
+      } top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        !showRectangle ? "bg-muted/80 backdrop-blur-sm" : "bg-transparent"
+      }`}
     >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-2">
-        <div className="flex items-center justify-between h-14 sm:h-16 relative">
+      <div className="container mx-auto px-4 relative">
+        <div className="flex items-center justify-between h-16 relative">
+          {/* Logo - Hide on mobile when scrolled past first page */}
+          <motion.a
+            href="/"
+            className={`flex items-center gap-2 sm:gap-3 group shrink-0 min-w-0 ${
+              showRectangle ? "hidden xl:flex" : ""
+            }`}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <div className="relative shrink-0">
+              <Image
+                src="/logo.svg"
+                alt="Carpet ERP Logo"
+                width={40}
+                height={40}
+                className="h-7 w-7 sm:h-10 sm:w-10 group-hover:scale-110 transition-transform duration-300 object-contain"
+                priority
+              />
+            </div>
+            <div className="flex flex-col min-w-0">
+              <span className="font-bold text-sm sm:text-base text-foreground leading-tight truncate">
+                Carpet ERP
+              </span>
+              <span className="text-[10px] sm:text-xs text-muted-foreground leading-tight truncate">
+                by Wantace
+              </span>
+            </div>
+          </motion.a>
+
+          {/* Mobile Hamburger Menu - Always visible on mobile, positioned on right */}
+          <div className="xl:hidden ml-auto">
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="p-2 rounded-lg hover:bg-gray-100 transition-colors"
+              aria-label="Toggle menu"
+            >
+              <Menu className="h-6 w-6" />
+            </button>
+          </div>
+
+          {/* Desktop Navigation - Centered */}
           {!showRectangle && (
-            <>
-              <motion.a
-                href="/"
-                className="flex items-center gap-2 sm:gap-3 group shrink-0 min-w-0"
-                whileHover={{ scale: 1.04 }}
-                whileTap={{ scale: 0.96 }}
-              >
-                <div className="relative shrink-0">
-                  <Image
-                    src="/logo.svg"
-                    alt="Carpet ERP Logo"
-                    width={36}
-                    height={36}
-                    className="h-8 w-8 sm:h-9 sm:w-9 group-hover:scale-105 transition-transform duration-200"
-                    priority
-                  />
-                </div>
-                <div className="flex flex-col min-w-0">
-                  <span className="font-normal text-sm sm:text-base text-foreground leading-tight truncate">
-                    Carpet ERP
-                  </span>
-                  <span className="text-[10px] sm:text-xs text-muted-foreground leading-tight truncate">
-                    by Wantace
-                  </span>
-                </div>
-              </motion.a>
-
-              <div className="hidden md:flex items-center gap-2 lg:gap-3 absolute left-1/2 -translate-x-1/2 bg-white/80 backdrop-blur rounded-md border border-primary/15 px-3 py-1 shadow-[0_8px_30px_rgba(0,0,0,0.05)] max-w-[calc(100vw-200px)] overflow-x-auto">
-                {navLinks.map((link) => {
-                  const isActive = activeSection === link.id;
-                  return (
-                    <a
-                      key={link.name}
-                      href={link.href}
-                      onClick={(e) => handleNavClick(e, link.href)}
-                      className={`group relative text-[13px] lg:text-sm font-medium transition-colors duration-200 whitespace-nowrap cursor-pointer ${
-                        isActive
-                          ? "text-primary"
-                          : "text-slate-700 hover:text-foreground"
+            <div className="hidden border border-gray-200 rounded-md px-4 py-1 xl:flex items-center gap-4 xl:gap-5 absolute left-1/2 -translate-x-1/2">
+              {navItems.map((item) => {
+                const sectionId = item.href.replace("#", "");
+                const isActive = activeSection === sectionId;
+                return (
+                  <a
+                    key={item.label}
+                    href={item.href}
+                    onClick={(e) => handleNavClick(e, item.href)}
+                    className={`relative text-sm xl:text-base font-medium transition-colors duration-200 cursor-pointer group whitespace-nowrap focus:outline-none ${
+                      isActive
+                        ? "text-primary"
+                        : "text-gray-700 hover:text-gray-900"
+                    }`}
+                    aria-current={isActive ? "page" : undefined}
+                  >
+                    {item.label}
+                    <span
+                      className={`absolute bottom-0 left-0 h-px bg-primary transition-all duration-300 ${
+                        isActive ? "w-full" : "w-0 group-hover:w-full"
                       }`}
-                      aria-current={isActive ? "page" : undefined}
-                    >
-                      {link.name}
-                      <span
-                        className={`absolute bottom-0 left-0 h-[2px] bg-primary transition-all duration-300 ${
-                          isActive ? "w-full" : "w-0 group-hover:w-full"
-                        }`}
-                      />
-                    </a>
-                  );
-                })}
-              </div>
-
-              <div className="hidden md:block">
-                <button
-                  onClick={() => {
-                    trackEvent("cta_click", {
-                      button_text: "Contact",
-                      location: "navbar_desktop",
-                    });
-                    handleNavClick(new MouseEvent("click") as any, "#contact");
-                  }}
-                  className="rounded-md bg-primary text-white px-4 py-2 text-sm font-normal shadow-sm transition hover:bg-primary/90 cursor-pointer"
-                  aria-label="Contact us"
-                >
-                  Contact
-                </button>
-              </div>
-            </>
+                    ></span>
+                  </a>
+                );
+              })}
+            </div>
           )}
 
-          {showRectangle && (
-            <div className="hidden md:flex items-center w-full justify-center">
-              <motion.div
-                initial={{ opacity: 0, scale: 0.97 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.25 }}
-                className="bg-slate-50 border border-slate-200 rounded-lg px-2 py-1 flex items-center gap-2 lg:gap-3 shadow-sm max-w-[calc(100vw-140px)] overflow-x-auto"
+          {/* Contact Button - Right - Desktop only */}
+          {!showRectangle && (
+            <div className="hidden xl:block">
+              <button
+                onClick={handleContact}
+                className="bg-primary hover:bg-primary/90 text-white text-base font-medium px-4 py-2 h-auto rounded-md transition-colors cursor-pointer"
+                aria-label="Contact us"
               >
+                Contact
+              </button>
+            </div>
+          )}
+
+          {/* Rectangle Navbar Layout when Scrolling */}
+          {showRectangle && (
+            <div className="hidden xl:flex items-center w-full justify-center">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.3 }}
+                className="bg-gray-100 border border-gray-200 rounded-lg px-2 py-1 flex items-center gap-3 xl:gap-4"
+              >
+                {/* Logo inside rectangle */}
                 <motion.a
                   href="/"
-                  className="flex items-center gap-2 group shrink-0"
-                  whileHover={{ scale: 1.03 }}
-                  whileTap={{ scale: 0.97 }}
+                  className="flex items-center gap-2 sm:gap-3 group shrink-0 min-w-0"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
                 >
                   <div className="relative shrink-0">
                     <Image
                       src="/logo.svg"
                       alt="Carpet ERP Logo"
-                      width={32}
-                      height={32}
-                      className="h-8 w-8 group-hover:scale-105 transition-transform duration-200"
+                      width={40}
+                      height={40}
+                      className="h-7 w-7 sm:h-8 sm:w-8 group-hover:scale-110 transition-transform duration-300 object-contain"
                       priority
                     />
                   </div>
                 </motion.a>
 
-                {navLinks.map((link) => {
-                  const isActive = activeSection === link.id;
+                {/* Navigation Links */}
+                {navItems.map((item) => {
+                  const sectionId = item.href.replace("#", "");
+                  const isActive = activeSection === sectionId;
                   return (
                     <a
-                      key={link.name}
-                      href={link.href}
-                      onClick={(e) => handleNavClick(e, link.href)}
-                      className={`group relative text-[13px] lg:text-sm font-medium transition-colors duration-200 cursor-pointer whitespace-nowrap px-1 ${
+                      key={item.label}
+                      href={item.href}
+                      onClick={(e) => handleNavClick(e, item.href)}
+                      className={`relative text-sm xl:text-base font-medium transition-colors duration-200 cursor-pointer group whitespace-nowrap focus:outline-none rounded px-1 ${
                         isActive
                           ? "text-primary"
-                          : "text-slate-700 hover:text-foreground"
+                          : "text-gray-700 hover:text-gray-900"
                       }`}
-                      aria-label={`Navigate to ${link.name}`}
+                      aria-label={`Navigate to ${item.label} section`}
                       aria-current={isActive ? "page" : undefined}
                     >
-                      {link.name}
+                      {item.label}
                       <span
-                        className={`absolute bottom-0 left-0 h-[2px] bg-primary transition-all duration-300 ${
+                        className={`absolute bottom-0 left-0 h-px bg-primary transition-all duration-300 ${
                           isActive ? "w-full" : "w-0 group-hover:w-full"
                         }`}
                         aria-hidden="true"
-                      />
+                      ></span>
                     </a>
                   );
                 })}
 
+                {/* Contact Button inside rectangle */}
                 <button
-                  onClick={() => {
-                    trackEvent("cta_click", {
-                      button_text: "Contact",
-                      location: "navbar_sticky",
-                    });
-                    handleNavClick(new MouseEvent("click") as any, "#contact");
-                  }}
-                  className="bg-primary hover:bg-primary/90 text-white text-sm font-medium px-1 py-0.5 rounded-md h-auto leading-tight transition cursor-pointer"
+                  onClick={handleContact}
+                  className="bg-primary hover:bg-primary/90 text-white text-sm font-medium px-3 py-1.5 rounded-sm h-auto leading-tight transition-colors cursor-pointer"
                   aria-label="Contact us"
                 >
                   Contact
@@ -229,154 +246,103 @@ export function Navbar() {
               </motion.div>
             </div>
           )}
-
-          <motion.button
-            className="md:hidden inline-flex h-10 w-10 items-center justify-center rounded-lg border border-primary/20 hover:border-primary/40 transition-colors ml-auto"
-            onClick={() => setIsOpen(!isOpen)}
-            aria-label="Toggle menu"
-            whileTap={{ scale: 0.95 }}
-          >
-            <AnimatePresence mode="wait">
-              {isOpen ? (
-                <motion.div
-                  key="close"
-                  initial={{ rotate: -90, opacity: 0 }}
-                  animate={{ rotate: 0, opacity: 1 }}
-                  exit={{ rotate: 90, opacity: 0 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  <X className="h-6 w-6 text-foreground" />
-                </motion.div>
-              ) : (
-                <motion.div
-                  key="menu"
-                  initial={{ rotate: 90, opacity: 0 }}
-                  animate={{ rotate: 0, opacity: 1 }}
-                  exit={{ rotate: -90, opacity: 0 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  <Menu className="h-6 w-6 text-foreground" />
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </motion.button>
         </div>
       </div>
 
+      {/* Mobile Menu */}
       <AnimatePresence>
-        {isOpen && (
+        {mobileMenuOpen && (
           <>
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.2 }}
-              className="fixed inset-0 bg-black/50 z-40 lg:hidden"
-              onClick={() => setIsOpen(false)}
+              className="fixed inset-0 bg-black/50 z-[60] xl:hidden"
+              onClick={() => setMobileMenuOpen(false)}
             />
+
             <motion.div
-              id="mobile-menu"
-              initial={{ x: "100%", opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
-              exit={{ x: "100%", opacity: 0 }}
-              transition={{ duration: 0.25, ease: [0.4, 0, 0.2, 1] }}
-              className="fixed right-0 top-0 h-full w-full bg-white z-50 lg:hidden shadow-xl overflow-y-auto"
-              role="dialog"
-              aria-modal="true"
-              aria-label="Mobile navigation menu"
+              initial={{ x: "100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "100%" }}
+              transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
+              className="fixed right-0 top-0 h-screen w-[300px] sm:w-[400px] bg-white shadow-xl z-[70] xl:hidden flex flex-col"
             >
-              <div className="flex items-center justify-between p-4 border-b border-primary/15">
-                <Link
-                  href="/"
-                  className="flex items-center gap-3 group"
-                  onClick={() => setIsOpen(false)}
-                >
-                  <div className="relative">
+              {/* Header with Logo */}
+              <div className="flex items-center justify-between p-4 border-b border-gray-200 bg-white shrink-0">
+                <div className="flex items-center gap-3">
+                  <div className="relative shrink-0">
                     <Image
                       src="/logo.svg"
                       alt="Carpet ERP Logo"
-                      width={32}
-                      height={32}
-                      className="h-8 w-8 group-hover:scale-105 transition-transform duration-200"
+                      width={40}
+                      height={40}
+                      className="h-10 w-10 object-contain"
                       priority
                     />
                   </div>
                   <div className="flex flex-col">
-                    <span className="font-normal text-base text-foreground leading-tight">
+                    <span className="font-bold text-lg text-gray-900">
                       Carpet ERP
                     </span>
-                    <span className="text-xs text-muted-foreground leading-tight">
+                    <span className="text-xs text-gray-600">
                       by Wantace
                     </span>
                   </div>
-                </Link>
+                </div>
                 <button
-                  onClick={() => setIsOpen(false)}
-                  className="p-2 rounded-md hover:bg-muted transition-colors"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="p-2 rounded-full hover:bg-gray-100 transition-colors"
                   aria-label="Close menu"
                 >
-                  <X className="h-5 w-5 text-foreground" />
+                  <X className="h-5 w-5 text-gray-900" />
                 </button>
               </div>
 
-              <div className="p-4 space-y-1">
-                {navLinks.map((link, index) => {
-                  const isActive = activeSection === link.id;
-                  return (
-                    <motion.div
-                      key={link.name}
-                      initial={{ opacity: 0, x: -16 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: index * 0.04 }}
-                    >
-                      <Link
-                        href={link.href}
-                        className={`flex items-center justify-between text-base font-medium transition-all duration-200 group py-3 px-4 rounded-lg ${
+              {/* Navigation Items */}
+              <div className="flex-1 py-6 px-4 bg-white flex flex-col justify-center">
+                <div className="space-y-2">
+                  {navItems.map((item) => {
+                    const sectionId = item.href.replace("#", "");
+                    const isActive = activeSection === sectionId;
+                    return (
+                      <a
+                        key={item.label}
+                        href={item.href}
+                        onClick={(e) => {
+                          handleNavClick(e, item.href);
+                          setMobileMenuOpen(false);
+                        }}
+                        className={`block text-base font-medium px-4 py-3 rounded-lg transition-colors ${
                           isActive
-                            ? "text-primary bg-primary/10"
-                            : "text-slate-700 hover:text-foreground hover:bg-primary/5"
+                            ? "text-primary bg-blue-50"
+                            : "text-gray-900 hover:bg-gray-100"
                         }`}
-                        onClick={() => setIsOpen(false)}
                       >
-                        <span>{link.name}</span>
-                        {isActive && (
-                          <motion.span
-                            className="h-2 w-2 bg-primary rounded-md"
-                            initial={{ scale: 0 }}
-                            animate={{ scale: 1 }}
-                            transition={{ duration: 0.2 }}
-                          />
-                        )}
-                      </Link>
-                    </motion.div>
-                  );
-                })}
+                        {item.label}
+                      </a>
+                    );
+                  })}
+                </div>
               </div>
 
-              <div className="p-4 border-t border-primary/15">
-                <Link
-                  href="#contact"
-                  className="w-full inline-flex items-center justify-center bg-primary hover:bg-primary/90 text-white rounded-lg transition-all duration-200 px-4 py-3 font-normal cursor-pointer"
+              {/* Contact Button at Bottom */}
+              <div className="p-4 border-t border-gray-200 bg-white shrink-0">
+                <button
+                  className="bg-primary hover:bg-primary/90 font-medium text-white text-base w-full py-3 rounded-md transition-colors"
                   onClick={() => {
-                    trackEvent("cta_click", {
-                      button_text: "Contact",
-                      location: "navbar_mobile",
-                    });
-                    showToast(
-                      "Thank you for your interest! We'll contact you soon.",
-                      "success",
-                      3000
-                    );
-                    setIsOpen(false);
+                    handleContact();
+                    setMobileMenuOpen(false);
                   }}
                 >
                   Contact
-                </Link>
+                </button>
               </div>
             </motion.div>
           </>
         )}
       </AnimatePresence>
-    </nav>
+    </motion.nav>
   );
 }
