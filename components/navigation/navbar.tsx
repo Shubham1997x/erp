@@ -96,12 +96,11 @@ export function Navbar() {
     >
       <div className="container mx-auto px-4 relative">
         <div className="flex items-center justify-between h-16 relative">
-          {/* Logo - Hide on mobile when scrolled past first page */}
-          <motion.a
-            href="/"
-            className={`flex items-center gap-2 sm:gap-3 group shrink-0 min-w-0 ${
-              showRectangle ? "hidden xl:flex" : ""
-            }`}
+          {/* Logo - Hide when scrolled past first page */}
+          {!showRectangle && (
+            <motion.a
+              href="/"
+              className="flex items-center gap-2 sm:gap-3 group shrink-0 min-w-0"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
@@ -123,7 +122,8 @@ export function Navbar() {
                 by Wantace
               </span>
             </div>
-          </motion.a>
+            </motion.a>
+          )}
 
           {/* Mobile Hamburger Menu - Always visible on mobile, positioned on right */}
           <div className="xl:hidden ml-auto">
