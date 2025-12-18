@@ -258,7 +258,7 @@ export function Navbar() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.2 }}
-              className="fixed inset-0 bg-black/50 z-[60] xl:hidden"
+              className="fixed inset-0 bg-black/50 z-60 xl:hidden"
               onClick={() => setMobileMenuOpen(false)}
             />
 
@@ -267,7 +267,7 @@ export function Navbar() {
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
-              className="fixed right-0 top-0 h-screen w-[300px] sm:w-[400px] bg-white shadow-xl z-[70] xl:hidden flex flex-col"
+              className="fixed right-0 top-0 h-screen w-[300px] sm:w-[400px] bg-white shadow-xl z-70 xl:hidden flex flex-col"
             >
               {/* Header with Logo */}
               <div className="flex items-center justify-between p-4 border-b border-gray-200 bg-white shrink-0">
